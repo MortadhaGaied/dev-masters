@@ -5,6 +5,9 @@
  */
 package dev.masters.test;
 
+import dev.masters.services.ServiceUser;
+import java.sql.SQLException;
+
 /**
  *
  * @author Mortadha
@@ -14,8 +17,14 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        ServiceUser su = new ServiceUser();
+        try {
+            System.out.println(su.afficher());
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }
