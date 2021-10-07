@@ -11,7 +11,7 @@ package dev.masters.entites;
  */
 public class Station {
     
-    private String nom_station,position;
+    private String nom_station,position,RefStation;
 
     
     public Station(){
@@ -53,5 +53,20 @@ public class Station {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    /**
+     * @return the RefStation
+     */
+    public String getRefStation() {
+        return RefStation;
+    }
+
+    /**
+     * @param RefStation the RefStation to set
+     */
+    public void setRefStation(String RefStation) {
+        this.RefStation = RefStation;
+    }
+    
     
 }
