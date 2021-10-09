@@ -68,13 +68,13 @@ public class ServiceUser implements IService<User>{
     }
 
     @Override
-    public void supprimer(Long id_user) throws SQLException {
+    public void supprimer(long id_user) throws SQLException {
         Statement stm = cnx.createStatement();
         String query = "delete from user where id_user="+id_user;
         stm.executeUpdate(query);
         
     } 
-    public User SearchById(Long id_user) throws SQLException{
+    public User SearchById(long id_user) throws SQLException{
         Statement stm = cnx.createStatement();
         User user =new User();
         String query = "select * from user where id_user="+id_user;
@@ -92,7 +92,7 @@ public class ServiceUser implements IService<User>{
         }
         return user;
     }
-    public void modifier(Long id_user_a_modifier,User user_modifier) throws SQLException {
+    public void modifier(long id_user_a_modifier,User user_modifier) throws SQLException {
         Statement stm = cnx.createStatement();
         User user=SearchById(id_user_a_modifier);
         String query = "UPDATE `user` SET `first_name`='"+user_modifier.getFirst_name()+"',`last_name`='"+user_modifier.getLast_name()+"',`email`='"+user_modifier.getEmail()+"',`number`='"+user_modifier.getNumber()+"',`password`='"+user_modifier.getPassword()+"',`birthday`='"+user_modifier.getBirthday()+"',`date_created_user`='"+user.getDate_created_user()+"',`last_updated_user`='"+LocalDateTime.now()+"' where id_user="+user.getId_user();
