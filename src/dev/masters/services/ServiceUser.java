@@ -32,7 +32,7 @@ public class ServiceUser implements IService<User>{
         Statement st;
         try {
             st = cnx.createStatement();
-            String query ="INSERT INTO `user`(`first_name`, `last_name`, `email`, `number`, `password`, `birthday`, `date_created_user`, `last_updated_user`) VALUES ('"+user.getFirst_name()+"','"+user.getLast_name()+"','"+user.getEmail()+"','"+user.getPassword()+"','"+user.getNumber()+"','"+user.getBirthday()+"','"+LocalDateTime.now()+"','"+LocalDateTime.now()+"')";
+            String query ="INSERT INTO `user`(`first_name`, `last_name`, `email`, `number`, `password`, `birthday`, `date_created_user`, `last_updated_user`) VALUES ('"+user.getFirst_name()+"','"+user.getLast_name()+"','"+user.getEmail()+"','"+user.getNumber()+"','"+user.getPassword()+"','"+user.getBirthday()+"','"+LocalDateTime.now()+"','"+LocalDateTime.now()+"')";
       
         st.executeUpdate(query);
         
