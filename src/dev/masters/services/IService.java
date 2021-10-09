@@ -10,7 +10,8 @@ import java.util.List;
 
 /**
  *
- * @author Mortadha
+ * 
+ * @param <T>
  */
 public interface IService<T> {
     
