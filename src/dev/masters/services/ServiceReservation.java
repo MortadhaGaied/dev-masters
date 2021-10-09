@@ -28,7 +28,7 @@ public class ServiceReservation implements IService<Reservation>{
         Statement st;
         try {
             st = cnx.createStatement();
-            String query ="INSERT INTO `reservation`(`id_reservation`, `date`, `etat`) VALUES ('"+reservation.getId_reservation()+"','"+reservation.getDate()+"','"+reservation.getEtat()+"')";
+            String query ="INSERT INTO `reservation`(`id_reservation`, `date_reservation`, `etat_reservation`) VALUES ('"+reservation.getId_reservation()+"','"+reservation.getDate_reservation()+"','"+reservation.getEtat_reservation()+"')";
       
         st.executeUpdate(query);
         
@@ -50,8 +50,8 @@ public class ServiceReservation implements IService<Reservation>{
         while (rs.next()){
             Reservation reservation = new Reservation();
             reservation.setId_reservation(rs.getLong("id_reservation"));
-            reservation.setDate(rs.getTimestamp(2).toLocalDateTime());
-            reservation.setEtat(rs.getString("etat"));
+            reservation.setDate_reservation(rs.getTimestamp(2).toLocalDateTime());
+            reservation.setEtat_reservation(rs.getString("etat_reservation"));
             lr.add(reservation);
         }
         return lr;
@@ -67,7 +67,7 @@ public class ServiceReservation implements IService<Reservation>{
     
     public void modifier(long id_reservation,Reservation reservation) throws SQLException {
         Statement stm = cnx.createStatement();
-        String query = "UPDATE `reservation` SET `date`='"+reservation.getDate()+"',`etat`='"+reservation.getEtat()+"' WHERE id_reservation="+id_reservation;
+        String query = "UPDATE `reservation` SET `date_reservation`='"+reservation.getDate_reservation()+"',`etat_reservation`='"+reservation.getEtat_reservation()+"' WHERE id_reservation="+id_reservation;
         stm.executeUpdate(query);
     }
 

@@ -13,21 +13,21 @@ import java.time.LocalDateTime;
  */
 public class Reservation {
     private long id_reservation ;
-    private LocalDateTime date ;
-    private String etat ;
+    private LocalDateTime date_reservation ;
+    private String etat_reservation ;
 
     public Reservation() {
     }
 
-    public Reservation(LocalDateTime date, String etat) {
-        this.date = date;
-        this.etat = etat;
+    public Reservation(LocalDateTime date_reservation, String etat_reservation) {
+        this.date_reservation = date_reservation;
+        this.etat_reservation= etat_reservation;
     }
 
-    public Reservation(long id_reservation, LocalDateTime date, String etat) {
+    public Reservation(long id_reservation, LocalDateTime date_reservation, String etat_reservation) {
         this.id_reservation = id_reservation;
-        this.date = date;
-        this.etat = etat;
+        this.date_reservation = date_reservation;
+        this.etat_reservation = etat_reservation;
     }
 
     public long getId_reservation() {
@@ -38,25 +38,25 @@ public class Reservation {
         this.id_reservation = id_reservation;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public LocalDateTime getDate_reservation() {
+        return date_reservation;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setDate_reservation(LocalDateTime date) {
+        this.date_reservation = date;
     }
 
-    public String getEtat() {
-        return etat;
+    public String getEtat_reservation() {
+        return etat_reservation;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setEtat_reservation(String etat) {
+        this.etat_reservation = etat;
     }
 
     @Override
     public String toString() {
-        return "Reservation{" + "id_reservation=" + id_reservation + ", date=" + date + ", etat=" + etat + '}'+"\n";
+        return "Reservation{" + "id_reservation=" + id_reservation + ", date_reservation=" + date_reservation + ", etat_reservation=" + etat_reservation + '}'+"\n";
     }
     
 }
