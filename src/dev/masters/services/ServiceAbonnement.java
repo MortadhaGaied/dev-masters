@@ -86,4 +86,9 @@ public class ServiceAbonnement implements IService<Abonnement> {
         }
     }
 
+    public Double remise(Double prix, int re) {
+        Double nouv_prix = prix * (100 / re);
+        return nouv_prix;
+    }
+
 }
