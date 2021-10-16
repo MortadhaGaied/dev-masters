@@ -16,8 +16,6 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-<<<<<<< HEAD
-=======
         
         Position posisiton_depart=new Position("123","13154");
         Position position_arrive=new Position("123","1315");
@@ -46,7 +44,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
        */
->>>>>>> parent of 9aefafe... recherche avancee
     }
     
 }
