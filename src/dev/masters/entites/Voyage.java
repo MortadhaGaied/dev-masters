@@ -132,7 +132,7 @@ public class Voyage  {
     
     
     public String toString(){
-        return "Voyage{ \n id = "+this.getId()+" \n position de depart = ( "+ this.getPosition_depart().getGoogleMapsPostionFormat()+" )"+"\n position d'arrive = ( "+this.getPosition_arrive().getGoogleMapsPostionFormat()+" )"+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getRefStation()+"\n Moyen de transport = "+this.getMoyen_transport().getRef_mt()+"}" ;
+        return "Voyage{ \n id = "+this.getId()+" \n position de depart"+ this.getPosition_depart()+"\n position d'arrive"+this.getPosition_arrive()+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getNom_station()+"\n Moyen de transport = "+this.getMoyen_transport().toString()+"}" ;
     }
 }
 

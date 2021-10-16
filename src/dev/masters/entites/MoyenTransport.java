@@ -13,13 +13,9 @@ public class MoyenTransport {
     
     
   private long id;
-  private String ref_mt;
-  public MoyenTransport(){
-      
-  }
-  public MoyenTransport(long id,String ref_mt){
+  
+  public MoyenTransport(long id){
       this.id=id;
-      this.ref_mt=ref_mt;
   }
 
     /**
@@ -34,20 +30,6 @@ public class MoyenTransport {
      */
     public void setId(long id) {
         this.id = id;
-    }
-
-    /**
-     * @return the ref_mt
-     */
-    public String getRef_mt() {
-        return ref_mt;
-    }
-
-    /**
-     * @param ref_mt the ref_mt to set
-     */
-    public void setRef_mt(String ref_mt) {
-        this.ref_mt = ref_mt;
     }
   
   

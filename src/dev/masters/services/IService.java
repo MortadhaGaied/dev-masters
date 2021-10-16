@@ -17,7 +17,7 @@ public interface IService<T> {
     public void ajouter(T t);
     public List<T> afficher()throws SQLException;
     public void supprimer(Long id) throws SQLException;
-    public void modifier(int id,T t) throws SQLException;
+    public void modifier(Long id,T t) throws SQLException;
 
 }
 
