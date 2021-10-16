@@ -10,26 +10,20 @@ package dev.masters.entites;
  * @author mouha
  */
 public class Position {
-    private String longitude ;
+
+    private String longitude;
     private String latitude;
 
-    
-    
-    
-    
-    public Position(){
-        
+    public Position() {
+
     }
-    
-    
-    
-    public Position(String longitude,String latitude){
-        this.longitude=longitude;
-        this.latitude=latitude;
-        
+
+    public Position(String longitude, String latitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+
     }
-    
-    
+
     /**
      * @return the longitude
      */
@@ -57,12 +51,9 @@ public class Position {
     public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
-    
-    
-    
-    public String getGoogleMapsPostionFormat(){
-        return this.latitude+", "+this.longitude;
+
+    public String getGoogleMapsPostionFormat() {
+        return this.latitude + ", " + this.longitude;
     }
-    
-    
+
 }

@@ -25,23 +25,22 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Position posisiton_depart=new Position("123","13154");
-        Position position_arrive=new Position("123","1315");
+
+        Position posisiton_depart = new Position("123", "13154");
+        Position position_arrive = new Position("123", "1315");
         Station station = new Station("sousse", "123465,123465", "13b");
-        MoyenTransport mt = new MoyenTransport(1,"123abc");
-        
+        MoyenTransport mt = new MoyenTransport(1, "123abc");
+
         Voyage voyage = new Voyage(posisiton_depart, position_arrive, LocalDateTime.now(), station, mt);
-        
-        
+
         VoyageService vs = new VoyageService();
         //vs.ajouter(voyage);
         System.out.println("voyage by id :  \n");
-         //System.out.println(vs.GetVoyageById(14L));
-         System.out.println("recherche avancee by date");
-         //System.out.println(vs.getVoyagesByRefStation("13b"));
-         System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));
-         /*
+        //System.out.println(vs.GetVoyageById(14L));
+        System.out.println("recherche avancee by date");
+        //System.out.println(vs.getVoyagesByRefStation("13b"));
+        System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));
+        /*
         try {
             vs.modifier(17, voyage);
             
@@ -52,7 +51,7 @@ public class Main {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-       */
+         */
     }
-    
+
 }
