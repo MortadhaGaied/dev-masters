@@ -21,16 +21,10 @@ public class Station {
         this.nom_station=nom_station;
     }
     
-<<<<<<< HEAD
-    public Station(String nom_station,String position){
-        this.setNom_station(nom_station);
-        this.setPosition(position);
-=======
     public Station(String nom_station,String position,String RefStation){
         this.setNom_station(nom_station);
         this.setPosition(position);
         this.RefStation=RefStation;
->>>>>>> parent of 9aefafe... recherche avancee
     }
     
     /**
