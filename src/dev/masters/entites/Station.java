@@ -21,9 +21,10 @@ public class Station {
         this.nom_station=nom_station;
     }
     
-    public Station(String nom_station,String position){
+    public Station(String nom_station,String position,String RefStation){
         this.setNom_station(nom_station);
         this.setPosition(position);
+        this.RefStation=RefStation;
     }
     
     /**
