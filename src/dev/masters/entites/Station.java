@@ -10,23 +10,23 @@ package dev.masters.entites;
  * @author mouha
  */
 public class Station {
+    
+    private String nom_station,position,RefStation;
 
-    private String nom_station, position, RefStation;
-
-    public Station() {
-
+    
+    public Station(){
+        
     }
-
-    public Station(String nom_station) {
-        this.nom_station = nom_station;
+    public Station(String nom_station){
+        this.nom_station=nom_station;
     }
-
-    public Station(String nom_station, String position, String RefStation) {
+    
+    public Station(String nom_station,String position,String RefStation){
         this.setNom_station(nom_station);
         this.setPosition(position);
-        this.RefStation = RefStation;
+        this.RefStation=RefStation;
     }
-
+    
     /**
      * @return the nom_station
      */
@@ -68,5 +68,6 @@ public class Station {
     public void setRefStation(String RefStation) {
         this.RefStation = RefStation;
     }
-
+    
+    
 }

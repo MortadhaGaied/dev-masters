@@ -10,18 +10,17 @@ package dev.masters.entites;
  * @author mouha
  */
 public class MoyenTransport {
-
-    private long id;
-    private String ref_mt;
-
-    public MoyenTransport() {
-
-    }
-
-    public MoyenTransport(long id, String ref_mt) {
-        this.id = id;
-        this.ref_mt = ref_mt;
-    }
+    
+    
+  private long id;
+  private String ref_mt;
+  public MoyenTransport(){
+      
+  }
+  public MoyenTransport(long id,String ref_mt){
+      this.id=id;
+      this.ref_mt=ref_mt;
+  }
 
     /**
      * @return the id
@@ -50,5 +49,6 @@ public class MoyenTransport {
     public void setRef_mt(String ref_mt) {
         this.ref_mt = ref_mt;
     }
-
+  
+  
 }

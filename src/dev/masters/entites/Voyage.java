@@ -13,37 +13,37 @@ import java.util.List;
  *
  * @author mouha
  */
-public class Voyage {
-
+public class Voyage  {
     private long id;
-    private Position position_depart, position_arrive;
+    private Position position_depart,position_arrive;
     private LocalDateTime date_de_voyage;
     private Station station;
     private MoyenTransport moyen_transport;
     private List<Station> stationsparVoyage = new ArrayList<Station>();
-
-    public Voyage() {
-
+    
+    
+    public Voyage(){
+        
     }
-
+    
     //voyage sans ID
-    public Voyage(Position position_depart, Position position_arrive, LocalDateTime date_de_voyage, Station station, MoyenTransport moyen_transport) {
-
-        this.position_depart = position_depart;
-        this.position_arrive = position_arrive;
+    public Voyage(Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenTransport moyen_transport){
+        
+        this.position_depart=position_depart;
+        this.position_arrive=position_arrive;
         this.date_de_voyage = date_de_voyage;
         this.station = station;
-        this.moyen_transport = moyen_transport;
+        this.moyen_transport=moyen_transport;
     }
-
+    
     //instantiation complete du voyage
-    public Voyage(int id, Position position_depart, Position position_arrive, LocalDateTime date_de_voyage, Station station, MoyenTransport moyen_transport) {
-        this.id = id;
-        this.position_depart = position_depart;
-        this.position_arrive = position_arrive;
+    public Voyage(int id,Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenTransport moyen_transport){
+        this.id=id;
+        this.position_depart=position_depart;
+        this.position_arrive=position_arrive;
         this.date_de_voyage = date_de_voyage;
         this.station = station;
-        this.moyen_transport = moyen_transport;
+        this.moyen_transport=moyen_transport;
     }
 
     /**
@@ -129,8 +129,10 @@ public class Voyage {
     public void setMoyen_transport(MoyenTransport moyen_transport) {
         this.moyen_transport = moyen_transport;
     }
-
-    public String toString() {
-        return "Voyage{ \n id = " + this.getId() + " \n position de depart = ( " + this.getPosition_depart().getGoogleMapsPostionFormat() + " )" + "\n position d'arrive = ( " + this.getPosition_arrive().getGoogleMapsPostionFormat() + " )" + "\n Date = " + this.getDate_de_voyage() + "\n station = " + this.getStation().getRefStation() + "\n Moyen de transport = " + this.getMoyen_transport().getRef_mt() + "}";
+    
+    
+    public String toString(){
+        return "Voyage{ \n id = "+this.getId()+" \n position de depart = ( "+ this.getPosition_depart().getGoogleMapsPostionFormat()+" )"+"\n position d'arrive = ( "+this.getPosition_arrive().getGoogleMapsPostionFormat()+" )"+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getRefStation()+"\n Moyen de transport = "+this.getMoyen_transport().getRef_mt()+"}" ;
     }
 }
+
