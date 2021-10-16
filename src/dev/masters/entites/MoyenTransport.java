@@ -13,9 +13,19 @@ public class MoyenTransport {
     
     
   private long id;
+<<<<<<< HEAD
   
   public MoyenTransport(long id){
       this.id=id;
+=======
+  private String ref_mt;
+  public MoyenTransport(){
+      
+  }
+  public MoyenTransport(long id,String ref_mt){
+      this.id=id;
+      this.ref_mt=ref_mt;
+>>>>>>> parent of 9aefafe... recherche avancee
   }
 
     /**
@@ -31,6 +41,23 @@ public class MoyenTransport {
     public void setId(long id) {
         this.id = id;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * @return the ref_mt
+     */
+    public String getRef_mt() {
+        return ref_mt;
+    }
+
+    /**
+     * @param ref_mt the ref_mt to set
+     */
+    public void setRef_mt(String ref_mt) {
+        this.ref_mt = ref_mt;
+    }
+>>>>>>> parent of 9aefafe... recherche avancee
   
   
 }
