@@ -46,13 +46,6 @@ public class LoginController implements Initializable {
 
     ServiceUser su = new ServiceUser() ;
     
-    private String app_Id="391884105725538";
-    private String app_Secret="25b9a00241af6ab6124799694d0299cf";
-    private String redirect_url="http://localhost/";
-    private String state="1919";
-    private String redirect_url_encoded="http%3A%2F%2Flocalhost%2F";
-    private String authentification="https://www.facebook.com/v8.0/dialog/oauth?client_id="+app_Id+"&redirect_uri="+redirect_url_encoded+"&state"+state;
-    private String graph="https://graph.facebook.com/v8.0/oauth/access_token?client_id="+app_Id+"&redirect_uri="+redirect_url_encoded+"&client_secret="+app_Secret+"&code=";
     /**
      * Initializes the controller class.
      */
@@ -97,6 +90,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void ConnectWithFacebook(ActionEvent event) {
+        /*
          WebView webView =new WebView();
         WebEngine eg =webView.getEngine();
         eg.load(authentification);
@@ -128,6 +122,7 @@ public class LoginController implements Initializable {
                 
             }
         });
+*/
     }
     
 }
