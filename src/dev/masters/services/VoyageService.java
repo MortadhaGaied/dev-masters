@@ -81,7 +81,7 @@ public class VoyageService implements IService<Voyage> {
     }
 
     @Override
-    public void supprimer(Long id) throws SQLException {
+    public void supprimer(long id) throws SQLException {
         
         String query = "delete from voyag where id="+id;
         st.executeUpdate(query);
@@ -90,7 +90,7 @@ public class VoyageService implements IService<Voyage> {
     
     
     /********************** Voyage Search By ID********************/
-    public Voyage GetVoyageById(Long id){
+    public Voyage GetVoyageById(long id){
         
         Voyage voyage = new Voyage();
         String query
@@ -129,7 +129,7 @@ public class VoyageService implements IService<Voyage> {
     
     /*****************************update Voyage****************************/
     @Override
-    public void modifier(Long id, Voyage updatedVoyage) throws SQLException {
+    public void modifier(long id, Voyage updatedVoyage) throws SQLException {
         
          //check the avalability of the stations and the MDT(moyen de transport) if they exist 
          
