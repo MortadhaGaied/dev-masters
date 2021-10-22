@@ -13,75 +13,104 @@ import java.util.List;
 
 
 
-public class ServiceMoyenDeTransport implements MTService <MoyenDeTransport> {
+public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
 
-        Connection cnx;
-        public ServiceMoyenDeTransport (){
+   Connection cnx;
+       public ServiceMoyenDeTransport() {
         cnx = Myconnexion.getInstance().getCnx();
     }
+       
     @Override
-    public void ajouter(MoyenDeTransport moyenTransport) {
-               Statement st;
-        try {
-            st = cnx.createStatement();
-            String query ="INSERT INTO `moyentransport`(`Nom_Station`, `Num_ligne`, `Nombre_station`, `Accessible_au_handicapes`) VALUES ('"+moyenTransport.getNom_Station()+"','"+moyenTransport.getNum_ligne()+"','"+moyenTransport.getNombre_Station()+"','"+moyenTransport.getAccessible_au_handicapes();
-      
-        st.executeUpdate(query);
-        
-        
+    public void ajouter(MoyenDeTransport MoyenDeTransport) {
+              try {
+            Statement st = cnx.createStatement();
+            String query ="INSERT INTO `MoyenTransport`(`Type`, `Num_ligne`, `Date_de_mise_en_circulations`,`Etat`, `Accessible_au_handicape`, `Prix_achat`, `Poids`, `Longueur`, `Largeur`, `Energie`,`Nombre_de_place`) VALUES ('"+MoyenDeTransport.getType()+"','"+MoyenDeTransport.getNum_ligne()+"', '"+MoyenDeTransport.getDate_de_mise_en_circulations()+"','"+MoyenDeTransport.getEtat()+"','"+MoyenDeTransport.getAccessible_au_handicape()+"','"+MoyenDeTransport.getPrix_achat()+"','"+MoyenDeTransport.getPoids()+"','"+MoyenDeTransport.getLongueur()+"','"+MoyenDeTransport.getLargeur()+"','"+MoyenDeTransport.getEnergie()+"','"+MoyenDeTransport.getNombre_de_place()+"')";
+            System.out.println(query);
+            st.executeUpdate(query);
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
     }
 
     @Override
-    public List<MoyenDeTransport> afficher() throws SQLException {
-                Statement stm = cnx.createStatement();
+    public List<MoyenDeTransport> afficher()  {
         List<MoyenDeTransport> MT = new ArrayList<>();
-    
-    String query = "SELECT * FROM moyentransport";
+
+        try {
+            Statement stm = cnx.createStatement();
+
+    String query = "SELECT * FROM Moyentransport";
         ResultSet rs= stm.executeQuery(query);
         while (rs.next()){
           MoyenDeTransport moyenTransport = new MoyenDeTransport();
-            moyenTransport.setId_MoyenTransport(rs.getInt("Id_MoyenTransport"));
-            moyenTransport.setNom_Station(rs.getString("Nom_Station"));
-            moyenTransport.setNum_ligne(rs.getInt("Num_ligne"));
-            moyenTransport.setNombre_Station(rs.getInt("Nombre_Station"));
-            moyenTransport.setAccessible_au_handicapes(rs.getString("Accessible_au_handicapes"));
+            moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
+            moyenTransport.setType(rs.getString("Type"));
+            moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
+            moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+            moyenTransport.setEtat(rs.getString("Etat"));
+            moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
+            moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
+            moyenTransport.setPoids(rs.getString("Poids"));
+            moyenTransport.setLongueur(rs.getString("Longueur"));
+            moyenTransport.setLargeur(rs.getString("Largeur"));
+            moyenTransport.setEnergie(rs.getString("Energie"));
+            moyenTransport.setNombre_de_place(rs.getString("Nombre_de_place"));
+
             MT.add(moyenTransport);
+        }
+        } catch (SQLException ex){
+            System.out.println(ex);
         }
         return MT;
     }
 
     @Override
-    public void supprimer(Long id_MoyenTransport) throws SQLException {
-        Statement stm = cnx.createStatement();
-        String query = "delete from user where Id_MoyenTransport="+id_MoyenTransport;
+    public void supprimer(long id_MoyenTransport) {
+        try {
+            Statement stm = cnx.createStatement();
+        String query = "delete from Moyentransport where id_MoyenTransport="+id_MoyenTransport;
         stm.executeUpdate(query);
+        } catch(SQLException ex) {
+            
+        }
+        
     }
 
-        public MoyenDeTransport SearchById(Long id_MoyenTransport) throws SQLException{
+    @Override
+    public void modifier(long id_MoyenTransport, MoyenDeTransport MTmodifie)  {
+              try {
+            Statement stm = cnx.createStatement();
+            String query  = "UPDATE `MoyenTransport` SET `Type`='"+MTmodifie.getType()+"',`Num_ligne`='"+MTmodifie.getNum_ligne()+"',`Date_de_mise_en_circulations`='"+MTmodifie.getDate_de_mise_en_circulations()+"',`Etat`='"+MTmodifie.getEtat()+"',`Accessible_au_handicape`='"+MTmodifie.getAccessible_au_handicape()+"',`Prix_achat`='"+MTmodifie.getPrix_achat()+"',`Poids`='"+MTmodifie.getPoids()+"',`longueur`='"+MTmodifie.getLongueur()+"',`Largeur`='"+MTmodifie.getLargeur()+"',`Energie`='"+MTmodifie.getEnergie()+"',`Nombre_de_place`='"+MTmodifie.getNombre_de_place()+"' where id_MoyenTransport="+id_MoyenTransport;
+            System.out.println(query);
+            stm.executeUpdate(query);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+    }
+    
+         public MoyenDeTransport SearchById(long id) throws SQLException {
+
         Statement stm = cnx.createStatement();
-        MoyenDeTransport moyenTransport =new MoyenDeTransport();
-        String query = "select * from user where id_user="+id_MoyenTransport;
-        ResultSet rs= stm.executeQuery(query);
-        while (rs.next()){
-            moyenTransport.setId_MoyenTransport(rs.getInt("id_user"));
-            moyenTransport.setNom_Station(rs.getString("Nom_Station"));
-            moyenTransport.setNum_ligne(rs.getInt("Num_ligne"));
-            moyenTransport.setNombre_Station(rs.getInt("Nombre_Station"));
-            moyenTransport.setNom_Station(rs.getString("Accessible_au_handicapes"));
+        MoyenDeTransport moyenTransport = new MoyenDeTransport();
+        String query = "select * from MoyenTransport where id_MoyenTransport=" + id;
+        ResultSet rs = stm.executeQuery(query);
+
+        while (rs.next()) {
+            moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
+            moyenTransport.setType(rs.getString("Type"));
+            moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
+            moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+            moyenTransport.setEtat(rs.getString("Etat"));
+            moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
+            moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
+            moyenTransport.setPoids(rs.getString("Poids"));
+            moyenTransport.setLongueur(rs.getString("Longueur"));
+            moyenTransport.setLargeur(rs.getString("Largeur"));
+            moyenTransport.setEnergie(rs.getString("Energie"));
+            moyenTransport.setNombre_de_place(rs.getString("Nombre_de_place"));
         }
         return moyenTransport;
-    }
-            
-    @Override
-    public void modifier(Long id_MoyenTransport, MoyenDeTransport MoyenTransport_modifier) throws SQLException {
-        Statement stm = cnx.createStatement();
-        MoyenDeTransport moyenTransport = SearchById(id_MoyenTransport);
-        String query = "UPDATE `user` SET `Nom_Station`='"+MoyenTransport_modifier.getNom_Station()+"',`Num_ligne`='"+MoyenTransport_modifier.getNum_ligne()+"',`Nombre_Station`='"+MoyenTransport_modifier.getNombre_Station()+"',`Accessible_au_handicapes`='"+MoyenTransport_modifier.getAccessible_au_handicapes();
-        stm.executeUpdate(query);
-    }
-
+     }
 }
