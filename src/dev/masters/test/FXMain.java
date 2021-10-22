@@ -30,8 +30,9 @@ public class FXMain extends Application {
             System.out.println(ex.getMessage());
         }
         
-        Scene scene = new Scene(root);
         
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/dev/masters/GUI/CascadeStyleSheet.css");
         stage.setScene(scene);
         stage.show();
     }

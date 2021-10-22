@@ -23,6 +23,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -87,6 +89,7 @@ public class FXMLGSTuserController implements Initializable {
     
     ServiceUser su =new ServiceUser();
     long id_user_modifier;
+    ObservableList<User> data=FXCollections.observableArrayList();
     
 
     /**
@@ -98,12 +101,13 @@ public class FXMLGSTuserController implements Initializable {
             
         refreshlist();
         ComboRoles.getItems().setAll(Roles.values());
+        recherche_avance();
         
         
     }    
     public void refreshlist(){
 
-         ObservableList<User> data=FXCollections.observableArrayList();
+         
          data.clear();
         try {
             data=FXCollections.observableArrayList(su.afficher());
@@ -125,7 +129,9 @@ public class FXMLGSTuserController implements Initializable {
         AUD_userc.setCellValueFactory(new PropertyValueFactory<>("last_updated_user"));
         TableUserView.setItems(data);
         
-         
+        
+        
+        
         
 
     }
@@ -179,8 +185,50 @@ public class FXMLGSTuserController implements Initializable {
         refreshlist();
     }
 
-    @FXML
-    private void Search_user(ActionEvent event) {
+    
+    private void recherche_avance() {
+        FilteredList<User> filteredData = new FilteredList<>(data, b -> true);
+		
+		
+		TFSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(user -> {
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				String lowerCaseFilter = newValue.toLowerCase();
+				if (user.getFirst_name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; // Filter matches first name.
+				} else if (user.getLast_name().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true; // Filter matches last name.
+                                }else if (String.valueOf(user.getId_user()).indexOf(lowerCaseFilter) != -1) {
+					return true;
+                                } else if (user.getUsername().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                    return true; // Filter matches last name.
+                                } else if (user.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                    return true; // Filter matches last name.
+                                } else if (user.getPassword().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                                    return true; // Filter matches last name.
+                                } else if (user.getRole().toString().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                                    return true;
+				}
+				else if (String.valueOf(user.getNumber()).indexOf(lowerCaseFilter)!=-1)
+				     return true;
+				     else  
+				    	 return false; // Does not match.
+			});
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<User> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(TableUserView.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		TableUserView.setItems(sortedData);
+         
+        
     }
 
     @FXML

@@ -59,10 +59,21 @@
             <TableColumn fx:id="AUD_userc" minWidth="0.0" prefWidth="154.0" text="Updated Date" />
         </columns>
       </TableView>
-      <Button layoutX="122.0" layoutY="728.0" mnemonicParsing="false" onAction="#Save_user" text="Save" />
-      <Button layoutX="525.0" layoutY="728.0" mnemonicParsing="false" onAction="#Delete_user" text="Delete" />
-      <Button layoutX="777.0" layoutY="728.0" mnemonicParsing="false" onAction="#Update_User" text="Update" />
-      <TextField fx:id="TFSearch" layoutX="321.0" layoutY="53.0" prefHeight="41.0" prefWidth="232.0" />
-      <Button layoutX="551.0" layoutY="53.0" mnemonicParsing="false" onAction="#Search_user" prefHeight="41.0" prefWidth="55.0" text="search" />
+      <Button layoutX="89.0" layoutY="708.0" mnemonicParsing="false" onAction="#Save_user" prefHeight="41.0" prefWidth="118.0" text="Save">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="509.0" layoutY="712.0" mnemonicParsing="false" onAction="#Delete_user" prefHeight="41.0" prefWidth="118.0" text="Delete">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button layoutX="882.0" layoutY="712.0" mnemonicParsing="false" onAction="#Update_User" prefHeight="41.0" prefWidth="118.0" text="Update">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <TextField fx:id="TFSearch" layoutX="321.0" layoutY="53.0" prefHeight="41.0" prefWidth="232.0" promptText="Search">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></TextField>
    </children>
 </AnchorPane>
