@@ -37,7 +37,7 @@ public class Main {
         VoyageService vs = new VoyageService();
         //vs.ajouter(voyage);
         System.out.println("voyage by id :  \n");
-         //System.out.println(vs.GetVoyageById(14L));
+         System.out.println(vs.GetVoyageById(17L));
          System.out.println("recherche avancee by date");
          //System.out.println(vs.getVoyagesByRefStation("13b"));
          System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));

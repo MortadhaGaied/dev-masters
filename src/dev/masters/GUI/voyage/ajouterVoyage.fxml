@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="757.0" prefWidth="455.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="dev.masters.GUI.voyage.AjouterVoyageController">
+    <stylesheets>
+        <URL value="@ajoutervoyage.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="148.0" layoutY="64.0" text="Ajout Voyage">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="284.0" />
+      <WebView fx:id="wv_map" layoutX="91.0" layoutY="159.0" prefHeight="224.0" prefWidth="263.0" />
+      <DatePicker fx:id="dp_dateVoyage" layoutX="159.0" layoutY="418.0" />
+      <Label />
+      <Label layoutX="19.0" layoutY="423.0" prefHeight="21.0" prefWidth="113.0" text="date Du Voyage" />
+      <Label layoutX="56.0" layoutY="509.0" text="Station" />
+      <ChoiceBox fx:id="cf_Station" layoutX="165.0" layoutY="504.0" prefHeight="31.0" prefWidth="204.0" />
+      <ChoiceBox fx:id="cf_Mt" layoutX="169.0" layoutY="598.0" prefHeight="31.0" prefWidth="197.0" />
+      <Label layoutX="12.0" layoutY="603.0" text="Moyen De Transport" />
+   </children>
+</AnchorPane>
