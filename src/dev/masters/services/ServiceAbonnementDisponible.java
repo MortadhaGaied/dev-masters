@@ -31,7 +31,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         Statement st;
         try {
             st = cnx.createStatement();
-            String query = "INSERT INTO abonnements_disponibe( descr, type, prix_mois,prix_semestre_abonnement,prix_annuel ) VALUES ('" + nouv_abonnement.getDesc_abonnement() + "','" + nouv_abonnement.getType_abonnement() + "'," + nouv_abonnement.getPrix_moins_abonnement() + "," + nouv_abonnement.getPrix_semestre_abonnement() + "," + nouv_abonnement.getPrix_annuel_abonnement() + ")";
+            String query = "INSERT INTO abonnements_disponibe( descr, type, prix_mois,prix_semestre,prix_annuel ) VALUES ('" + nouv_abonnement.getDesc_abonnement() + "','" + nouv_abonnement.getType_abonnement() + "'," + nouv_abonnement.getPrix_moins_abonnement() + "," + nouv_abonnement.getPrix_semestre_abonnement() + "," + nouv_abonnement.getPrix_annuel_abonnement() + ")";
             System.out.println(query);
             st.executeUpdate(query);
 
@@ -41,28 +41,33 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
     }
 
     @Override
-    public List<AbonnementDisponible> afficher() throws SQLException {
-        Statement stm = cnx.createStatement();
+    public List<AbonnementDisponible> afficher() {
         List<AbonnementDisponible> lp = new ArrayList<>();
 
-        String query = "SELECT * FROM abonnements_disponibe";
-        ResultSet rs = stm.executeQuery(query);
-        while (rs.next()) {
-            AbonnementDisponible abonnement = new AbonnementDisponible();
-            abonnement.setId_abonnement(rs.getLong("id"));
-            abonnement.setDesc_abonnement(rs.getString("descr"));
-            abonnement.setType_abonnement(rs.getString("type"));
-            abonnement.setPrix_moins_abonnement(rs.getDouble("prix_mois"));
-            abonnement.setPrix_semestre_abonnement(rs.getDouble("prix_semestre"));
-            abonnement.setPrix_annuel_abonnement(rs.getDouble("prix_annuel"));
-            lp.add(abonnement);
+        try {
+            Statement stm = cnx.createStatement();
+
+            String query = "SELECT * FROM abonnements_disponibe";
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                AbonnementDisponible abonnement = new AbonnementDisponible();
+                abonnement.setId_abonnement(rs.getLong("id"));
+                abonnement.setDesc_abonnement(rs.getString("descr"));
+                abonnement.setType_abonnement(rs.getString("type"));
+                abonnement.setPrix_moins_abonnement(rs.getDouble("prix_mois"));
+                abonnement.setPrix_semestre_abonnement(rs.getDouble("prix_semestre"));
+                abonnement.setPrix_annuel_abonnement(rs.getDouble("prix_annuel"));
+                lp.add(abonnement);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
         return lp;
-
     }
 
     @Override
-    public void supprimer(long id) throws SQLException {
+    public void supprimer(long id) {
         Statement stm;
         try {
             stm = cnx.createStatement();
@@ -92,7 +97,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
     }
 
     @Override
-    public void modifier(long id, AbonnementDisponible abonnement_modifier) throws SQLException {
+    public void modifier(long id, AbonnementDisponible abonnement_modifier) {
         try {
             Statement stm = cnx.createStatement();
             AbonnementDisponible abonnementDisponible = SearchById(id);
@@ -105,26 +110,30 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
 
     }
 
-    public List<AbonnementDisponible> rechercheParTypeOuDesc(String req) throws SQLException {
+    public List<AbonnementDisponible> rechercheParTypeOuDesc(String req) {
         List<AbonnementDisponible> list = new ArrayList<>();
+        try {
+            Statement stm = cnx.createStatement();
 
-        Statement stm = cnx.createStatement();
+            String query = "select * from abonnements_disponibe where descr like '%" + req + "%' or type like '%" + req + "%' or id = '" + req + "'";
+            System.out.println(query);
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                AbonnementDisponible abonnement = new AbonnementDisponible();
+                abonnement.setId_abonnement(rs.getLong("id"));
+                abonnement.setDesc_abonnement(rs.getString("descr"));
+                abonnement.setType_abonnement(rs.getString("type"));
+                abonnement.setPrix_moins_abonnement(rs.getDouble("prix_mois"));
+                abonnement.setPrix_semestre_abonnement(rs.getDouble("prix_semestre"));
+                abonnement.setPrix_annuel_abonnement(rs.getDouble("prix_annuel"));
+                list.add(abonnement);
+            }
 
-        String query = "select * from abonnements_disponibe where descr like '%" + req + "%' or type = '" + req + "'";
-        System.out.println(query);
-        ResultSet rs = stm.executeQuery(query);
-        while (rs.next()) {
-            AbonnementDisponible abonnement = new AbonnementDisponible();
-            abonnement.setId_abonnement(rs.getLong("id"));
-            abonnement.setDesc_abonnement(rs.getString("descr"));
-            abonnement.setType_abonnement(rs.getString("type"));
-            abonnement.setPrix_moins_abonnement(rs.getDouble("prix_mois"));
-            abonnement.setPrix_semestre_abonnement(rs.getDouble("prix_semestre"));
-            abonnement.setPrix_annuel_abonnement(rs.getDouble("prix_annuel"));
-            list.add(abonnement);
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-
         return list;
+
     }
 
     public Double remise(Double prix, int re) {
