@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.gui;
+package dev.masters.MoyenTransport.Gui;
 
-import dev.masters.entites.MoyenDeTransport;
-import dev.masters.services.ServiceMoyenDeTransport;
+import dev.masters.MoyenTransport.entites.MoyenDeTransport;
+import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

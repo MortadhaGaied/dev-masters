@@ -1,5 +1,5 @@
 
-package dev.masters.entites;
+package dev.masters.MoyenTransport.entites;
 
 
 public class MoyenDeTransport {

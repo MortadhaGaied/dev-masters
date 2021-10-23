@@ -1,8 +1,8 @@
 
-package dev.masters.services;
+package dev.masters.MoyenTransport.services;
 
-import dev.masters.entites.MoyenDeTransport;
-import dev.masters.utils.Myconnexion;
+import dev.masters.MoyenTransport.entites.MoyenDeTransport;
+import dev.masters.MoyenTransport.utils.Myconnexion;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
