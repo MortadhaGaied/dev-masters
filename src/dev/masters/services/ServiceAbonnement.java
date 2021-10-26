@@ -32,7 +32,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
         try {
             Statement st = cnx.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            String query = "INSERT INTO abonnemnt(id_user_abonnement, id_abonn_dispo_abonnement, date_debut_abonnement, date_fin_abonnement) VALUES (" + nouv_abonnee.getId_user_abonnement() + "," + nouv_abonnee.getId_abonn_dispo() + ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) + "')";
+            String query = "INSERT INTO abonnemnt(id_user, id_abonn_dispo, date_debut, date_fin) VALUES (" + nouv_abonnee.getId_user_abonnement() + "," + nouv_abonnee.getId_abonn_dispo() + ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) + "')";
             System.out.println(query);
             st.executeUpdate(query);
 
