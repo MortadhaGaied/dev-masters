@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.AbonnementFormulaire">
+<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="803.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.AbonnementFormulaire">
    <children>
       <VBox layoutX="14.0" layoutY="61.0" prefHeight="297.0" prefWidth="164.0" spacing="45.0">
          <children>
@@ -26,10 +26,10 @@
             <RadioButton fx:id="rdMois" mnemonicParsing="false" />
             <RadioButton fx:id="rdSemestre" mnemonicParsing="false" />
             <RadioButton fx:id="rdAnnee" mnemonicParsing="false" />
-            <Button mnemonicParsing="false" onMouseClicked="#onSubmit" text="Valider" />
          </children>
       </VBox>
-      <Button layoutX="708.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menu" text="Menu" />
-      <Button fx:id="retourne" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#retourne" text="Retourne" />
+      <Button layoutX="708.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menu" style="-fx-background-color: #86C6FA;" text="Menu" />
+      <Button fx:id="retourne" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#retourne" style="-fx-background-color: #FF336D;" text="Retourne" />
+      <Button layoutX="53.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#onSubmit" style="-fx-background-color: #1ab230;" text="Valider" />
    </children>
 </AnchorPane>

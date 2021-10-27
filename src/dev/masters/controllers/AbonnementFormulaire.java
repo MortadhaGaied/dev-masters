@@ -9,6 +9,8 @@ import dev.masters.entites.Abonnement;
 import dev.masters.entites.AbonnementDisponible;
 import dev.masters.services.ServiceAbonnement;
 import dev.masters.services.ServiceAbonnementDisponible;
+import dev.masters.utils.Mailer_Abonnement;
+import dev.masters.utils.SMS;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -93,6 +95,13 @@ public class AbonnementFormulaire implements Initializable {
         ServiceAbonnement sa = new ServiceAbonnement();
         Abonnement nouv_abonn = new Abonnement(1, mp.get(cbAbonn.getValue()).getId_abonnement(), date_debut, date_fin);
         sa.ajouter(nouv_abonn);
+        String message = "Votre abonnement est valable de " + nouv_abonn.getDate_debut_abonnement() + " à " + nouv_abonn.getDate_fin_abonnement() + ".";
+        //Send SMS
+        SMS sms = new SMS();
+        sms.sendSMS(tfTel.getText(), message);
+        //Send Mail
+        Mailer_Abonnement mailer = new Mailer_Abonnement();
+        mailer.SendMail("mohamedsaid.bouchouicha@esprit.tn", message);
     }
 
     @FXML

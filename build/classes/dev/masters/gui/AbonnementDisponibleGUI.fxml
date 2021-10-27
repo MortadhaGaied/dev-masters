@@ -19,7 +19,7 @@
                <children>
                   <VBox prefHeight="29.0" prefWidth="181.0">
                      <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#retourne" text="Retourner" />
+                        <Button mnemonicParsing="false" onMouseClicked="#retourne" style="-fx-background-color: #FF336D;" text="Retourner" />
                      </children>
                   </VBox>
                </children></VBox>
@@ -76,8 +76,8 @@
         </columns>
       </TableView>
       <Button layoutX="42.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#onAjoute" style="-fx-background-color: #1ab230;" text="Ajouter" />
-      <Button layoutX="139.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#modifier" style="-fx-background-color: #240eeb;" text="Modifier" />
-      <Button layoutX="229.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#supprimer" style="-fx-background-color: #ee0e25;" text="Supprimer" />
+      <Button layoutX="139.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#modifier" style="-fx-background-color: #86C6FA;" text="Modifier" />
+      <Button layoutX="229.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#supprimer" style="-fx-background-color: #FF336D;" text="Supprimer" />
       <ButtonBar layoutX="409.0" layoutY="531.0" prefHeight="40.0" prefWidth="200.0" />
       <Label fx:id="lbAlert" layoutX="349.0" layoutY="551.0" onMouseClicked="#retourne" prefHeight="71.0" prefWidth="652.0" textFill="#00b22c">
          <font>
@@ -86,6 +86,6 @@
       </Label>
       <TextField fx:id="tfRecherche" layoutX="575.0" layoutY="22.0" prefHeight="25.0" prefWidth="200.0" />
       <Label layoutX="498.0" layoutY="26.0" text="Recherche" />
-      <Button layoutX="926.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menu" text="Menu" />
+      <Button layoutX="926.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menu" style="-fx-background-color: #86C6FA;" text="Menu" />
    </children>
 </AnchorPane>
