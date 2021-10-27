@@ -10,6 +10,7 @@ and open the template in the editor.
 
 .button{
     -fx-background-color: #FED501;
+    -fx-cursor: hand;
 }
 .button:hover{
     -fx-background-color:#666666; 

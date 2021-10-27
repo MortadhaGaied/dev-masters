@@ -5,6 +5,7 @@
  */
 package dev.masters.GUI;
 
+
 import dev.masters.entites.Roles;
 import dev.masters.entites.User;
 import dev.masters.services.ServiceUser;
@@ -26,8 +27,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -35,7 +38,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -98,7 +106,9 @@ public class FXMLGSTuserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             // TODO
-            
+        TableUserView.setEditable(true);
+        FN_userc.setOnEditCommit(e->edit_firstname(e));
+        TableUserView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         refreshlist();
         ComboRoles.getItems().setAll(Roles.values());
         recherche_avance();
@@ -114,12 +124,15 @@ public class FXMLGSTuserController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+    
         
         id_userc.setCellValueFactory(new PropertyValueFactory<>("id_user"));
         FN_userc.setCellValueFactory(new PropertyValueFactory<>("first_name"));
+        FN_userc.setCellFactory(TextFieldTableCell.forTableColumn());
         LN_userc.setCellValueFactory(new PropertyValueFactory<>("last_name"));
+        FN_userc.setCellFactory(TextFieldTableCell.forTableColumn());
         Email_userc.setCellValueFactory(new PropertyValueFactory<>("email"));
+        FN_userc.setCellFactory(TextFieldTableCell.forTableColumn());
         UN_userc.setCellValueFactory(new PropertyValueFactory<>("username"));
         pwd_userc.setCellValueFactory(new PropertyValueFactory<>("password"));
         Num_userc.setCellValueFactory(new PropertyValueFactory<>("number"));
@@ -149,6 +162,17 @@ public class FXMLGSTuserController implements Initializable {
                 DPforum_B.getValue().atStartOfDay()
         );
         su.ajouter(u);
+        String tilte;
+        String message;
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tilte = "Added Successful";
+        message = u.getRole()+" Is Added";
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
         refreshlist();
     }
 
@@ -161,6 +185,17 @@ public class FXMLGSTuserController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String tilte;
+        String message;
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tilte = "Delete Success";
+        message ="User Is Deleted";
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
         refreshlist();
     }
 
@@ -243,6 +278,19 @@ public class FXMLGSTuserController implements Initializable {
         TFforum_Num.setText(Integer.toString(u.getNumber()));
         ComboRoles.setValue(u.getRole());
         DPforum_B.setValue(u.getBirthday().toLocalDate());
+    }
+
+    @FXML
+    private void edit_firstname(Event e) {
+        TableColumn.CellEditEvent<User,String> cellEditEvent;
+        cellEditEvent=(TableColumn.CellEditEvent<User,String>) e;
+        User user=cellEditEvent.getRowValue();
+        user.setFirst_name(cellEditEvent.getNewValue());
+        try {
+            su.modifier(user.getId_user(), user);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLGSTuserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

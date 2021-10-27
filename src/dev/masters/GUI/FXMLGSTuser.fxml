@@ -47,7 +47,7 @@
       <TableView fx:id="TableUserView" layoutX="321.0" layoutY="98.0" onMouseClicked="#fillforum" prefHeight="564.0" prefWidth="1039.0" style="-fx-background-color: #121212;">
         <columns>
           <TableColumn fx:id="id_userc" prefWidth="57.0" text="Id" />
-          <TableColumn fx:id="FN_userc" prefWidth="93.0" text="First Name" />
+          <TableColumn fx:id="FN_userc" onEditCommit="#edit_firstname" prefWidth="93.0" text="First Name" />
             <TableColumn fx:id="LN_userc" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="Email_userc" prefWidth="75.0" text="Email" />
             <TableColumn fx:id="Num_userc" prefWidth="75.0" text="Number" />
