@@ -15,17 +15,19 @@ import java.sql.SQLException;
  */
 public class Myconnexion {
 
-    final String URL = "jdbc:mysql://127.0.0.1:3307/dev-masters";
-    final String USER = "root";
-    final String PWD = "";
-    private static Connection cnx;
-    private static Myconnexion instance;
+   final String URL="jdbc:mysql://127.0.0.1:3307/dev-masters";
+    final String USER ="root";
+    final String PWD ="";
+  private static Connection cnx ;
+  private static Myconnexion instance ;
+  
 
-    private Myconnexion() {
-
-        try {
-            cnx = DriverManager.getConnection(URL, USER, PWD);
-            System.out.println("connexion etablie ......");
+    private  Myconnexion() {
+    
+       try {
+                cnx = DriverManager.getConnection(URL, USER, PWD);
+                System.out.println("connexion etablie ......");
+         
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
