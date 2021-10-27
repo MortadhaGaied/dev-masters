@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="765.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.menu">
+<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="765.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.menu">
    <children>
       <Button layoutX="286.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#abonnDispo" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #FF336D;" text="Abonnement Disponible">
          <font>
