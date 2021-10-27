@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.Gui;
+package dev.masters.MoyenTransport.contrôles;
 
 import dev.masters.MoyenTransport.entites.MoyenDeTransport;
 import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
@@ -109,13 +109,13 @@ public class GestionMoyenTransportController implements Initializable {
     @FXML
     private Label LbId;
     @FXML
-    private Label tfRecherche;
+    private TextField tfRecherche;
     
     @Override
     public void initialize (URL url, ResourceBundle rb) {
         refreshlist(null);
        tfRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
-           // rechercher(newValue);
+       rechercher(newValue);
         });
     }
 
@@ -146,7 +146,7 @@ public class GestionMoyenTransportController implements Initializable {
         colNum_ligne.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Num_ligne"));
         colDate_de_mise_en_circulations.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Date_de_mise_en_circulations"));
         colEtat.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Etat"));
-        colAccessible_au_handicapes.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Accessible_au_handicapes"));
+        colAccessible_au_handicapes.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Accessible_au_handicape"));
         colPrix_achat.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Prix_achat"));
         colPoids.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Poids"));
         colLongueur.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Longueur"));
@@ -208,14 +208,13 @@ public class GestionMoyenTransportController implements Initializable {
         LbId.setText(String.valueOf(Mt.getId_MoyenTransport()));
     }
     
-  /* 
-    private void rechercher(int id_MoyenTransport) {
-        MoyenDeTransportService MtS = new MoyenDeTransportService();
-        x = MtS.SearchById(id_MoyenTransport);
+
+    
+        private void rechercher(String requete) {
+        ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
+        List<MoyenDeTransport> list = MtS.rechercheParTypeOuPrix_achat(requete);
         refreshlist(list);
     }
-    */
-    
     
 }
 

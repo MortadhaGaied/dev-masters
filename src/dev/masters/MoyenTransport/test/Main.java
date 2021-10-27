@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("dev/masters/MoyenTransport/Gui/InterfaceMenuMoyenTransport.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("dev/masters/MoyenTransport/Gui/gestionMoyenTransport.fxml"));
         
         Scene scene = new Scene(root);
 

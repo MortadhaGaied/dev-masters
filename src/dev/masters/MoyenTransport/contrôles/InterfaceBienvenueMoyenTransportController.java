@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.Gui;
+package dev.masters.MoyenTransport.contrôles;
 
 import java.net.URL;
 import java.util.ResourceBundle;
