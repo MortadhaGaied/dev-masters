@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1677.0" style="-fx-background-color: #ded3de;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.contrôles.GestionMoyenTransportController">
+<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1677.0" style="-fx-background-color: #ded3de;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.Controles.GestionMoyenTransportController">
    <children>
       <VBox layoutX="55.0" layoutY="49.0" prefHeight="448.0" prefWidth="277.0" spacing="15.0">
          <children>
@@ -110,11 +110,12 @@
       <Button fx:id="btnUpdate" layoutX="289.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#Update" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: orange;" text="Update" />
       <Button fx:id="btnDelete" layoutX="459.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="Delete" />
       <Label fx:id="LbId" layoutX="400.0" layoutY="487.0" prefHeight="45.0" prefWidth="252.0" visible="false" />
-      <TextField fx:id="tfRecherche" layoutX="1143.0" layoutY="485.0" prefHeight="25.0" prefWidth="167.0" />
-      <Label layoutX="791.0" layoutY="484.0" prefHeight="25.0" prefWidth="194.0" text="Id_Recherche" textFill="#230afc">
+      <TextField fx:id="tfRecherche" layoutX="839.0" layoutY="485.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label layoutX="721.0" layoutY="484.0" prefHeight="27.0" prefWidth="107.0" text="Recherche" textFill="#230afc">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Button layoutX="631.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#Statistique" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: skyblue;" text="Statistique" />
    </children>
 </AnchorPane>

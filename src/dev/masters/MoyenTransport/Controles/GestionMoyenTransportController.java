@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.contrôles;
+package dev.masters.MoyenTransport.Controles;
 
 import dev.masters.MoyenTransport.entites.MoyenDeTransport;
 import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
+import dev.masters.MoyenTransport.utils.JfreeChartApi;
+
+import dev.masters.MoyenTransport.utils.MailerApi;
+import dev.masters.MoyenTransport.utils.SMSApi;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -110,37 +115,42 @@ public class GestionMoyenTransportController implements Initializable {
     private Label LbId;
     @FXML
     private TextField tfRecherche;
-    
+
     @Override
-    public void initialize (URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {
         refreshlist(null);
-       tfRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
-       rechercher(newValue);
+        tfRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("eazeza");
+            rechercher(newValue);
         });
     }
 
     @FXML
     private void Insert(MouseEvent event) {
-                ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(),tfNum_ligne.getText(),tfDate_de_mise_en_circulations.getText(),tfEtat.getText(),tfAccessible_au_handicapes.getText(),tfPrix_achat.getText(),tfPoids.getText(),tfLongueur.getText(),tfLargeur.getText(),tfEnergie.getText(),tfNombre_de_place.getText());
+        ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
+        MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(), tfNum_ligne.getText(), tfDate_de_mise_en_circulations.getText(), tfEtat.getText(), tfAccessible_au_handicapes.getText(), tfPrix_achat.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
         MtS.ajouter(Mt);
         refreshlist(null);
+        // SEND MAIL
+        MailerApi mailer = new MailerApi();
+        mailer.SendMail("aminedahmen14@gmail.com", "Admin.");
+
+        //SEND SMS
+        SMSApi sms = new SMSApi();
+        sms.sendSMS("+21658932889", "Admin.");
     }
 
-        public void refreshlist(List<MoyenDeTransport> listMoyenDeTransport)  {
+    public void refreshlist(List<MoyenDeTransport> listMoyenDeTransport) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         ObservableList<MoyenDeTransport> data = FXCollections.observableArrayList();
         List<MoyenDeTransport> listMoyen = new ArrayList(MtS.afficher());
         if (listMoyenDeTransport == null) {
             listMoyenDeTransport = new ArrayList(MtS.afficher());
         }
- 
-        
         for (MoyenDeTransport item : listMoyenDeTransport) {
             data.add(item);
-  
-         }
-        
+        }
+
         colId.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, Integer>("id_MoyenTransport"));
         colType.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Type"));
         colNum_ligne.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Num_ligne"));
@@ -153,22 +163,20 @@ public class GestionMoyenTransportController implements Initializable {
         colLargeur.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Largeur"));
         colEnergie.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Energie"));
         colNombre_de_place.setCellValueFactory(new PropertyValueFactory<MoyenDeTransport, String>("Nombre_de_place"));
-        
+
         tvMoyen_de_transport.setItems(data);
-        }
-        
+    }
+
     @FXML
     private void Update(MouseEvent event) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-       MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(),tfNum_ligne.getText(),tfDate_de_mise_en_circulations.getText(),tfEtat.getText(),tfAccessible_au_handicapes.getText(),tfPrix_achat.getText(),tfPoids.getText(),tfLongueur.getText(),tfLargeur.getText(),tfEnergie.getText(),tfNombre_de_place.getText());
+        MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(), tfNum_ligne.getText(), tfDate_de_mise_en_circulations.getText(), tfEtat.getText(), tfAccessible_au_handicapes.getText(), tfPrix_achat.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
         MtS.modifier(Long.parseLong(LbId.getText()), Mt);
-         refreshlist(null);     
+        refreshlist(null);
     }
 
     @FXML
     private void Delete(MouseEvent event) {
-                System.out.println("ID = " +LbId.getText());
-
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         MtS.supprimer(Long.parseLong(LbId.getText()));
         tfType.setText(null);
@@ -184,12 +192,12 @@ public class GestionMoyenTransportController implements Initializable {
         tfEnergie.setText(null);
         tfNombre_de_place.setText(null);
         refreshlist(null);
-        
+
     }
 
     @FXML
     private void Affecter(MouseEvent event) {
-                MoyenDeTransport Mt = tvMoyen_de_transport.getSelectionModel().getSelectedItem();
+        MoyenDeTransport Mt = tvMoyen_de_transport.getSelectionModel().getSelectedItem();
         if (Mt == null) {
             return;
         }
@@ -207,14 +215,19 @@ public class GestionMoyenTransportController implements Initializable {
         tfNombre_de_place.setText(Mt.getNombre_de_place());
         LbId.setText(String.valueOf(Mt.getId_MoyenTransport()));
     }
-    
 
-    
-        private void rechercher(String requete) {
+    private void rechercher(String req) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        List<MoyenDeTransport> list = MtS.SearchByReq(requete);
+        List<MoyenDeTransport> list = MtS.SearchByReq(req);
         refreshlist(list);
     }
-    
-}
 
+    @FXML
+    private void Statistique(MouseEvent event) {
+        ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
+        HashMap<String, Double> data = MtS.StatisqueParType();
+        JfreeChartApi chart = new JfreeChartApi(data);
+        chart.afficherStatistique();
+    }
+
+}
