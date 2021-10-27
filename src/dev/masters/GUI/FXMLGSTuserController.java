@@ -106,19 +106,25 @@ public class FXMLGSTuserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             // TODO
+<<<<<<< Updated upstream
         TableUserView.setEditable(true);
         FN_userc.setOnEditCommit(e->edit_firstname(e));
         TableUserView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+=======
+            ComboRoles.getItems().setAll(Roles.values());
+            
+>>>>>>> Stashed changes
         refreshlist();
-        ComboRoles.getItems().setAll(Roles.values());
+  
         recherche_avance();
+
         
         
     }    
     public void refreshlist(){
 
          
-         data.clear();
+        data.clear();
         try {
             data=FXCollections.observableArrayList(su.afficher());
         } catch (SQLException ex) {
@@ -223,34 +229,32 @@ public class FXMLGSTuserController implements Initializable {
     
     private void recherche_avance() {
         FilteredList<User> filteredData = new FilteredList<>(data, b -> true);
-		
-		
-		TFSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-			filteredData.setPredicate(user -> {
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				String lowerCaseFilter = newValue.toLowerCase();
-				if (user.getFirst_name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (user.getLast_name().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-					return true; // Filter matches last name.
-                                }else if (String.valueOf(user.getId_user()).indexOf(lowerCaseFilter) != -1) {
-					return true;
-                                } else if (user.getUsername().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                                    return true; // Filter matches last name.
-                                } else if (user.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                                    return true; // Filter matches last name.
-                                } else if (user.getPassword().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-                                    return true; // Filter matches last name.
-                                } else if (user.getRole().toString().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
-                                    return true;
-				}
-				else if (String.valueOf(user.getNumber()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
-				     else  
-				    	 return false; // Does not match.
-			});
+            TFSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+		filteredData.setPredicate(user -> {
+                    if (newValue == null || newValue.isEmpty()) {
+			return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (user.getFirst_name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+			return true; // Filter matches first name.
+                    } else if (user.getLast_name().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    }else if (String.valueOf(user.getId_user()).indexOf(lowerCaseFilter) != -1) {
+			return true;
+                    } else if (user.getUsername().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    } else if (user.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    } else if (user.getPassword().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    } else if (user.getRole().toString().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                        return true;
+                    }
+                    else if (String.valueOf(user.getNumber()).indexOf(lowerCaseFilter)!=-1)
+                        return true;
+                    else
+			return false; // Does not match.
+                    });
 		});
 		
 		// 3. Wrap the FilteredList in a SortedList. 
