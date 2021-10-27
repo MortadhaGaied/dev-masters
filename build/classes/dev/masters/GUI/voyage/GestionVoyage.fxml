@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1677.0" style="-fx-background-color: #ded3de;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.voyage.GestionVoyageController">
+   <children>
+      <VBox layoutX="55.0" layoutY="49.0" prefHeight="221.0" prefWidth="277.0" spacing="15.0">
+         <children>
+            <Label fx:id="Type" text="Position Depart" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_pa" text="Position Arrivé" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_date" text="Date" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_station" text="Station" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Assecible_au_handicape" prefHeight="22.0" prefWidth="252.0" text="Moyen De Transport" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="390.0" layoutY="40.0" prefHeight="221.0" prefWidth="215.0" spacing="12.0">
+         <children>
+            <TextField fx:id="tf_pd" />
+            <TextField fx:id="tfNum_ligne" />
+            <TextField fx:id="tfDate_de_mise_en_circulations">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfEtat" />
+            <TextField fx:id="tfAccessible_au_handicapes" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvMoyen_de_transport" layoutX="721.0" layoutY="17.0" onMouseClicked="#Affecter" prefHeight="421.0" prefWidth="910.0">
+        <columns>
+          <TableColumn fx:id="col_Id" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="cold_pd" prefWidth="146.0" text="Position Depart" />
+            <TableColumn fx:id="cold_pa" prefWidth="128.0" text="Position Arrivé" />
+            <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="182.0" text="Date Voyage" />
+            <TableColumn fx:id="col_station" minWidth="0.0" prefWidth="166.0" text="Station" />
+            <TableColumn fx:id="col_mt" minWidth="0.0" prefWidth="212.0" text="Moyen De Transport" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnInsert" layoutX="104.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#Insert" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #b3ffb3;" text="Insert" textFill="#111111" />
+      <Button fx:id="btnUpdate" layoutX="289.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#Update" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: orange;" text="Update" />
+      <Button fx:id="btnDelete" layoutX="459.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="Delete" />
+      <Label fx:id="LbId" layoutX="400.0" layoutY="487.0" prefHeight="45.0" prefWidth="252.0" visible="false" />
+      <TextField fx:id="tfRecherche" layoutX="1143.0" layoutY="485.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label layoutX="791.0" layoutY="484.0" prefHeight="25.0" prefWidth="194.0" text="Id_Recherche" textFill="#230afc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <WebView layoutX="76.0" layoutY="274.0" prefHeight="275.0" prefWidth="464.0" />
+   </children>
+</AnchorPane>
