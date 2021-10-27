@@ -4,11 +4,7 @@
  * and open the template in the editor.
  */
 package dev.masters.GUI;
-/*
-import com.restfb.*;
-import com.restfb.json.JsonObject;
-import com.restfb.types.User;
-*/
+
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
 import com.restfb.Parameter;

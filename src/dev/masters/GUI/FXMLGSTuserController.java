@@ -106,14 +106,11 @@ public class FXMLGSTuserController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             // TODO
-<<<<<<< Updated upstream
         TableUserView.setEditable(true);
         FN_userc.setOnEditCommit(e->edit_firstname(e));
         TableUserView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-=======
-            ComboRoles.getItems().setAll(Roles.values());
-            
->>>>>>> Stashed changes
+
+         ComboRoles.getItems().setAll(Roles.values());
         refreshlist();
   
         recherche_avance();
