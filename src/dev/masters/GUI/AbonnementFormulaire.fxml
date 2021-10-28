@@ -11,7 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD:src/dev/masters/gui/AbonnementFormulaire.fxml
 <AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="911.0" style="-fx-background-color: #1d1e1e;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.AbonnementFormulaire">
+=======
+<AnchorPane id="AnchorPane" prefHeight="598.0" prefWidth="803.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.AbonnementFormulaire">
+>>>>>>> 359add7ca2d86fee297c189f754e056c7ecea177:src/dev/masters/GUI/AbonnementFormulaire.fxml
    <children>
       <ImageView fitHeight="701.0" fitWidth="917.0">
          <image>

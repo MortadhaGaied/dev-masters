@@ -13,7 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD:src/dev/masters/gui/AbonnementDisponibleGUI.fxml
 <AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1050.0" style="-fx-background-color: #1d1e1e;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.AbonnementDisponibleGUI">
+=======
+<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1050.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.AbonnementDisponibleGUI">
+>>>>>>> 359add7ca2d86fee297c189f754e056c7ecea177:src/dev/masters/GUI/AbonnementDisponibleGUI.fxml
    <children>
       <ImageView fitHeight="737.0" fitWidth="999.0" layoutX="-1.0" layoutY="-61.0">
          <image>

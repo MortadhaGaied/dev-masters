@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.controllers;
+package dev.masters.GUI;
 
 import dev.masters.entites.AbonnementDisponible;
 import dev.masters.services.ServiceAbonnementDisponible;

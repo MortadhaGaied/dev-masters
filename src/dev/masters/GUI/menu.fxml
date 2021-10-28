@@ -7,7 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD:src/dev/masters/gui/menu.fxml
 <AnchorPane id="AnchorPane" prefHeight="658.0" prefWidth="770.0" style="-fx-background-color: #1d1e1e;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.controllers.menu">
+=======
+<AnchorPane id="AnchorPane" prefHeight="616.0" prefWidth="765.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.menu">
+>>>>>>> 359add7ca2d86fee297c189f754e056c7ecea177:src/dev/masters/GUI/menu.fxml
    <children>
       <ImageView fitHeight="1129.0" fitWidth="1150.0" layoutX="-12.0" layoutY="-378.0">
          <image>

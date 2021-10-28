@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/controllers/AbonnementFormulaire.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/entites/Abonnement.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/controllers/menu.java</file>
@@ -12,6 +13,11 @@
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/Mailer_Abonnement.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/Myconnexion.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/SMS.java</file>
+=======
+            <file>file:/C:/Users/Mortadha/Desktop/Programming/dev-masters/src/dev/masters/utils/Mailer_Abonnement.java</file>
+            <file>file:/C:/Users/Mortadha/Desktop/Programming/dev-masters/src/dev/masters/utils/SMS.java</file>
+            <file>file:/C:/Users/Mortadha/Desktop/Programming/dev-masters/src/dev/masters/services/stm.java</file>
+>>>>>>> 359add7ca2d86fee297c189f754e056c7ecea177
         </group>
     </open-files>
 </project-private>
