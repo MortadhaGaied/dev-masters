@@ -5,7 +5,7 @@
 .mainFxmlClass {
 
 }
-
-.btn:hover{
-    -fx-cursor:hand ;
+.date{
+  font-family: "Bauhaus 93";
+  color: blue;
 }
