@@ -17,11 +17,14 @@ import dev.masters.MoyenTransport.utils.MailerApi;
 import dev.masters.MoyenTransport.utils.SMSApi;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -53,9 +56,9 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private JFXTextField PrixAchatTf;
     @FXML
-    private Spinner<?> LonguerSpinner;
+    private Spinner<Integer> LonguerSpinner;
     @FXML
-    private Spinner<?> LargeurSpinner;
+    private Spinner<Integer> LargeurSpinner;
     @FXML
     private JFXCheckBox ElectriqueCheckBox;
     @FXML
@@ -65,13 +68,20 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private StackPane EnergieStackPanne;
     @FXML
-    private Spinner<?> PoidsSpinner;
+    private Spinner<Integer> PoidsSpinner;
     @FXML
-    private Spinner<?> NombrePlaceSpinner;
+    private Spinner<Integer> NombrePlaceSpinner;
     private Label radioButtonLabel;
 
     String Etat;
-    /**
+    String AccessibleHandicape ;
+    Integer Longueur;
+    Integer Largeur;
+    Integer Poids;
+    Integer NombrePlace;
+    String Energie;
+    
+     /**
      * Initializes the controller class.
      */
     @Override
@@ -85,9 +95,35 @@ public class AjoutMoyenTransportController implements Initializable {
         MarcheRadioButton.setSelected(true);
         MarcheRadioButton.requestFocus();
         TypeComboox.getItems().addAll("Train", "Métro", "Bus");
-        String Date = String.valueOf(DateCirculations.getValue());
+        String Date = String.valueOf(DateCirculations.getValue());    
         
-    }    
+        //LonguerSpinner
+                SpinnerValueFactory<Integer> longuer = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(10,500 );
+                longuer.setValue(10);
+                LonguerSpinner.setValueFactory(longuer);
+                Longueur = LonguerSpinner.getValue();  
+                
+        //LargeurSpinner
+                 SpinnerValueFactory<Integer> largeur = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20 );
+                largeur.setValue(10);
+                LargeurSpinner.setValueFactory(largeur);
+                 Largeur = LargeurSpinner.getValue(); 
+        //PoidsSpinner
+                SpinnerValueFactory<Integer> poids = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100 );
+                poids.setValue(10);
+                PoidsSpinner.setValueFactory(poids);
+                 Poids = PoidsSpinner.getValue();  
+        //NombrePlace    
+                 SpinnerValueFactory<Integer> nombrePlace = 
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100 );
+                nombrePlace.setValue(10);
+                NombrePlaceSpinner.setValueFactory(nombrePlace);
+                 NombrePlace = NombrePlaceSpinner.getValue(); 
+       }
+    
 
     @FXML
     private void close(MouseEvent event) {
@@ -102,16 +138,16 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private void Insert(MouseEvent event) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), Date ,Etat, tfAccessible_au_handicapes.getText(), PrixAchatTf.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
+        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), String.valueOf(DateCirculations.getValue()) ,Etat, AccessibleHandicape, PrixAchatTf.getText(), Poids, Longueur, Largeur, Energie , NombrePlace);
         MtS.ajouter(Mt);
-        //refreshlist(null);
+     /*   //refreshlist(null);
         // SEND MAIL
         MailerApi mailer = new MailerApi();
         mailer.SendMail("aminedahmen14@gmail.com", "Admin.");
 
         //SEND SMS
         SMSApi sms = new SMSApi();
-        sms.sendSMS("+21658932889", "Admin.");
+        sms.sendSMS("+21658932889", "Admin.");*/
     }
 
     @FXML
@@ -129,9 +165,34 @@ public class AjoutMoyenTransportController implements Initializable {
           else  Etat = "En Panne";
                  
       }
-
-    @FXML
-    private void radioButtonChanged(ActionEvent event) {
-    }
     
+    private void getAccessible() {
+       AccessibleHandicapeToggle.selectedProperty().addListener(new ChangeListener< Boolean > () {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (AccessibleHandicapeToggle.isSelected()==true)
+                {
+                    AccessibleHandicape = "Oui";
+                }
+                else AccessibleHandicape = "Non";
+            }
+        });
+    }
+
+
+     
+         public void EnergiePushed()
+    {
+        
+        if (ElectriqueCheckBox.isSelected())
+            this.Energie += "\nElectrique";
+
+        if (DieselCheckBox.isSelected())
+            this.Energie = "Diesel";
+        
+        if (EssenceCheckBox.isSelected())
+            this.Energie = "Essence";
+        
+        
+    }
 }

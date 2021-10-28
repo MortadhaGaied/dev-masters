@@ -49,11 +49,11 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
-                moyenTransport.setPoids(rs.getString("Poids"));
-                moyenTransport.setLongueur(rs.getString("Longueur"));
-                moyenTransport.setLargeur(rs.getString("Largeur"));
+                moyenTransport.setPoids(rs.getInt("Poids"));
+                moyenTransport.setLongueur(rs.getInt("Longueur"));
+                moyenTransport.setLargeur(rs.getInt("Largeur"));
                 moyenTransport.setEnergie(rs.getString("Energie"));
-                moyenTransport.setNombre_de_place(rs.getString("Nombre_de_place"));
+                moyenTransport.setNombre_de_place(rs.getInt("Nombre_de_place"));
 
                 MT.add(moyenTransport);
             }
@@ -103,11 +103,11 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
             moyenTransport.setEtat(rs.getString("Etat"));
             moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
             moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
-            moyenTransport.setPoids(rs.getString("Poids"));
-            moyenTransport.setLongueur(rs.getString("Longueur"));
-            moyenTransport.setLargeur(rs.getString("Largeur"));
+            moyenTransport.setPoids(rs.getInt("Poids"));
+            moyenTransport.setLongueur(rs.getInt("Longueur"));
+            moyenTransport.setLargeur(rs.getInt("Largeur"));
             moyenTransport.setEnergie(rs.getString("Energie"));
-            moyenTransport.setNombre_de_place(rs.getString("Nombre_de_place"));
+            moyenTransport.setNombre_de_place(rs.getInt("Nombre_de_place"));
         }
         return moyenTransport;
     }
@@ -129,11 +129,11 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
-                moyenTransport.setPoids(rs.getString("Poids"));
-                moyenTransport.setLongueur(rs.getString("Longueur"));
-                moyenTransport.setLargeur(rs.getString("Largeur"));
+                moyenTransport.setPoids(rs.getInt("Poids"));
+                moyenTransport.setLongueur(rs.getInt("Longueur"));
+                moyenTransport.setLargeur(rs.getInt("Largeur"));
                 moyenTransport.setEnergie(rs.getString("Energie"));
-                moyenTransport.setNombre_de_place(rs.getString("Nombre_de_place"));
+                moyenTransport.setNombre_de_place(rs.getInt("Nombre_de_place"));
                 MT.add(moyenTransport);
             }
         } catch (SQLException ex) {

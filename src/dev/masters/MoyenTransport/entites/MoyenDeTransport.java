@@ -11,11 +11,11 @@ public class MoyenDeTransport {
     private String Etat;
     private String Accessible_au_handicape ;
     private String Prix_achat;
-    private String Poids ;
-    private String Longueur;
-    private String Largeur;
+    private int Poids ;
+    private int Longueur;
+    private int Largeur;
     private String Energie;
-    private String Nombre_de_place;
+    private int Nombre_de_place;
 
     public int getId_MoyenTransport() {
         return id_MoyenTransport;
@@ -45,15 +45,15 @@ public class MoyenDeTransport {
         return Prix_achat;
     }
 
-    public String getPoids() {
+    public int getPoids() {
         return Poids;
     }
 
-    public String getLongueur() {
+    public int getLongueur() {
         return Longueur;
     }
 
-    public String getLargeur() {
+    public int getLargeur() {
         return Largeur;
     }
 
@@ -61,7 +61,7 @@ public class MoyenDeTransport {
         return Energie;
     }
 
-    public String getNombre_de_place() {
+    public int getNombre_de_place() {
         return Nombre_de_place;
     }
 
@@ -93,15 +93,15 @@ public class MoyenDeTransport {
         this.Prix_achat = Prix_achat;
     }
 
-    public void setPoids(String Poids) {
+    public void setPoids(int Poids) {
         this.Poids = Poids;
     }
 
-    public void setLongueur(String longueur) {
+    public void setLongueur(int longueur) {
         this.Longueur = longueur;
     }
 
-    public void setLargeur(String Largeur) {
+    public void setLargeur(int Largeur) {
         this.Largeur = Largeur;
     }
 
@@ -109,11 +109,11 @@ public class MoyenDeTransport {
         this.Energie = Energie;
     }
 
-    public void setNombre_de_place(String Nombre_de_place) {
+    public void setNombre_de_place(int Nombre_de_place) {
         this.Nombre_de_place = Nombre_de_place;
     }
 
-    public MoyenDeTransport(String type, String Num_ligne, String Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, String Poids, String longueur, String Largeur, String Energie, String Nombre_de_place) {
+    public MoyenDeTransport(String type, String Num_ligne, String Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int longueur, int Largeur, String Energie, int Nombre_de_place) {
         this.Type = type;
         this.Num_ligne = Num_ligne;
         this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;

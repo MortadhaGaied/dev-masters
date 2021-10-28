@@ -80,7 +80,7 @@
                         <Insets left="150.0" top="20.0" />
                      </HBox.margin>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="PanneRadioButton" layoutX="10.0" layoutY="10.0" onAction="#radioButtonChanged" text="En Panne" textFill="#fffefe">
+                  <JFXRadioButton fx:id="PanneRadioButton" layoutX="10.0" layoutY="10.0" text="En Panne" textFill="#fffefe">
                      <font>
                         <Font name="Courier New Bold" size="16.0" />
                      </font>
@@ -129,7 +129,7 @@
                         <Insets left="150.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="LonguerSpinner">
+                  <Spinner fx:id="LonguerSpinner" editable="true" style="-fx-background-color: white; -fx-background-radius: 10;">
                      <HBox.margin>
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
@@ -146,7 +146,7 @@
                         <Insets left="150.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="LargeurSpinner">
+                  <Spinner fx:id="LargeurSpinner" editable="true" style="-fx-background-radius: 10;">
                      <HBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </HBox.margin>
@@ -196,7 +196,7 @@
                         <Insets left="160.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="PoidsSpinner">
+                  <Spinner fx:id="PoidsSpinner" editable="true">
                      <HBox.margin>
                         <Insets left="70.0" top="20.0" />
                      </HBox.margin>
@@ -213,7 +213,7 @@
                         <Insets left="140.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="NombrePlaceSpinner">
+                  <Spinner fx:id="NombrePlaceSpinner" editable="true">
                      <HBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </HBox.margin>
