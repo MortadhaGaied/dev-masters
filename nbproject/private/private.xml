@@ -5,11 +5,13 @@
         <group>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/controllers/AbonnementFormulaire.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/entites/Abonnement.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/gui/menu.fxml</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/controllers/menu.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/controllers/AbonnementDisponibleGUI.java</file>
-            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/services/ServiceAbonnement.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/test/Main.java</file>
             <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/services/ServiceAbonnementDisponible.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/Mailer_Abonnement.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/Myconnexion.java</file>
+            <file>file:/C:/Users/LENOVO/Desktop/pidev/dev-masters/src/dev/masters/utils/SMS.java</file>
         </group>
     </open-files>
 </project-private>

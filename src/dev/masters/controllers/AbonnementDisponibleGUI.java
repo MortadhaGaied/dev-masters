@@ -72,7 +72,7 @@ public class AbonnementDisponibleGUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cbType.getItems().addAll("Train", "Métro", "Car");
+        cbType.getItems().addAll("Train", "Métro", "Bus");
         refreshlist(null);
         tfRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
             rechercher(newValue);
