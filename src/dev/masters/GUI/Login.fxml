@@ -17,7 +17,7 @@
             <Image url="@img/bg1.jpg" />
          </image>
       </ImageView>
-      <Pane layoutX="335.0" layoutY="84.0" opacity="0.97" prefHeight="582.0" prefWidth="433.0" style="-fx-background-color: #312E2B;">
+      <Pane layoutX="336.0" layoutY="83.0" opacity="0.97" prefHeight="582.0" prefWidth="433.0" style="-fx-background-color: #312E2B;">
          <children>
             <Text fill="WHITE" layoutX="186.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ?" wrappingWidth="158.0234375">
                <font>
@@ -64,6 +64,16 @@
                   <Image url="@img/fblogo.png" />
                </image>
             </ImageView>
+            <Button layoutX="94.0" layoutY="477.0" mnemonicParsing="false" onAction="#ConnectWithGoogle" prefHeight="47.0" prefWidth="252.0" style="-fx-background-color: #312E2B;" text="Google" textFill="#db4437">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Button>
+            <Text fill="#db4437" layoutX="125.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G" wrappingWidth="84.29541015625">
+               <font>
+                  <Font name="System Bold" size="50.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </children>

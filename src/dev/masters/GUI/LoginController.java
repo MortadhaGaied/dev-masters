@@ -11,6 +11,9 @@ import com.restfb.Parameter;
 import com.restfb.Version;
 import com.restfb.json.JsonObject;
 import com.restfb.types.User;
+import dev.masters.oauth.OAuthAuthenticator;
+import dev.masters.oauth.OAuthFacebookAuthenticator;
+import dev.masters.oauth.OAuthGoogleAuthenticator;
 import dev.masters.services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
@@ -28,13 +31,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -49,13 +50,7 @@ public class LoginController implements Initializable {
     private PasswordField password_login;
 
     ServiceUser su = new ServiceUser() ;
-    private String app_Id="1198561063966256";
-    private String app_Secret="fc8dc02838807fafeb2eb1c561c7c055";
-    private String redirect_url="http://localhost/";
-    private String redirect_url_encoded="http%3A%2F%2Flocalhost%2F";
-    private String state="1919";
-    private String authentification="https://www.facebook.com/v8.0/dialog/oauth?client_id="+app_Id+"&redirect_uri="+redirect_url_encoded+"&state="+state;
-    private String graph="https://graph.facebook.com/v8.0/oauth/access_token?client_id"+app_Id+"&redirect_uri"+redirect_url_encoded+"&client_secret"+app_Secret+"&code=";
+
     
     
     /**
@@ -133,39 +128,26 @@ public class LoginController implements Initializable {
     @FXML
     private void ConnectWithFacebook(ActionEvent event) {
         
-         WebView webView =new WebView();
-        WebEngine eg =webView.getEngine();
-        eg.load(authentification);
-        Pane wView = new Pane();
-        wView.getChildren().add(webView);
-        Stage stage =new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene(wView,700,450));
-        stage.show();
-        eg.locationProperty().addListener((obs,oldlocation,newlocation)->{
-            if(newlocation !=null && newlocation.startsWith("http://localhost")){
-                int codeOffset = newlocation.indexOf("code=");
-                String code = newlocation.substring(codeOffset+"code=".length());
-                graph+=code;
-                System.out.println(graph);
-                DefaultFacebookClient facebookClient = new DefaultFacebookClient(Version.LATEST);
-                FacebookClient.AccessToken accessToken =facebookClient.obtainUserAccessToken(app_Id, app_Secret,"http://localhost/",code);
-                String access_token=accessToken.getAccessToken();
-                FacebookClient fbClient =new DefaultFacebookClient(access_token,Version.LATEST);
-                fbClient.createClientWithAccessToken(access_token);
-                JsonObject profile_pic=fbClient.fetchObject("me/picture", JsonObject.class, Parameter.with("redirect", false));
-                User user = fbClient.fetchObject("me", User.class);
-                System.out.println(user.getName());
-//                this.name.setText(user.getName());
-//                int si=profile_pic.toString().indexOf("url\":\"");
-//                int ei=profile_pic.toString().indexOf("\",\"");
-//                String profile_url =profile_pic.toString().substring(si+6,ei);
-//                this.profile_pic.setFill(new ImagePattern(new Image(profile_url)));
-                
-                
-            }
-        });
+        String FACEBOOK_clientID = "1198561063966256";
+        String FACEBOOK_redirectUri = "http://localhost/";
+        String FACEBOOK_fieldsString = "id,name,first_name,last_name,email,birthday";
+        String FACEBOOK_clientSecret = "fc8dc02838807fafeb2eb1c561c7c055";
 
+        OAuthAuthenticator authFB = new OAuthFacebookAuthenticator(FACEBOOK_clientID, FACEBOOK_redirectUri, FACEBOOK_clientSecret, FACEBOOK_fieldsString);
+        authFB.startLogin(event);
+        
+
+
+    }
+
+    @FXML
+    private void ConnectWithGoogle(ActionEvent event) {
+        String gClientId = "970645450510-f29v5rrcbpgo8di0vr4luteslp15oi8j.apps.googleusercontent.com";
+        String gRedir = "http://localhost/";
+        String gScope = "https://www.googleapis.com/auth/userinfo.profile";
+        String gSecret = "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";
+        OAuthAuthenticator auth = new OAuthGoogleAuthenticator(gClientId, gRedir, gSecret, gScope);
+        auth.startLogin(event);
     }
     
 }
