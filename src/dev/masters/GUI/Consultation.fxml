@@ -17,5 +17,6 @@
       <Button fx:id="modifier_consultation" layoutX="169.0" layoutY="307.0" mnemonicParsing="false" onAction="#Modifier" text="modifier" />
       <Button fx:id="supprimer_consultation" layoutX="290.0" layoutY="307.0" mnemonicParsing="false" onAction="#Supprimer" text="supprimer" />
       <Button layoutX="415.0" layoutY="307.0" mnemonicParsing="false" onAction="#RetourConsultation" text="retour" />
+      <Button layoutX="57.0" layoutY="307.0" mnemonicParsing="false" onAction="#btnPDF" text="pdf" />
    </children>
 </AnchorPane>

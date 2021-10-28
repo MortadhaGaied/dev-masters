@@ -19,7 +19,7 @@ import java.util.List;
  * @author Mortadha
  */
 public class ServiceReclamation implements IService<Reclamation> {
-    
+JavaMail mail = new JavaMail();    
 public Connection cnx;
 public PreparedStatement ste;
     public ServiceReclamation() {  
@@ -35,6 +35,8 @@ public PreparedStatement ste;
         ste.setString(2, r.getObject_reclamation());
         ste.setString(3, r.getDescription_reclamation());
         ste.executeUpdate();
+        mail.send("benromdhane.ahmed@esprit.tn", "sheldoncooper", "hypnose207@gmail.com", "", "vous avez reçu une reclamation");
+
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }

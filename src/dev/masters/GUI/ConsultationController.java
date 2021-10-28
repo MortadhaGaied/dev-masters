@@ -7,6 +7,8 @@ package dev.masters.GUI;
 
 import dev.masters.entites.Reclamation;
 import dev.masters.services.ServiceReclamation;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,7 +37,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 
-import javafx.util.Duration;
+
 /**
  * FXML Controller class
  *
@@ -141,6 +143,11 @@ public class ConsultationController implements Initializable {
     
    
     
+    }
+
+    @FXML
+    private void btnPDF(ActionEvent event) {
+       
     }
     }
 
