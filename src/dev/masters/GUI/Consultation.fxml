@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.ConsultationController">
+   <children>
+      <TableView fx:id="table_consultation" layoutX="109.0" layoutY="28.0" prefHeight="218.0" prefWidth="413.0">
+        <columns>
+          <TableColumn fx:id="username_consultation" prefWidth="134.4000244140625" text="username" />
+          <TableColumn fx:id="object_consultation" prefWidth="134.39996337890625" text="object" />
+            <TableColumn fx:id="description_consultation" prefWidth="144.0" text="description" />
+        </columns>
+      </TableView>
+      <Button fx:id="modifier_consultation" layoutX="169.0" layoutY="307.0" mnemonicParsing="false" onAction="#Modifier" text="modifier" />
+      <Button fx:id="supprimer_consultation" layoutX="290.0" layoutY="307.0" mnemonicParsing="false" onAction="#Supprimer" text="supprimer" />
+      <Button layoutX="415.0" layoutY="307.0" mnemonicParsing="false" onAction="#RetourConsultation" text="retour" />
+   </children>
+</AnchorPane>
