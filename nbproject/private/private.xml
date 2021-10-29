@@ -3,26 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/services/VoyageService.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/gestionvoyage.css</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/test/Main.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/VoyageHomeController.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/api/NotificationApi.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/entites/Voyage.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/GestionVoyage.fxml</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/entites/Station.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/VoyageHome.fxml</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/voyagemenu.css</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/VoyageMenuController.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/VoyageMenu.fxml</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/entites/MoyenTransport.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/entites/Position.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/utils/Myconnexion.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/voyageMain.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/menuvoyage.css</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/GUI/voyage/GestionVoyageController.java</file>
+            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/services/ServiceMoyenDeTransport.java</file>
+            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/entites/MoyenDeTransport.java</file>
             <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/services/IService.java</file>
-            <file>file:/C:/Users/mouha/Desktop/dev-masters/src/dev/masters/services/StationService.java</file>
         </group>
     </open-files>
 </project-private>

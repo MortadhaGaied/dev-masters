@@ -343,6 +343,9 @@ public class GestionVoyageController implements Initializable {
                     }else if (String.valueOf(voyage.getId()).indexOf(lowerCaseFilter) != -1) {
 			return true;
                     } 
+                    else if (String.valueOf(voyage.getStation()).indexOf(lowerCaseFilter) != -1) {
+			return true;
+                    }
                     else
 			return false; // Does not match.
                     });
