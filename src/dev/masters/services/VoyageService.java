@@ -142,7 +142,7 @@ public class VoyageService implements IService<Voyage> {
     
     
     /********************** Voyage Search By ID********************/
-    public Voyage GetVoyageById(long id){
+    public Voyage GetVoyageById(long id_voyage){
         
         Voyage voyage = new Voyage();
         String query= "select * from voyage where id_voyage= ?";

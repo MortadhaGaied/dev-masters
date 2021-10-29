@@ -107,20 +107,9 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
     
     
 
-    @Override
-    public void modifier(long id_MoyenTransport, MoyenDeTransport MTmodifie) {
-        try {
-            Statement stm = cnx.createStatement();
-            String query = "UPDATE `MoyenTransport` SET `Type`='" + MTmodifie.getType() + "',`Num_ligne`='" + MTmodifie.getNum_ligne() + "',`Date_de_mise_en_circulations`='" + MTmodifie.getDate_de_mise_en_circulations() + "',`Etat`='" + MTmodifie.getEtat() + "',`Accessible_au_handicape`='" + MTmodifie.getAccessible_au_handicape() + "',`Prix_achat`='" + MTmodifie.getPrix_achat() + "',`Poids`='" + MTmodifie.getPoids() + "',`longueur`='" + MTmodifie.getLongueur() + "',`Largeur`='" + MTmodifie.getLargeur() + "',`Energie`='" + MTmodifie.getEnergie() + "',`Nombre_de_place`='" + MTmodifie.getNombre_de_place() + "' where id_MoyenTransport=" + id_MoyenTransport;
-            System.out.println(query);
-            stm.executeUpdate(query);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+    
 
-        }
-    }
-
-    public MoyenDeTransport SearchById(long id) throws SQLException {
+    
 
     public MoyenDeTransport SearchById(long id) throws SQLException {
 

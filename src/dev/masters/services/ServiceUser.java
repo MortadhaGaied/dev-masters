@@ -82,7 +82,7 @@ public class ServiceUser implements IService<User>{
         String query = "delete from user where id_user="+id_user;
         stm.executeUpdate(query);
         
-    } 
+    }
     public int nbUser(){
         int nbuser = 0;
         try {

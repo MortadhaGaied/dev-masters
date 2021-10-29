@@ -27,7 +27,7 @@ public class FXMain extends Application {
         
         try{
             
-            Parent root = FXMLLoader.load(getClass().getResource("/dev/masters/GUI/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/dev/masters/GUI/Dashboard.fxml"));
             
             
             try{

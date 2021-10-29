@@ -74,7 +74,7 @@ public class dashboardController implements Initializable {
 
     @FXML
     private void gotoGestionVoyage() {
-        setUi("DashboardForm");
+        setUi("/voyage/VoyageMenu");
         new FadeIn(context).play();
     }
 

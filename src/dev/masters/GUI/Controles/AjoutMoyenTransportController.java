@@ -171,7 +171,7 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private void Insert(MouseEvent event) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), DateCirculations.getValue() ,Etat, AccessibleHandicape, PrixAchatTf.getText(), PoidsSpinner.getValue(), LongueurSpinner.getValue(), LargeurSpinner.getValue(), energie , NombrePlaceSpinner.getValue());
+        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), DateCirculations.getValue().toString() ,Etat, AccessibleHandicape, PrixAchatTf.getText(), PoidsSpinner.getValue(), LongueurSpinner.getValue(), LargeurSpinner.getValue(), energie , NombrePlaceSpinner.getValue());
         MtS.ajouter(Mt);
         
         //Notification
