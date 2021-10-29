@@ -2,34 +2,35 @@
 
 package dev.masters.test;
 
-import dev.masters.entites.Position;
-import dev.masters.entites.User;
-import dev.masters.services.ServiceUser;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+/**
+ *
+ * @author Mortadha
+ */
+public class Main extends Application {
 
-public class Main {
-
-
-  
-    public static void main(String[] args) {
-
-        ServiceUser su = new ServiceUser();
-        User u =new User("aa","ba","bab","aza","acca",5465,LocalDateTime.now());
-        //su.ajouter(u);
-        try {        
-            //su.modifier(10L, u);
-            //su.supprimer(10L);
-            System.out.println(su.afficher());
-            //System.out.println(su.checkLogin("aa", "0000"));
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+    @Override
+    public void start(Stage stage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("dev/masters/MoyenTransport/Gui/InterfaceMenuMoyenTransport.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
 
-        
+    /*
+      @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
     }
 
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.Controles.AfficherMoyenTransportController">
+    <stylesheets>
+        <URL value="@affichermoyentransport.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="827.0" fitWidth="1179.0" layoutX="-36.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Background.jpg" />
+         </image>
+      </ImageView>
+      <HBox layoutX="14.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#1e0303" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyen Transport Disponible">
+               <font>
+                  <Font name="Bauhaus 93" size="58.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="20.0" top="30.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="246.0" layoutY="100.0" opacity="0.8" prefHeight="673.0" prefWidth="1103.0" style="-fx-background-color: #121212; -fx-background-radius: 15;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <TableView fx:id="tvMoyen_de_transport" onMouseClicked="#Affecter" prefHeight="421.0" prefWidth="1103.0" AnchorPane.topAnchor="120.0">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
+                  <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+                  <TableColumn fx:id="colNum_ligne" prefWidth="75.0" text="Num ligne" />
+                  <TableColumn fx:id="colDate_de_mise_en_circulations" prefWidth="135.0" text="Date de mise en circulations" />
+                  <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
+                  <TableColumn fx:id="colAccessible_au_handicapes" minWidth="15.0" prefWidth="120.0" text="Accessible au handicape " />
+                  <TableColumn fx:id="colPrix_achat" minWidth="15.0" prefWidth="79.0" text="Prix achat" />
+                  <TableColumn fx:id="colPoids" prefWidth="75.0" text="Poids " />
+                  <TableColumn fx:id="colLongueur" prefWidth="75.0" text="longueur" />
+                  <TableColumn fx:id="colLargeur" prefWidth="75.0" text="Largeur" />
+                  <TableColumn fx:id="colEnergie" prefWidth="75.0" text="Energie" />
+                  <TableColumn fx:id="colNombre_de_place" prefWidth="97.0" text="Nombre de place" />
+               </columns>
+            </TableView>
+            <ImageView fx:id="btnUpdate" fitHeight="40.0" fitWidth="30.0" layoutX="228.0" layoutY="480.0" onMouseClicked="#Update" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../asset/crayon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btnDelete" fitHeight="40.0" fitWidth="30.0" layoutX="983.0" layoutY="20.0" onMouseClicked="#Delete" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../asset/supprimer.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="LbId" layoutX="690.0" layoutY="579.0" />
+            <Label layoutX="157.0" layoutY="40.0" text="Recherche">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="tfRecherche" focusColor="WHITE" layoutX="301.0" layoutY="33.0" opacity="0.47" prefHeight="45.0" prefWidth="273.0" style="-fx-background-color: #70726E;" unFocusColor="#fff83a" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="Exit" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="30.0" layoutX="885.0" layoutY="25.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1108.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../asset/close.png" />
+         </image>
+      </ImageView>
+      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="30.0" layoutX="25.0" layoutY="25.0" onMouseClicked="#BackToMenu" pickOnBounds="true" preserveRatio="true" style="-fx-effect: black;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <image>
+            <Image url="@../asset/go-back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
