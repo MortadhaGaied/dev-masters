@@ -1,21 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package dev.masters.test;
 
-/**
- *
- * @author Mortadha
- */
+import dev.masters.entites.Position;
+import dev.masters.entites.User;
+import dev.masters.services.ServiceUser;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+
+  
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        ServiceUser su = new ServiceUser();
+        User u =new User("aa","ba","bab","aza","acca",5465,LocalDateTime.now());
+        //su.ajouter(u);
+        try {        
+            //su.modifier(10L, u);
+            //su.supprimer(10L);
+            System.out.println(su.afficher());
+            //System.out.println(su.checkLogin("aa", "0000"));
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
     }
-    
+
 }
+  
+
