@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root1" prefHeight="625.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.dashboardController">
+   <children>
+      <Pane fx:id="context" layoutX="260.0" layoutY="27.0" prefHeight="558.0" prefWidth="680.0" />
+      <VBox alignment="TOP_CENTER" layoutX="30.0" layoutY="5.0" prefHeight="529.0" prefWidth="225.0" spacing="10.0" style="-fx-background-color: #FED501; -fx-background-radius: 30;">
+         <children>
+            <ImageView fitHeight="147.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="dtnDashBoard" buttonType="RAISED" onAction="#DashBoardOnAction" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 40px;" text="DASHBOARD  " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/dashboard.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionUtilisateur" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion d'utilisateur" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/customer.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionVoyage" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion de Voyage" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <Image url="@img/sign.png" />
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionMoyenTransport" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion des Moyens de Transport" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/next-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionReclamation" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion de Reclamation" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/sold.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionAbonnement" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion D'Abonnement" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoGestionReservation" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="Gestion De Reservation" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#gotoAbout" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="ABOUT" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="43.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" onAction="#btnLogOut" opacity="0.85" prefHeight="87.0" prefWidth="313.0" style="-fx-background-color: #121212; -fx-background-radius: 30px;" text="LOGOUT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+   <effect>
+      <DropShadow height="24.11" radius="25.55" spread="0.07" width="80.09" />
+   </effect>
+</AnchorPane>

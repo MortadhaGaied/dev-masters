@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="737.0" prefWidth="1050.0" style="-fx-background-color: #f29999;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.AbonnementDisponibleGUI">
+   <children>
+      <VBox layoutX="6.0" layoutY="14.0" prefHeight="479.0" prefWidth="181.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="181.0">
+               <children>
+                  <VBox prefHeight="29.0" prefWidth="181.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#retourne" style="-fx-background-color: #FF336D;" text="Retourner" />
+                     </children>
+                  </VBox>
+               </children></VBox>
+            <VBox prefHeight="479.0" prefWidth="304.0">
+               <children>
+                  <Label prefHeight="80.0" prefWidth="156.0" text="Description">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="82.0" prefWidth="124.0" text="Type Abonnement">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="60.0" prefWidth="136.0" text="Prix Mensuel" />
+                  <Label prefHeight="82.0" prefWidth="176.0" text="Prix semestiel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="80.0" prefWidth="169.0" text="Prix Annuel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbId" prefHeight="80.0" prefWidth="156.0" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="208.0" layoutY="128.0" prefHeight="358.0" prefWidth="115.0" spacing="38.0">
+         <children>
+            <TextField fx:id="tfDesc" />
+            <ComboBox fx:id="cbType" editable="true" prefWidth="150.0" promptText="Type" />
+            <TextField fx:id="tfPrixMois" />
+            <TextField fx:id="tfPrixSemestre" />
+            <TextField fx:id="tfPrixAnnee" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvAbonnDispo" layoutX="349.0" layoutY="78.0" onMouseClicked="#affecter" prefHeight="457.0" prefWidth="652.0">
+        <columns>
+          <TableColumn fx:id="id" minWidth="15.0" prefWidth="96.0" text="ID" />
+          <TableColumn fx:id="desc" minWidth="15.0" prefWidth="110.0" text="Description" />
+            <TableColumn minWidth="0.0" prefWidth="0.0" text="C1" />
+            <TableColumn fx:id="type" prefWidth="83.0" text="Type" />
+            <TableColumn fx:id="prixm" prefWidth="110.0" text="Prix Mensuel" />
+            <TableColumn fx:id="prixs" prefWidth="123.0" text="Prix Semestriel" />
+            <TableColumn fx:id="prixa" prefWidth="130.0" text="Prix Annuel" />
+        </columns>
+      </TableView>
+      <Button layoutX="42.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#onAjoute" style="-fx-background-color: #1ab230;" text="Ajouter" />
+      <Button layoutX="139.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#modifier" style="-fx-background-color: #86C6FA;" text="Modifier" />
+      <Button layoutX="229.0" layoutY="559.0" mnemonicParsing="false" onMouseClicked="#supprimer" style="-fx-background-color: #FF336D;" text="Supprimer" />
+      <ButtonBar layoutX="409.0" layoutY="531.0" prefHeight="40.0" prefWidth="200.0" />
+      <Label fx:id="lbAlert" layoutX="349.0" layoutY="551.0" onMouseClicked="#retourne" prefHeight="71.0" prefWidth="652.0" textFill="#00b22c">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfRecherche" layoutX="575.0" layoutY="22.0" prefHeight="25.0" prefWidth="200.0" />
+      <Label layoutX="498.0" layoutY="26.0" text="Recherche" />
+      <Button layoutX="926.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menu" style="-fx-background-color: #86C6FA;" text="Menu" />
+   </children>
+</AnchorPane>

@@ -142,7 +142,7 @@ public class VoyageService implements IService<Voyage> {
     
     
     /********************** Voyage Search By ID********************/
-    public Voyage GetVoyageById(Long id_voyage){
+    public Voyage GetVoyageById(long id){
         
         Voyage voyage = new Voyage();
         String query= "select * from voyage where id_voyage= ?";
@@ -184,7 +184,7 @@ public class VoyageService implements IService<Voyage> {
     /*****************************update Voyage****************************/
     @Override
     public void modifier(long id, Voyage updatedVoyage) throws SQLException {
-         st = cnx.createStatement();
+        
          //check the avalability of the stations and the MDT(moyen de transport) if they exist 
          
         
