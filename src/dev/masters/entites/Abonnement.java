@@ -79,7 +79,7 @@ public class Abonnement {
 
     @Override
     public String toString() {
-        return "Abonnement{" + "id_abonnement=" + id_abonnement + ", id_user_abonnement=" + id_user_abonnement + ", id_abonn_dispo_abonnement=" + id_abonn_dispo_abonnement + ", date_debut_abonnement=" + date_debut_abonnement + ", date_fin_abonnement=" + date_fin_abonnement + '}';
+        return "Abonnement{" + "id_abonnement=" + id_abonnement + ", id_user_abonnement=" + id_user_abonnement + ", id_abonn_dispo_abonnement=" + id_abonn_dispo_abonnement + ", date_debut_abonnement=" + date_debut_abonnement + ", date_fin_abonnement=" + date_fin_abonnement + '}'+"\n";
     }
 
 }

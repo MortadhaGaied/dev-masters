@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,7 +34,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
         try {
             Statement st = cnx.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            String query = "INSERT INTO abonnemnt(id_user, id_abonn_dispo, date_debut, date_fin) VALUES (" + nouv_abonnee.getId_user_abonnement() + "," + nouv_abonnee.getId_abonn_dispo() + ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) + "')";
+            String query = "INSERT INTO abonnemnt(id_user_abonnement, id_abonn_dispo_abonnement, date_debut_abonnement, date_fin_abonnement) VALUES (" + nouv_abonnee.getId_user_abonnement() + "," + nouv_abonnee.getId_abonn_dispo() + ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) + "')";
             System.out.println(query);
             st.executeUpdate(query);
 
@@ -89,6 +91,30 @@ public class ServiceAbonnement implements IService<Abonnement> {
     public Double remise(Double prix, int re) {
         Double nouv_prix = prix * (100 / re);
         return nouv_prix;
+    }
+    public List<Abonnement> abonnementparmois(int mois){
+       
+        
+            List<Abonnement> lp = new ArrayList<>();
+            try {
+            Statement stm = cnx.createStatement();
+            
+            String query = "SELECT * FROM abonnemnt WHERE MONTH(date_debut_abonnement)="+mois;
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                Abonnement abonnement = new Abonnement();
+                abonnement.setId_abonnement(rs.getLong("id_abonnement"));
+                abonnement.setId_user_abonnement(rs.getLong("id_user_abonnement"));
+                abonnement.setId_abonn_dispo_abonnement(rs.getLong("id_abonn_dispo_abonnement"));
+                abonnement.setDate_debut_abonnement(rs.getDate("date_debut_abonnement"));
+                abonnement.setDate_fin_abonnement(rs.getDate("date_fin_abonnement"));
+                lp.add(abonnement);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceAbonnement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lp;
     }
 
 }
