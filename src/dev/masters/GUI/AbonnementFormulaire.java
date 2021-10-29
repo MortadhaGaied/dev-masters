@@ -97,8 +97,8 @@ public class AbonnementFormulaire implements Initializable {
         sa.ajouter(nouv_abonn);
         String message = "Votre abonnement est valable de " + nouv_abonn.getDate_debut_abonnement() + " à " + nouv_abonn.getDate_fin_abonnement() + ".";
         //Send SMS
-//        SMS sms = new SMS();
-//        sms.sendSMS(tfTel.getText(), message);
+        SMS sms = new SMS();
+        sms.sendSMS(tfTel.getText(), message);
         //Send Mail
         Mailer_Abonnement mailer = new Mailer_Abonnement();
         mailer.SendMail("mohamedsaid.bouchouicha@esprit.tn", message);
