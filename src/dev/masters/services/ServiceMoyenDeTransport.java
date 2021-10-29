@@ -61,7 +61,7 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
                 moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
                 moyenTransport.setType(rs.getString("Type"));
                 moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-                moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+                 moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp("Date_de_mise_en_circulations").toLocalDateTime().toLocalDate());
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
@@ -117,7 +117,7 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
             moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
             moyenTransport.setType(rs.getString("Type"));
             moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-            moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+            moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp("Date_de_mise_en_circulations").toLocalDateTime().toLocalDate());
             moyenTransport.setEtat(rs.getString("Etat"));
             moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
             moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
@@ -143,7 +143,7 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
                 moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
                 moyenTransport.setType(rs.getString("Type"));
                 moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-                moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+                moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp("Date_de_mise_en_circulations").toLocalDateTime().toLocalDate());
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
