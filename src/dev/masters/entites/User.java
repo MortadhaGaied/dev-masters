@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 
 public class User {
-    
+ 
     private long id_user ;
     
     private String first_name;
@@ -18,9 +18,13 @@ public class User {
     
     private String email;
     
-    private String password;
+    private String username,password;
     
     private int number;
+    
+    private Position user_position;
+    
+    private Roles role;
     
     private LocalDateTime birthday;
     
@@ -30,28 +34,89 @@ public class User {
 
     public User() {
     }
+
+    
+   
     
 
-    public User(String first_name, String last_name, String email, String password, int number, LocalDateTime birthday) {
+    public User(String first_name, String last_name, String email, String username, String password, int number, LocalDateTime birthday) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.number = number;
         this.birthday = birthday;
     }
 
-    public User(long id_user, String first_name, String last_name, String email, String password, int number, LocalDateTime birthday, LocalDateTime date_created_user, LocalDateTime last_updated_user) {
+    public User(String first_name, String last_name, String email, String username, String password, int number, Roles role, LocalDateTime birthday) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.number = number;
+        this.role = role;
+        this.birthday = birthday;
+    }
+
+    public User(String first_name, String last_name, String email, String username, String password, int number, Position user_position, Roles role, LocalDateTime birthday) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.number = number;
+        this.user_position = user_position;
+        this.role = role;
+        this.birthday = birthday;
+    }
+
+    public User(long id_user, String first_name, String last_name, String email, String username, String password, int number, Position user_position, Roles role, LocalDateTime birthday) {
         this.id_user = id_user;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.number = number;
+        this.user_position = user_position;
+        this.role = role;
+        this.birthday = birthday;
+    }
+
+    public User(long id_user, String first_name, String last_name, String email, String username, String password, int number, Position user_position, Roles role, LocalDateTime birthday, LocalDateTime date_created_user, LocalDateTime last_updated_user) {
+        this.id_user = id_user;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.number = number;
+        this.user_position = user_position;
+        this.role = role;
         this.birthday = birthday;
         this.date_created_user = date_created_user;
         this.last_updated_user = last_updated_user;
     }
+
+    public Position getUser_position() {
+        return user_position;
+    }
+
+    public void setUser_position(Position user_position) {
+        this.user_position = user_position;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
+
+    
     
 
     public long getId_user() {
@@ -86,6 +151,14 @@ public class User {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -101,6 +174,7 @@ public class User {
     public void setNumber(int number) {
         this.number = number;
     }
+
 
     public LocalDateTime getBirthday() {
         return birthday;
@@ -128,8 +202,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id_user=" + id_user + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", password=" + password + ", number=" + number + ", birthday=" + birthday + ", date_created_user=" + date_created_user + ", last_updated_user=" + last_updated_user + '}'+"\n";
+        return "User{" + "id_user=" + id_user + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", username=" + username + ", password=" + password + ", number=" + number + ", birthday=" + birthday + ", date_created_user=" + date_created_user + ", last_updated_user=" + last_updated_user + '}'+"\n";
     }
+
+    
     
     
 

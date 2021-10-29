@@ -14,12 +14,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import dev.masters.utils.JavaMail;
+
+
 /**
  *
  * @author Mortadha
  */
 public class ServiceReclamation implements IService<Reclamation> {
-    
+
+JavaMail mail = new JavaMail();    
+
 public Connection cnx;
 public PreparedStatement ste;
     public ServiceReclamation() {  
@@ -30,11 +37,16 @@ public PreparedStatement ste;
     public void ajouter(Reclamation r){
     try {
         String sql = "insert into reclamation(username_reclamation , object_reclamation , description_reclamation)"+"values(?,?,?)";
+
         ste=cnx.prepareStatement(sql);
         ste.setString(1, r.getUsername_reclamation());
         ste.setString(2, r.getObject_reclamation());
         ste.setString(3, r.getDescription_reclamation());
         ste.executeUpdate();
+
+        mail.send("benromdhane.ahmed@esprit.tn", "sheldoncooper", "hypnose207@gmail.com", "", "vous avez reçu une reclamation ");
+
+
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
     }
@@ -80,4 +92,21 @@ public PreparedStatement ste;
             ste.executeUpdate();
             System.out.println("reclamation updeted");
         }
+
+    public int nbReclamation(){
+        int nbreclamation = 0;
+        try {
+            ResultSet set = Myconnexion.getInstance().
+                    getCnx().prepareStatement("SELECT COUNT(id_reclamation) FROM reclamation")
+                    .executeQuery();
+            if (set.next()) {
+                nbreclamation = set.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceReclamation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nbreclamation;
+    }
+    
+
 }

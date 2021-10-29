@@ -5,6 +5,11 @@
  */
 package dev.masters.test;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 import javafx.application.Application;
 
 import javafx.fxml.FXMLLoader;
@@ -18,17 +23,26 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage stage) {
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/dev/masters/GUI/menu.fxml"));
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+
+        
+        try{
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/dev/masters/GUI/Login.fxml"));
+            
+            
+            try{
+                Scene scene = new Scene(root);
+                
+                //scene.getStylesheets().add("/dev/masters/GUI/MenuGSTUser.css");
+                stage.setScene(scene);
+                stage.show();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }catch(IOException ex){
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     /**

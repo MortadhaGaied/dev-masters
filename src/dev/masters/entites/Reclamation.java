@@ -5,6 +5,7 @@
  */
 package dev.masters.entites;
 
+
 public class Reclamation {
     private long id_reclamation;
     private String username_reclamation;
