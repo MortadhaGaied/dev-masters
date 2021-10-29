@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="703.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.voyage.ArchiveController">
+   <children>
+      <ImageView fitHeight="703.0" fitWidth="1045.0" pickOnBounds="true">
+         <image>
+            <Image url="@../asset/Background.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tv_archive" layoutX="28.0" layoutY="156.0" onMouseClicked="#affecter" opacity="0.64" prefHeight="491.0" prefWidth="980.0" style="-fx-background-color: #121212;">
+        <columns>
+          <TableColumn fx:id="col_id_archive" prefWidth="103.0" text="id_voyage" />
+          <TableColumn fx:id="col_pd_archive" prefWidth="185.0" text="position depart" />
+            <TableColumn fx:id="cold_pa_archive" prefWidth="183.0" text="Position arrive" />
+            <TableColumn fx:id="cold_date_archive" prefWidth="202.0" text="Date Voyage" />
+            <TableColumn fx:id="col_station_archive" prefWidth="146.0" text="Station" />
+            <TableColumn fx:id="col_mt_archive" prefWidth="160.0" text="Moyen De Transport" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btn_desarchive" layoutX="427.0" layoutY="73.0" onAction="#desarchiver" prefHeight="31.0" prefWidth="232.0" text="desarchiver" textFill="#9e2121">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font>
+      </JFXButton>
+      <ImageView fx:id="btn_back" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="25.0" layoutX="15.0" layoutY="15.0" onMouseClicked="#BackToMenu" pickOnBounds="true" preserveRatio="true" style="-fx-effect: black;">
+         <image>
+            <Image url="@../asset/go-back%20-%20yellow.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="btn_exit" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="30.0" layoutX="978.0" layoutY="13.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/close.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
