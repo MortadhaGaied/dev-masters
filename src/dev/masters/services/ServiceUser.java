@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import dev.masters.entites.User;
 import dev.masters.utils.Myconnexion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -81,6 +83,20 @@ public class ServiceUser implements IService<User>{
         stm.executeUpdate(query);
         
     } 
+    public int nbUser(){
+        int nbuser = 0;
+        try {
+            ResultSet set = Myconnexion.getInstance().
+                    getCnx().prepareStatement("SELECT COUNT(id_user) FROM user")
+                    .executeQuery();
+            if (set.next()) {
+                nbuser = set.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nbuser;
+    }
     public User SearchById(long id_user) throws SQLException{
         Statement stm = cnx.createStatement();
         User user =new User();
