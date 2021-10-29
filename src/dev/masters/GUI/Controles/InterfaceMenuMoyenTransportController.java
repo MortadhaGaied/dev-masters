@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.Controles;
+package dev.masters.GUI.Controles;
 
 import com.jfoenix.controls.JFXButton;
-import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
-import dev.masters.MoyenTransport.utils.JfreeChartApi;
+import dev.masters.services.ServiceMoyenDeTransport;
+import dev.masters.utils.JfreeChartApi;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;

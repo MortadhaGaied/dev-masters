@@ -1,7 +1,7 @@
-package dev.masters.MoyenTransport.services;
+package dev.masters.services;
 
-import dev.masters.MoyenTransport.entites.MoyenDeTransport;
-import dev.masters.MoyenTransport.utils.Myconnexion;
+import dev.masters.entites.MoyenDeTransport;
+import dev.masters.utils.Myconnexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
+public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
+
+    /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+/**
+ *
+ * @author mouha
+ */
+
+    
+
+
 
     Connection cnx;
 
@@ -38,14 +54,14 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
         try {
             Statement stm = cnx.createStatement();
 
-            String query = "SELECT * FROM moyentransport";
+            String query = "SELECT * FROM Moyentransport";
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 MoyenDeTransport moyenTransport = new MoyenDeTransport();
                 moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
                 moyenTransport.setType(rs.getString("Type"));
                 moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-                moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp(4).toLocalDateTime().toLocalDate());
+                moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
@@ -64,16 +80,18 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
     }
 
     @Override
-    public void supprimer(long id_MoyenTransport) {
+    public void supprimer(long id) {
         try {
             Statement stm = cnx.createStatement();
-            String query = "delete from moyentransport where id_MoyenTransport=" + id_MoyenTransport;
+            String query = "delete from Moyentransport where id_MoyenTransport=" + id;
             stm.executeUpdate(query);
         } catch (SQLException ex) {
 
         }
 
     }
+    
+    
 
     @Override
     public void modifier(long id_MoyenTransport, MoyenDeTransport MTmodifie) {
@@ -99,7 +117,8 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
             moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
             moyenTransport.setType(rs.getString("Type"));
             moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-            moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp(4).toLocalDateTime().toLocalDate());
+            moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
+            moyenTransport.setEtat(rs.getString("Etat"));
             moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
             moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
             moyenTransport.setPoids(rs.getInt("Poids"));
@@ -124,7 +143,7 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
                 moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
                 moyenTransport.setType(rs.getString("Type"));
                 moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-                moyenTransport.setDate_de_mise_en_circulations(rs.getTimestamp(4).toLocalDateTime().toLocalDate());
+                moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
                 moyenTransport.setEtat(rs.getString("Etat"));
                 moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
                 moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
@@ -158,4 +177,11 @@ public class ServiceMoyenDeTransport implements Mtservice<MoyenDeTransport> {
         }
         return data;
     }
+
+    
+
+    
+
+    
 }
+

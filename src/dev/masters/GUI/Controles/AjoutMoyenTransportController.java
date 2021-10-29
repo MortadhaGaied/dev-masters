@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.Controles;
+package dev.masters.GUI.Controles;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -11,10 +11,10 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import dev.masters.MoyenTransport.entites.MoyenDeTransport;
-import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
-import dev.masters.MoyenTransport.utils.MailerApi;
-import dev.masters.MoyenTransport.utils.SMSApi;
+import dev.masters.entites.MoyenDeTransport;
+import dev.masters.services.ServiceMoyenDeTransport;
+import dev.masters.utils.MailerApi;
+import dev.masters.utils.SMSApi;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

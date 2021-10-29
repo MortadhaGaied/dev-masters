@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.services;
+package dev.masters.services;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author Mahdi
  */
-public interface Mtservice <MT>{
-        public void ajouter(MT MoyenDeTransport);
+public interface IService <T>{
+        public void ajouter(T t);
 
-        public List<MT> afficher() throws SQLException;
+        public List<T> afficher() throws SQLException;
 
         public void supprimer(long id) throws SQLException;
 
-        public void modifier(long id, MT t) throws SQLException;
+        public void modifier(long id, T t) throws SQLException;
 }

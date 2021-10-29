@@ -1,4 +1,4 @@
-package dev.masters.MoyenTransport.utils;
+package dev.masters.utils;
 
 import java.util.*;
 import javax.mail.*;

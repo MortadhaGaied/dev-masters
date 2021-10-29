@@ -1,15 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dev.masters.entites;
 
-package dev.masters.MoyenTransport.entites;
-
-import java.time.LocalDate;
-
-
+/**
+ *
+ * @author mouha
+ */
 public class MoyenDeTransport {
 
     private int id_MoyenTransport;
     private String Type;
     private String Num_ligne;
-    private LocalDate Date_de_mise_en_circulations;
+    private String Date_de_mise_en_circulations;
     private String Etat;
     private String Accessible_au_handicape ;
     private String Prix_achat;
@@ -31,7 +36,7 @@ public class MoyenDeTransport {
         return Num_ligne;
     }
 
-    public LocalDate getDate_de_mise_en_circulations() {
+    public String getDate_de_mise_en_circulations() {
         return Date_de_mise_en_circulations;
     }
 
@@ -79,6 +84,9 @@ public class MoyenDeTransport {
         this.Num_ligne = Num_ligne;
     }
 
+    public void setDate_de_mise_en_circulations(String Date_de_mise_en_circulations) {
+        this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
+    }
 
     public void setEtat(String Etat) {
         this.Etat = Etat;
@@ -112,11 +120,26 @@ public class MoyenDeTransport {
         this.Nombre_de_place = Nombre_de_place;
     }
 
-    public void setDate_de_mise_en_circulations(LocalDate Date_de_mise_en_circulations) {
-        this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
+    public MoyenDeTransport(int id_MoyenTransport) {
+        this.id_MoyenTransport = id_MoyenTransport;
     }
 
-    public MoyenDeTransport(String type, String Num_ligne, LocalDate Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int longueur, int Largeur, String Energie, int Nombre_de_place) {
+    public MoyenDeTransport(int id_MoyenTransport, String Type, String Num_ligne, String Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int Longueur, int Largeur, String Energie, int Nombre_de_place) {
+        this.id_MoyenTransport = id_MoyenTransport;
+        this.Type = Type;
+        this.Num_ligne = Num_ligne;
+        this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
+        this.Etat = Etat;
+        this.Accessible_au_handicape = Accessible_au_handicape;
+        this.Prix_achat = Prix_achat;
+        this.Poids = Poids;
+        this.Longueur = Longueur;
+        this.Largeur = Largeur;
+        this.Energie = Energie;
+        this.Nombre_de_place = Nombre_de_place;
+    }
+
+    public MoyenDeTransport(String type, String Num_ligne, String Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int longueur, int Largeur, String Energie, int Nombre_de_place) {
         this.Type = type;
         this.Num_ligne = Num_ligne;
         this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
@@ -137,6 +160,6 @@ public class MoyenDeTransport {
 
     @Override
     public String toString() {
-        return "MoyenDeTransport{" + "id_MoyenTransport=" + id_MoyenTransport + ", type=" + Type + ", Num_ligne=" + Num_ligne + ", Date_de_mise_en_circulations=" + Date_de_mise_en_circulations + ", Etat=" + Etat + ", Accessible_au_handicape=" + Accessible_au_handicape + ", Prix_achat=" + Prix_achat + ", Poids=" + Poids + ", longueur=" + Longueur + ", Largeur=" + Largeur + ", Energie=" + Energie + ", Nombre_de_place=" + Nombre_de_place + '}';
+        return  String.valueOf(id_MoyenTransport) ;
     }
 }

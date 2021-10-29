@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.MoyenTransport.Controles;
+package dev.masters.GUI.Controles;
 
-import dev.masters.MoyenTransport.entites.MoyenDeTransport;
-import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
-import dev.masters.MoyenTransport.utils.JfreeChartApi;
-
-import dev.masters.MoyenTransport.utils.MailerApi;
-import dev.masters.MoyenTransport.utils.SMSApi;
+import dev.masters.entites.MoyenDeTransport;
+import dev.masters.services.ServiceMoyenDeTransport;
+import dev.masters.utils.JfreeChartApi;
+import dev.masters.utils.MailerApi;
+import dev.masters.utils.SMSApi;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
