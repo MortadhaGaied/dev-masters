@@ -36,6 +36,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -129,6 +130,7 @@ public class GestionVoyageController implements Initializable {
     @FXML
     private JFXRadioButton rb_All;
     ServiceMoyenDeTransport smt;
+    ObservableList<Voyage> data = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,16 +138,10 @@ public class GestionVoyageController implements Initializable {
         ss = new StationService();
         smt=new ServiceMoyenDeTransport();
         refreshlist();
+        recherche_avance();
         populateComboBoxStation();
         populateComboBoxMt();
-        tf_recherche.textProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("eazeza");
-            System.out.println(tf_recherche.getText());
-            if(newValue==""){
-                refreshlist();
-            }
-            rechercher(newValue);
-        });
+        
 
     }
 
@@ -175,7 +171,7 @@ public class GestionVoyageController implements Initializable {
     public void refreshlist() {
 
         try {
-            ObservableList<Voyage> data = FXCollections.observableArrayList();
+            data.clear();
 
             List<Voyage> voyages = new ArrayList(vs.afficher());
 
@@ -331,6 +327,40 @@ public class GestionVoyageController implements Initializable {
         cb_mt.setValue(voyage.getMoyen_transport());
 
     }
+    private void recherche_avance() {
+        
+        FilteredList<Voyage> filteredData = new FilteredList<>(data, b -> true);
+            tf_recherche.textProperty().addListener((observable, oldValue, newValue) -> {
+		filteredData.setPredicate(voyage -> {
+                    if (newValue == null || newValue.isEmpty()) {
+			return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if (voyage.getDate_de_voyage().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+			return true; // Filter matches first name.
+                    } else if (String.valueOf(voyage.getMoyen_transport()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    }else if (String.valueOf(voyage.getId()).indexOf(lowerCaseFilter) != -1) {
+			return true;
+                    } 
+                    else
+			return false; // Does not match.
+                    });
+		});
+		
+		// 3. Wrap the FilteredList in a SortedList. 
+		SortedList<Voyage> sortedData = new SortedList<>(filteredData);
+		
+		// 4. Bind the SortedList comparator to the TableView comparator.
+		// 	  Otherwise, sorting the TableView would have no effect.
+		sortedData.comparatorProperty().bind(tv_voyage.comparatorProperty());
+		
+		// 5. Add sorted (and filtered) data to the table.
+		tv_voyage.setItems(sortedData);
+         
+        
+    }
+
 
     private void rechercher(String requete) {
 
