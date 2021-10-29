@@ -38,7 +38,7 @@
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></TextField>
-            <Text fill="WHITE" layoutX="111.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
+            <Text fx:id="a" fill="WHITE" layoutX="111.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
