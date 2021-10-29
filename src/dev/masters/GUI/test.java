@@ -76,8 +76,8 @@ public class test implements Initializable {
         loadchart();
     }
     public void Userinfo(){
-        txtTotalCustomers.setText(String.valueOf(se.nbUser()));
-        TotalOrders.setText(String.valueOf(sr.nbReclamation()));
+        nbUser.setText(String.valueOf(se.nbUser()));
+        nbRec.setText(String.valueOf(sr.nbReclamation()));
         
     }
     public void loadchart(){

@@ -5,14 +5,9 @@
  */
 package dev.masters.GUI;
 
-import com.restfb.DefaultFacebookClient;
-import com.restfb.FacebookClient;
-import com.restfb.Parameter;
-import com.restfb.Version;
-import com.restfb.json.JsonObject;
+
 import dev.masters.entites.Roles;
 
-import dev.masters.entites.User;
 import dev.masters.oauth.OAuthAuthenticator;
 import dev.masters.oauth.OAuthFacebookAuthenticator;
 import dev.masters.oauth.OAuthGoogleAuthenticator;
@@ -33,10 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Modality;
+
 import javafx.stage.Stage;
 
 /**
