@@ -128,8 +128,8 @@ public class GestionMoyenTransportController implements Initializable {
     @FXML
     private void Insert(MouseEvent event) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(), tfNum_ligne.getText(), tfDate_de_mise_en_circulations.getText(), tfEtat.getText(), tfAccessible_au_handicapes.getText(), tfPrix_achat.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
-        MtS.ajouter(Mt);
+        //MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(), tfNum_ligne.getText(), tfDate_de_mise_en_circulations.getText(), tfEtat.getText(), tfAccessible_au_handicapes.getText(), tfPrix_achat.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
+      //  MtS.ajouter(Mt);
         refreshlist(null);
         // SEND MAIL
         MailerApi mailer = new MailerApi();
@@ -169,10 +169,10 @@ public class GestionMoyenTransportController implements Initializable {
 
     @FXML
     private void Update(MouseEvent event) {
-        ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
+        /*ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         MoyenDeTransport Mt = new MoyenDeTransport(tfType.getText(), tfNum_ligne.getText(), tfDate_de_mise_en_circulations.getText(), tfEtat.getText(), tfAccessible_au_handicapes.getText(), tfPrix_achat.getText(), tfPoids.getText(), tfLongueur.getText(), tfLargeur.getText(), tfEnergie.getText(), tfNombre_de_place.getText());
         MtS.modifier(Long.parseLong(LbId.getText()), Mt);
-        refreshlist(null);
+        refreshlist(null);*/
     }
 
     @FXML
@@ -197,7 +197,7 @@ public class GestionMoyenTransportController implements Initializable {
 
     @FXML
     private void Affecter(MouseEvent event) {
-        MoyenDeTransport Mt = tvMoyen_de_transport.getSelectionModel().getSelectedItem();
+        /*MoyenDeTransport Mt = tvMoyen_de_transport.getSelectionModel().getSelectedItem();
         if (Mt == null) {
             return;
         }
@@ -213,7 +213,7 @@ public class GestionMoyenTransportController implements Initializable {
         tfEtat.setText(Mt.getEtat());
         tfEnergie.setText(Mt.getEnergie());
         tfNombre_de_place.setText(Mt.getNombre_de_place());
-        LbId.setText(String.valueOf(Mt.getId_MoyenTransport()));
+        LbId.setText(String.valueOf(Mt.getId_MoyenTransport()));*/
     }
 
     private void rechercher(String req) {

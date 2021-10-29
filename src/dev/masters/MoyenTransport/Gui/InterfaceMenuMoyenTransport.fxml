@@ -110,56 +110,65 @@
                      <children>
                         <VBox layoutX="91.0" layoutY="139.0" prefHeight="200.0" prefWidth="100.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                            <children>
-                              <JFXButton prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Dashboard" textFill="WHITE">
+                              <JFXButton fx:id="Statistique" onMouseClicked="#Statistique" prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Statistique" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                                  <graphic>
-                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="30.0" onMouseClicked="#Statistique" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
                                        <image>
-                                          <Image url="@../asset/dash.png" />
+                                          <Image url="@../asset/statistique1.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets top="40.0" />
+                                 </padding>
+                              </JFXButton>
+                              <JFXButton fx:id="Ajouter" onMouseClicked="#Ajouter" prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Ajouter" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                                       <image>
+                                          <Image url="@../asset/bouton-ajouter.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <padding>
+                                    <Insets top="40.0" />
+                                 </padding>
+                              </JFXButton>
+                              <JFXButton fx:id="Afficher" onMouseClicked="#Afficher" prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Consulter" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
+                                       <image>
+                                          <Image url="@../asset/afficher.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                                  <VBox.margin>
-                                    <Insets top="60.0" />
+                                    <Insets top="30.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Ajouter" textFill="WHITE">
+                              <JFXButton fx:id="Modifier" onMouseClicked="#Modifier" prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Modifier" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                                  <graphic>
-                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" translateX="-5.0">
                                        <image>
-                                          <Image url="@../asset/add-file1.png" />
+                                          <Image url="@../asset/crayon.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
-                              </JFXButton>
-                              <JFXButton prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Consulter" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../asset/seo.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton prefHeight="40.0" prefWidth="250.0" styleClass="sidebarItem" text="Sauvegarder " textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../asset/modify.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
                               </JFXButton>
                            </children>
                         </VBox>
@@ -167,11 +176,6 @@
                   </AnchorPane>
                </left>
             </BorderPane>
-            <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="25.0" layoutX="5.0" layoutY="5.0" onMouseClicked="#BackToMenu" pickOnBounds="true" preserveRatio="true" style="-fx-effect: black;" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-               <image>
-                  <Image url="@../asset/go-back%20-%20yellow.png" />
-               </image>
-            </ImageView>
             <ImageView fx:id="Exit" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="30.0" layoutX="865.0" layoutY="5.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                <image>
                   <Image url="@../asset/close.png" />

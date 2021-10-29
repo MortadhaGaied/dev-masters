@@ -11,29 +11,30 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.Controles.AjoutMoyenTransportController">
-    <stylesheets>
-        <URL value="@ajoutmoyentransport.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.Controles.ModifierMoyenTransportController">
+   <stylesheets>
+      <URL value="@ajoutmoyentransport.css" />
+   </stylesheets>
    <children>
       <ImageView fitHeight="858.0" fitWidth="1268.0" layoutX="-10.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../asset/Background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="100.0" layoutY="50.0" opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121212;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+      <AnchorPane layoutX="100.0" layoutY="50.0" opacity="0.7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #121212;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="212.0" layoutY="44.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+            <HBox alignment="CENTER_LEFT" layoutX="212.0" layoutY="44.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Text fill="#e8e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail Moyen Transport">
+                  <Text fill="#e8e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Moyen Transport">
                      <font>
                         <Font name="Bauhaus 93" size="58.0" />
                      </font>
@@ -44,7 +45,7 @@
                <children>
                   <JFXComboBox fx:id="TypeComboox" focusColor="WHITE" prefHeight="25.0" prefWidth="241.0" promptText="Type" unFocusColor="#eeecec" visibleRowCount="4">
                      <HBox.margin>
-                        <Insets left="200.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </JFXComboBox>
                </children>
@@ -53,7 +54,7 @@
                <children>
                   <JFXTextField fx:id="NumLigneTf" prefHeight="39.0" prefWidth="273.0" promptText="Num ligne" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="date" unFocusColor="WHITE">
                      <HBox.margin>
-                        <Insets left="200.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Courier New Bold" size="16.0" />
@@ -65,7 +66,7 @@
                <children>
                   <JFXDatePicker fx:id="DateCirculations" defaultColor="#fed501" prefHeight="36.0" prefWidth="281.0" promptText="Date de mise en circulations" style="-fx-background-color: white; -fx-background-radius: 10;" styleClass="date">
                      <HBox.margin>
-                        <Insets left="200.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </JFXDatePicker>
                </children>
@@ -77,7 +78,7 @@
                         <Font name="Courier New Bold" size="16.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="150.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </JFXRadioButton>
                   <JFXRadioButton fx:id="PanneRadioButton" layoutX="10.0" layoutY="10.0" onAction="#getEtat" text="En Panne" textFill="#fffefe">
@@ -88,11 +89,6 @@
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
                   </JFXRadioButton>
-                  <StackPane fx:id="EtatStackPanne" prefHeight="56.0" prefWidth="362.0" style="-fx-background-color: white;">
-                     <HBox.margin>
-                        <Insets left="150.0" />
-                     </HBox.margin>
-                  </StackPane>
                </children>
             </HBox>
             <HBox layoutY="381.0" prefHeight="56.0" prefWidth="1005.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -102,7 +98,7 @@
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="150.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
                   </JFXToggleButton>
                </children>
@@ -114,7 +110,7 @@
                         <Font name="Courier New Bold" size="16.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="200.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </JFXTextField>
                </children>
@@ -126,7 +122,7 @@
                         <Font name="Courier New Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="150.0" top="18.0" />
+                        <Insets left="10.0" top="18.0" />
                      </padding>
                   </Label>
                   <Spinner fx:id="LongueurSpinner" editable="true" onDragDetected="#LongueurSpinner" style="-fx-background-color: white; -fx-background-radius: 10;">
@@ -143,10 +139,10 @@
                         <Font name="Courier New Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="150.0" top="18.0" />
+                        <Insets left="10.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="LargeurSpinner" editable="true" style="-fx-background-radius: 10;">
+                  <Spinner fx:id="LargeurSpinner" editable="true" onDragDetected="#LargeurSpinner" style="-fx-background-radius: 10;">
                      <HBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </HBox.margin>
@@ -160,7 +156,7 @@
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="150.0" top="20.0" />
+                        <Insets left="10.0" top="20.0" />
                      </HBox.margin>
                   </JFXCheckBox>
                   <JFXCheckBox fx:id="DieselCheckBox" layoutX="464.0" layoutY="30.0" onAction="#EnergieCheckBox" text="Diesel" textFill="#f5f2f2">
@@ -179,11 +175,6 @@
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
                   </JFXCheckBox>
-                  <StackPane fx:id="EnergieStackPanne" prefHeight="56.0" prefWidth="362.0" style="-fx-background-color: white;">
-                     <HBox.margin>
-                        <Insets left="50.0" />
-                     </HBox.margin>
-                  </StackPane>
                </children>
             </HBox>
             <HBox accessibleText="dsfsdfsdfs" layoutX="14.0" layoutY="553.0" prefHeight="56.0" prefWidth="954.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -193,10 +184,10 @@
                         <Font name="Courier New Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="160.0" top="18.0" />
+                        <Insets left="10.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="PoidsSpinner" editable="true">
+                  <Spinner fx:id="PoidsSpinner" editable="true" onDragDetected="#PoidsSpinner">
                      <HBox.margin>
                         <Insets left="70.0" top="20.0" />
                      </HBox.margin>
@@ -210,10 +201,13 @@
                         <Font name="Courier New Bold" size="18.0" />
                      </font>
                      <padding>
-                        <Insets left="140.0" top="18.0" />
+                        <Insets left="10.0" top="18.0" />
                      </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
-                  <Spinner fx:id="NombrePlaceSpinner" editable="true">
+                  <Spinner fx:id="NombrePlaceSpinner" editable="true" onDragDetected="#NombrePlaceSpinner">
                      <HBox.margin>
                         <Insets left="60.0" top="20.0" />
                      </HBox.margin>
@@ -222,24 +216,27 @@
             </HBox>
             <HBox accessibleText="dsfsdfsdfs" layoutY="721.0" prefHeight="56.0" prefWidth="954.0">
                <children>
-                  <JFXButton onMouseClicked="#Insert" prefHeight="51.0" prefWidth="134.0" style="-fx-background-color: #00E676; -fx-background-radius: 15;" styleClass="btn" text="Insert">
+                  <JFXButton lineSpacing="20.0" onMouseClicked="#Save" prefHeight="51.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-background-radius: 15;" styleClass="btn" text="Save" textFill="#bcb6b6">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Berlin Sans FB" size="35.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="300.0" />
+                        <Insets left="500.0" />
                      </HBox.margin>
-                  </JFXButton>
-                  <JFXButton onMouseClicked="#clean" prefHeight="51.0" prefWidth="138.0" style="-fx-background-color: #FFFF00; -fx-background-radius: 15;" styleClass="btn" text="Clean">
-                     <HBox.margin>
-                        <Insets left="150.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                           <image>
+                              <Image url="@../asset/modifier-le-document.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </JFXButton>
                </children>
             </HBox>
+            <Label fx:id="LbId" layoutX="1006.0" layoutY="713.0" />
          </children>
       </AnchorPane>
       <ImageView fx:id="Exit" accessibleRole="BUTTON" fitHeight="40.0" fitWidth="30.0" layoutX="875.0" layoutY="15.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
@@ -252,5 +249,21 @@
             <Image url="@../asset/go-back.png" />
          </image>
       </ImageView>
+      <TableView fx:id="tvMoyen_de_transport" layoutX="337.0" layoutY="163.0" onMouseClicked="#Affecter" prefHeight="469.0" prefWidth="855.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="55.0" text="Id" />
+            <TableColumn fx:id="colType" prefWidth="70.0" text="Type" />
+            <TableColumn fx:id="colNum_ligne" prefWidth="60.0" text="Num ligne" />
+            <TableColumn fx:id="colDate_de_mise_en_circulations" prefWidth="100.0" text="Date de mise en circulations" />
+            <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
+            <TableColumn fx:id="colAccessible_au_handicapes" minWidth="15.0" prefWidth="70.0" text="Accessible au handicape " />
+            <TableColumn fx:id="colPrix_achat" minWidth="15.0" prefWidth="60.0" text="Prix achat" />
+            <TableColumn fx:id="colPoids" prefWidth="70.0" text="Poids " />
+            <TableColumn fx:id="colLongueur" prefWidth="70.0" text="longueur" />
+            <TableColumn fx:id="colLargeur" prefWidth="70.0" text="Largeur" />
+            <TableColumn fx:id="colEnergie" prefWidth="70.0" text="Energie" />
+            <TableColumn fx:id="colNombre_de_place" prefWidth="97.0" text="Nombre de place" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

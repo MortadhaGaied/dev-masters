@@ -15,20 +15,28 @@ import dev.masters.MoyenTransport.entites.MoyenDeTransport;
 import dev.masters.MoyenTransport.services.ServiceMoyenDeTransport;
 import dev.masters.MoyenTransport.utils.MailerApi;
 import dev.masters.MoyenTransport.utils.SMSApi;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -50,15 +58,15 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private JFXRadioButton PanneRadioButton;
     @FXML
-    private StackPane EtatStackPanne;
-    @FXML
     private JFXToggleButton AccessibleHandicapeToggle;
     @FXML
     private JFXTextField PrixAchatTf;
     @FXML
-    private Spinner<Integer> LonguerSpinner;
+    private Spinner<Integer> LongueurSpinner;
+    SpinnerValueFactory<Integer> longuer = new SpinnerValueFactory.IntegerSpinnerValueFactory(10,500 );
     @FXML
     private Spinner<Integer> LargeurSpinner;
+    SpinnerValueFactory<Integer> largeur = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20 );
     @FXML
     private JFXCheckBox ElectriqueCheckBox;
     @FXML
@@ -66,11 +74,11 @@ public class AjoutMoyenTransportController implements Initializable {
     @FXML
     private JFXCheckBox EssenceCheckBox;
     @FXML
-    private StackPane EnergieStackPanne;
-    @FXML
     private Spinner<Integer> PoidsSpinner;
+   SpinnerValueFactory<Integer> poids = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100);
     @FXML
     private Spinner<Integer> NombrePlaceSpinner;
+    SpinnerValueFactory<Integer> nombrePlace = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100 );
     private Label radioButtonLabel;
 
     String Etat;
@@ -79,7 +87,12 @@ public class AjoutMoyenTransportController implements Initializable {
     Integer Largeur;
     Integer Poids;
     Integer NombrePlace;
-    String Energie;
+    String energie;
+    @FXML
+    private StackPane EtatStackPanne;
+    @FXML
+    private StackPane EnergieStackPanne;
+
     
      /**
      * Initializes the controller class.
@@ -90,38 +103,37 @@ public class AjoutMoyenTransportController implements Initializable {
         
         // Inisialisze le buttons radio
         final ToggleGroup group = new ToggleGroup();
+        
         MarcheRadioButton.setToggleGroup(group);
         PanneRadioButton.setToggleGroup(group);
-        MarcheRadioButton.setSelected(true);
+      //  MarcheRadioButton.setSelected(true);
         MarcheRadioButton.requestFocus();
         TypeComboox.getItems().addAll("Train", "Métro", "Bus");
+        
         String Date = String.valueOf(DateCirculations.getValue());    
         
         //LonguerSpinner
-                SpinnerValueFactory<Integer> longuer = 
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(10,500 );
+                
                 longuer.setValue(10);
-                LonguerSpinner.setValueFactory(longuer);
-                Longueur = LonguerSpinner.getValue();  
+                LongueurSpinner.setValueFactory(longuer);
+                Longueur = LongueurSpinner.getValue();  
                 
         //LargeurSpinner
-                 SpinnerValueFactory<Integer> largeur = 
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,20 );
+                 
                 largeur.setValue(10);
                 LargeurSpinner.setValueFactory(largeur);
                  Largeur = LargeurSpinner.getValue(); 
         //PoidsSpinner
-                SpinnerValueFactory<Integer> poids = 
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100 );
-                poids.setValue(10);
+;
+                //poids.setValue(10);
                 PoidsSpinner.setValueFactory(poids);
-                 Poids = PoidsSpinner.getValue();  
-        //NombrePlace    
-                 SpinnerValueFactory<Integer> nombrePlace = 
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100 );
-                nombrePlace.setValue(10);
-                NombrePlaceSpinner.setValueFactory(nombrePlace);
-                 NombrePlace = NombrePlaceSpinner.getValue(); 
+                 Poids = PoidsSpinner.getValue(); 
+         
+         //nombrePlace 
+            
+           nombrePlace.setValue(10);
+           NombrePlaceSpinner.setValueFactory(nombrePlace);
+           NombrePlace = NombrePlaceSpinner.getValue();
        }
     
 
@@ -132,26 +144,45 @@ public class AjoutMoyenTransportController implements Initializable {
 
     @FXML
     private void BackToMenu(MouseEvent event) {
+            Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
+            stageclose.close();
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/MInterfaceMenuMoyenTransport.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            
+            stage.show();
     }
 
 
     @FXML
     private void Insert(MouseEvent event) {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
-        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), String.valueOf(DateCirculations.getValue()) ,Etat, AccessibleHandicape, PrixAchatTf.getText(), Poids, Longueur, Largeur, Energie , NombrePlace);
+        MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), DateCirculations.getValue() ,Etat, AccessibleHandicape, PrixAchatTf.getText(), PoidsSpinner.getValue(), LongueurSpinner.getValue(), LargeurSpinner.getValue(), energie , NombrePlaceSpinner.getValue());
         MtS.ajouter(Mt);
-     /*   //refreshlist(null);
+       
         // SEND MAIL
         MailerApi mailer = new MailerApi();
-        mailer.SendMail("aminedahmen14@gmail.com", "Admin.");
+        mailer.SendMail("mahdi.homrani@esprit.tn", "Admin.");
 
         //SEND SMS
         SMSApi sms = new SMSApi();
-        sms.sendSMS("+21658932889", "Admin.");*/
+        sms.sendSMS("+21658932889", "Admin.");
     }
 
     @FXML
     private void clean(MouseEvent event) {
+        TypeComboox.setValue(null);
+        NumLigneTf.setText(null);
+        Etat=null;
+        energie=null;
+        PrixAchatTf.setText(null);
     }
 
 
@@ -162,17 +193,34 @@ public class AjoutMoyenTransportController implements Initializable {
           if(MarcheRadioButton.isSelected()) {
               Etat="En_Marche";
             }
-          else  Etat = "En Panne";
+          else if (PanneRadioButton.isSelected()){
+              Etat = "En Panne";}
                  
       }
     
-    private void getAccessible() {
-       AccessibleHandicapeToggle.selectedProperty().addListener(new ChangeListener< Boolean > () {
+    @FXML
+    private void EnergieCheckBox(ActionEvent event) {
+         if (ElectriqueCheckBox.isSelected()){
+            energie = "Electrique";}
+
+        if (DieselCheckBox.isSelected()){
+            energie = "Diesel";}
+        
+        if (EssenceCheckBox.isSelected()){
+            energie = "Essence";}
+        
+        
+    }
+
+    @FXML
+    private void AccessibleHandicapeToggle(ActionEvent event) {
+               AccessibleHandicapeToggle.selectedProperty().addListener(new ChangeListener< Boolean > () {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if (AccessibleHandicapeToggle.isSelected()==true)
+                if (AccessibleHandicapeToggle.isSelected())
                 {
-                    AccessibleHandicape = "Oui";
+                   AccessibleHandicape = "Oui" ;
+                   
                 }
                 else AccessibleHandicape = "Non";
             }
@@ -180,19 +228,21 @@ public class AjoutMoyenTransportController implements Initializable {
     }
 
 
-     
-         public void EnergiePushed()
-    {
-        
-        if (ElectriqueCheckBox.isSelected())
-            this.Energie += "\nElectrique";
-
-        if (DieselCheckBox.isSelected())
-            this.Energie = "Diesel";
-        
-        if (EssenceCheckBox.isSelected())
-            this.Energie = "Essence";
-        
-        
+    private void LargeurSpinner(MouseEvent event) {
+         Largeur = LargeurSpinner.getValue();
     }
+
+    private void PoidsSpinner(MouseEvent event) {
+        Poids = PoidsSpinner.getValue();
+    }
+
+    @FXML
+    private void LongueurSpinner(MouseEvent event) {
+        Longueur = LongueurSpinner.getValue();
+    }
+
+    private void NombrePlaceSpinner(MouseEvent event) {   
+          NombrePlace = NombrePlaceSpinner.getValue();
+    }
+
 }

@@ -1,13 +1,15 @@
 
 package dev.masters.MoyenTransport.entites;
 
+import java.time.LocalDate;
+
 
 public class MoyenDeTransport {
 
     private int id_MoyenTransport;
     private String Type;
     private String Num_ligne;
-    private String Date_de_mise_en_circulations;
+    private LocalDate Date_de_mise_en_circulations;
     private String Etat;
     private String Accessible_au_handicape ;
     private String Prix_achat;
@@ -29,7 +31,7 @@ public class MoyenDeTransport {
         return Num_ligne;
     }
 
-    public String getDate_de_mise_en_circulations() {
+    public LocalDate getDate_de_mise_en_circulations() {
         return Date_de_mise_en_circulations;
     }
 
@@ -77,9 +79,6 @@ public class MoyenDeTransport {
         this.Num_ligne = Num_ligne;
     }
 
-    public void setDate_de_mise_en_circulations(String Date_de_mise_en_circulations) {
-        this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
-    }
 
     public void setEtat(String Etat) {
         this.Etat = Etat;
@@ -113,7 +112,11 @@ public class MoyenDeTransport {
         this.Nombre_de_place = Nombre_de_place;
     }
 
-    public MoyenDeTransport(String type, String Num_ligne, String Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int longueur, int Largeur, String Energie, int Nombre_de_place) {
+    public void setDate_de_mise_en_circulations(LocalDate Date_de_mise_en_circulations) {
+        this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;
+    }
+
+    public MoyenDeTransport(String type, String Num_ligne, LocalDate Date_de_mise_en_circulations, String Etat, String Accessible_au_handicape, String Prix_achat, int Poids, int longueur, int Largeur, String Energie, int Nombre_de_place) {
         this.Type = type;
         this.Num_ligne = Num_ligne;
         this.Date_de_mise_en_circulations = Date_de_mise_en_circulations;

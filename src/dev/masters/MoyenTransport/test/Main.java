@@ -20,7 +20,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("dev/masters/MoyenTransport/Gui/AjoutMoyenTransport.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("dev/masters/MoyenTransport/Gui/InterfaceMenuMoyenTransport.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

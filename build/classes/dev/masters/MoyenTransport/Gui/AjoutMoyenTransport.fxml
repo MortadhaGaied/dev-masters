@@ -80,7 +80,7 @@
                         <Insets left="150.0" top="20.0" />
                      </HBox.margin>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="PanneRadioButton" layoutX="10.0" layoutY="10.0" text="En Panne" textFill="#fffefe">
+                  <JFXRadioButton fx:id="PanneRadioButton" layoutX="10.0" layoutY="10.0" onAction="#getEtat" text="En Panne" textFill="#fffefe">
                      <font>
                         <Font name="Courier New Bold" size="16.0" />
                      </font>
@@ -97,7 +97,7 @@
             </HBox>
             <HBox layoutY="381.0" prefHeight="56.0" prefWidth="1005.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <JFXToggleButton fx:id="AccessibleHandicapeToggle" style="-fx-background-radius: 10;" text="Accessible au handicape" textFill="#ebebeb">
+                  <JFXToggleButton fx:id="AccessibleHandicapeToggle" onAction="#AccessibleHandicapeToggle" style="-fx-background-radius: 10;" text="Accessible au handicape" textFill="#ebebeb">
                      <font>
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
@@ -129,7 +129,7 @@
                         <Insets left="150.0" top="18.0" />
                      </padding>
                   </Label>
-                  <Spinner fx:id="LonguerSpinner" editable="true" style="-fx-background-color: white; -fx-background-radius: 10;">
+                  <Spinner fx:id="LongueurSpinner" editable="true" onDragDetected="#LongueurSpinner" style="-fx-background-color: white; -fx-background-radius: 10;">
                      <HBox.margin>
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
@@ -155,7 +155,7 @@
             </HBox>
             <HBox layoutX="-14.0" layoutY="609.0" prefHeight="56.0" prefWidth="954.0" AnchorPane.leftAnchor="0.0">
                <children>
-                  <JFXCheckBox fx:id="ElectriqueCheckBox" layoutX="421.0" layoutY="10.0" text="Electrique" textFill="#f5f2f2">
+                  <JFXCheckBox fx:id="ElectriqueCheckBox" layoutX="421.0" layoutY="10.0" onAction="#EnergieCheckBox" text="Electrique" textFill="#f5f2f2">
                      <font>
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
@@ -163,7 +163,7 @@
                         <Insets left="150.0" top="20.0" />
                      </HBox.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="DieselCheckBox" layoutX="464.0" layoutY="30.0" text="Diesel" textFill="#f5f2f2">
+                  <JFXCheckBox fx:id="DieselCheckBox" layoutX="464.0" layoutY="30.0" onAction="#EnergieCheckBox" text="Diesel" textFill="#f5f2f2">
                      <font>
                         <Font name="Courier New Bold" size="15.0" />
                      </font>
@@ -171,7 +171,7 @@
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
                   </JFXCheckBox>
-                  <JFXCheckBox fx:id="EssenceCheckBox" text="Essence" textFill="#f5f2f2">
+                  <JFXCheckBox fx:id="EssenceCheckBox" onAction="#EnergieCheckBox" text="Essence" textFill="#f5f2f2">
                      <HBox.margin>
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
