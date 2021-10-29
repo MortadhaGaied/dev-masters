@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1677.0" style="-fx-background-color: #ded3de;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.MoyenTransport.Controles.GestionMoyenTransportController">
+   <children>
+      <VBox layoutX="55.0" layoutY="49.0" prefHeight="448.0" prefWidth="277.0" spacing="15.0">
+         <children>
+            <Label fx:id="Type" text="Type" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Num_ligne" text="Num ligne" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Date_de_mise_en_circulations" text="Date de mise en circulations" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Etat" text="Etat" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Assecible_au_handicape" prefHeight="22.0" prefWidth="252.0" text="Accessible au handicape " textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Prix_Achat" text="Prix achat" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Poids" text="Poids " textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Longueur" text="longueur" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Largeur" text="Largeur" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Energie" text="Energie" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Nombre_de_place" text="Nombre de place" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="390.0" layoutY="40.0" prefHeight="512.0" prefWidth="215.0" spacing="12.0">
+         <children>
+            <TextField fx:id="tfType" />
+            <TextField fx:id="tfNum_ligne" />
+            <TextField fx:id="tfDate_de_mise_en_circulations">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="tfEtat" />
+            <TextField fx:id="tfAccessible_au_handicapes" />
+            <TextField fx:id="tfPrix_achat" />
+            <TextField fx:id="tfPoids" />
+            <TextField fx:id="tfLongueur" />
+            <TextField fx:id="tfLargeur" />
+            <TextField fx:id="tfEnergie" />
+            <TextField fx:id="tfNombre_de_place" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvMoyen_de_transport" layoutX="721.0" layoutY="17.0" onMouseClicked="#Affecter" prefHeight="421.0" prefWidth="910.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="colNum_ligne" prefWidth="75.0" text="Num ligne" />
+            <TableColumn fx:id="colDate_de_mise_en_circulations" prefWidth="75.0" text="Date de mise en circulations" />
+            <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
+            <TableColumn fx:id="colAccessible_au_handicapes" prefWidth="75.0" text="Accessible au handicape " />
+            <TableColumn fx:id="colPrix_achat" prefWidth="75.0" text="Prix achat" />
+            <TableColumn fx:id="colPoids" prefWidth="75.0" text="Poids " />
+            <TableColumn fx:id="colLongueur" prefWidth="75.0" text="longueur" />
+            <TableColumn fx:id="colLargeur" prefWidth="75.0" text="Largeur" />
+            <TableColumn fx:id="colEnergie" prefWidth="75.0" text="Energie" />
+            <TableColumn fx:id="colNombre_de_place" prefWidth="75.0" text="Nombre de place" />
+        </columns>
+      </TableView>
+      <Label fx:id="LbId" layoutX="400.0" layoutY="487.0" prefHeight="45.0" prefWidth="252.0" visible="false" />
+      <TextField fx:id="tfRecherche" layoutX="839.0" layoutY="485.0" prefHeight="25.0" prefWidth="167.0" />
+      <Label layoutX="721.0" layoutY="484.0" prefHeight="27.0" prefWidth="107.0" text="Recherche" textFill="#230afc">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnInsert" layoutX="26.0" layoutY="559.0" onMouseClicked="#Insert" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: #00E676; -fx-background-radius: 10;" styleClass="btn" text="Insert">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="474.0" layoutY="559.0" onMouseClicked="#Delete" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: #FFFF00; -fx-background-radius: 10;" styleClass="btn" text="Clean">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="686.0" layoutY="561.0" onMouseClicked="#Statistique" prefHeight="47.0" prefWidth="178.0" style="-fx-background-color: skyblue; -fx-background-radius: 10;" styleClass="btn" text="Statistique">
+         <font>
+            <Font name="Century Gothic" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnUpdate" layoutX="243.0" layoutY="559.0" onMouseClicked="#Update" prefHeight="51.0" prefWidth="178.0" style="-fx-background-color: orange; -fx-background-radius: 10;" styleClass="btn" text="Update">
+         <font>
+            <Font name="Century Gothic Bold" size="24.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
