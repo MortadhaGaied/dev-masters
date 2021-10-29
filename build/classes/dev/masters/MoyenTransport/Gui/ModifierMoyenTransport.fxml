@@ -249,7 +249,7 @@
             <Image url="@../asset/go-back.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tvMoyen_de_transport" layoutX="337.0" layoutY="163.0" onMouseClicked="#Affecter" prefHeight="469.0" prefWidth="855.0">
+      <TableView fx:id="tvMoyen_de_transport" layoutX="337.0" layoutY="163.0" onMouseClicked="#Affecter" prefHeight="469.0" prefWidth="855.0" stylesheets="@modifiermoyentransport.css">
          <columns>
             <TableColumn fx:id="colId" prefWidth="55.0" text="Id" />
             <TableColumn fx:id="colType" prefWidth="70.0" text="Type" />

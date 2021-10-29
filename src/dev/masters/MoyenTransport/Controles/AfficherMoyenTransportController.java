@@ -29,6 +29,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -172,6 +176,19 @@ public class AfficherMoyenTransportController implements Initializable {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         MtS.supprimer(Long.parseLong(LbId.getText()));
         refreshlist(null);
+        
+        //Notification
+        String tilte;
+        String message;
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tilte = "Delect Successful";
+        message ="Moyen de Transport à été supprimer";
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
     }
 
         private void rechercher(String req) {

@@ -1,2 +1,0 @@
-# dev-masters
-pidev team

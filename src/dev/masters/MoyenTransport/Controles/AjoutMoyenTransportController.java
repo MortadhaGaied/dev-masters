@@ -21,9 +21,11 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,6 +39,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -166,7 +173,20 @@ public class AjoutMoyenTransportController implements Initializable {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), DateCirculations.getValue() ,Etat, AccessibleHandicape, PrixAchatTf.getText(), PoidsSpinner.getValue(), LongueurSpinner.getValue(), LargeurSpinner.getValue(), energie , NombrePlaceSpinner.getValue());
         MtS.ajouter(Mt);
-       
+        
+        //Notification
+        String tilte;
+        String message;
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tilte = "Added Successful";
+        message ="Moyen de Transport ajoutée avec succes";
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
+        
         // SEND MAIL
         MailerApi mailer = new MailerApi();
         mailer.SendMail("mahdi.homrani@esprit.tn", "Admin.");
@@ -174,7 +194,13 @@ public class AjoutMoyenTransportController implements Initializable {
         //SEND SMS
         SMSApi sms = new SMSApi();
         sms.sendSMS("+21658932889", "Admin.");
+       
+
+        
+
+  
     }
+    
 
     @FXML
     private void clean(MouseEvent event) {

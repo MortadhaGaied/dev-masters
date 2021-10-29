@@ -40,6 +40,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -233,6 +237,19 @@ public class ModifierMoyenTransportController implements Initializable {
         ServiceMoyenDeTransport MtS = new ServiceMoyenDeTransport();
         MoyenDeTransport Mt = new MoyenDeTransport(TypeComboox.getValue(), NumLigneTf.getText(), DateCirculations.getValue() ,Etat, AccessibleHandicape, PrixAchatTf.getText(), PoidsSpinner.getValue(), LongueurSpinner.getValue(), LargeurSpinner.getValue(), energie , NombrePlaceSpinner.getValue());
         MtS.ajouter(Mt);
+        
+        //Notification
+        String tilte;
+        String message;
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+        tray.setAnimationType(type);
+        tilte = "modify Successful";
+        message ="Moyen de Transport à été Modifier avec succes";
+        tray.setTitle(tilte);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
     }
 
     @FXML
