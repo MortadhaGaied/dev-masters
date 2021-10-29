@@ -13,11 +13,14 @@ import java.time.LocalDateTime;
  */
 public class Reservation {
     private long id_reservation ;
+
     private LocalDateTime date ;
     private String etat ;
 
+
     public Reservation() {
     }
+
 
     public Reservation(LocalDateTime date, String etat) {
         this.date = date;
@@ -28,6 +31,7 @@ public class Reservation {
         this.id_reservation = id_reservation;
         this.date = date;
         this.etat = etat;
+
     }
 
     public long getId_reservation() {
@@ -37,6 +41,7 @@ public class Reservation {
     public void setId_reservation(long id_reservation) {
         this.id_reservation = id_reservation;
     }
+
 
     public LocalDateTime getDate() {
         return date;
@@ -52,11 +57,14 @@ public class Reservation {
 
     public void setEtat(String etat) {
         this.etat = etat;
+
     }
 
     @Override
     public String toString() {
+
         return "Reservation{" + "id_reservation=" + id_reservation + ", date=" + date + ", etat=" + etat + '}'+"\n";
+
     }
     
 }

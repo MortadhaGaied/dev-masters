@@ -5,10 +5,7 @@
  */
 package dev.masters.entites;
 
-/**
- *
- * @author Mortadha
- */
+
 public class Reclamation {
     private long id_reclamation;
     private String username_reclamation;
