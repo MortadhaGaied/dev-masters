@@ -8,6 +8,7 @@ package dev.masters.GUI;
 import dev.masters.entites.Roles;
 import dev.masters.entites.User;
 import dev.masters.services.ServiceUser;
+import dev.masters.utils.JavaMail;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -41,6 +42,7 @@ public class SigninController implements Initializable {
     private DatePicker DPbirthday;
     
     ServiceUser su = new ServiceUser() ;
+    JavaMail mail = new JavaMail();
 
     /**
      * Initializes the controller class.
@@ -49,6 +51,14 @@ public class SigninController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    public static boolean isNumeric(String str) { 
+        try {  
+          Integer.parseInt(str);  
+          return true;
+        } catch(NumberFormatException e){  
+          return false;  
+        }  
+    }
 
     @FXML
     private void Signin(ActionEvent event) {
@@ -74,6 +84,9 @@ public class SigninController implements Initializable {
         if(DPbirthday.getValue().toString().trim().isEmpty()){
             errors.append("- Please enter a Birthday.\n");
         }
+        if(!isNumeric(TFnumber.getText())){
+            errors.append("- Please enter a Valid Number.\n");
+        }
         if (errors.length() > 0) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
@@ -83,8 +96,17 @@ public class SigninController implements Initializable {
             alert.showAndWait();
         }
         else{
-            User u = new User(TFfirstname.getText(),TFlastname.getText(),TFemail.getText(),TFusername_signup.getText(),PFpassword_signup.getText(),Integer.parseInt(TFnumber.getText()),Roles.CLIENT,DPbirthday.getValue().atStartOfDay());
+            User u = new User(TFfirstname.getText(),
+                    TFlastname.getText(),
+                    TFemail.getText(),
+                    TFusername_signup.getText(),
+                    PFpassword_signup.getText(),
+                    Integer.parseInt(TFnumber.getText()),
+                    Roles.CLIENT,
+                    DPbirthday.getValue().atStartOfDay()
+            );
             su.ajouter(u);
+            
         }
     }
     

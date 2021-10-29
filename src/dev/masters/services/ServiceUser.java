@@ -117,7 +117,7 @@ public class ServiceUser implements IService<User>{
         }
         return user;
     }
-    public User SortByUsername(String username) throws SQLException{
+    public User SearchByUsername(String username) throws SQLException{
         Statement stm = cnx.createStatement();
         User user =new User();
         String query ="SELECT * FROM user where username='"+username+"'";

@@ -12,5 +12,9 @@ package dev.masters.entites;
 public enum Roles {
     ADMIN,
     CLIENT,
-    EMPLOYE
+    RESPONSABLE_VOYAGE,
+    RESPONSABLE_MDT,
+    RESPONSABLE_RESERVATION,
+    RESPONSABLE_RECLAMATION,
+    RESPONSABLE_ABONNEMENT
 }

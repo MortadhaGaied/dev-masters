@@ -86,7 +86,7 @@ public class dashboardController implements Initializable {
 
     @FXML
     private void gotoGestionReclamation() {
-        setUi("DashboardForm");
+        setUi("FXMLGSTreclamation");
         new FadeIn(context).play();
     }
 
@@ -98,7 +98,7 @@ public class dashboardController implements Initializable {
 
     @FXML
     private void gotoGestionReservation() {
-        setUi("DashboardForm");
+        setUi("FXMLGSTreservation");
         new FadeIn(context).play();
     }
 

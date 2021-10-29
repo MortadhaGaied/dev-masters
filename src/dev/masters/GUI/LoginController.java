@@ -10,7 +10,9 @@ import com.restfb.FacebookClient;
 import com.restfb.Parameter;
 import com.restfb.Version;
 import com.restfb.json.JsonObject;
-import com.restfb.types.User;
+import dev.masters.entites.Roles;
+
+import dev.masters.entites.User;
 import dev.masters.oauth.OAuthAuthenticator;
 import dev.masters.oauth.OAuthFacebookAuthenticator;
 import dev.masters.oauth.OAuthGoogleAuthenticator;
@@ -99,29 +101,60 @@ public class LoginController implements Initializable {
         }
         else{
             try {
-                if(su.checkLogin(username_login.getText(), password_login.getText())){
-                    System.out.println("Your loged in");
+                try {
+                    if(su.checkLogin(username_login.getText(), password_login.getText())){
+                        System.out.println("Your loged in");
+                    }
+                    else{
+                        System.out.println("Check ur username or password!");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                else{
-                    System.out.println("Check ur username or password!");
+                Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
+                stageclose.close();
+                if(su.SearchByUsername(username_login.getText()).getRole()==Roles.ADMIN){
+                    FXMLLoader loader = new FXMLLoader ();
+                    loader.setLocation(getClass().getResource("/dev/masters/GUI/Dashboard.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.show();
+                }
+                else if(su.SearchByUsername(username_login.getText()).getRole()==Roles.RESPONSABLE_RECLAMATION){
+                    FXMLLoader loader = new FXMLLoader ();
+                    loader.setLocation(getClass().getResource("/dev/masters/GUI/FXMLGSTreclamation.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.show();
+                }
+                else if(su.SearchByUsername(username_login.getText()).getRole()==Roles.RESPONSABLE_RESERVATION){
+                    FXMLLoader loader = new FXMLLoader ();
+                    loader.setLocation(getClass().getResource("/dev/masters/GUI/FXMLGSTreservation.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.show();
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
-            stageclose.close();
-            FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/GUI/FXMLGSTuser.fxml"));
-            try {
-                loader.load();
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-            Parent parent = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(parent));
-            
-            stage.show();
         }
     }
 
@@ -130,11 +163,12 @@ public class LoginController implements Initializable {
         
         String FACEBOOK_clientID = "1198561063966256";
         String FACEBOOK_redirectUri = "http://localhost/";
-        String FACEBOOK_fieldsString = "id,name,first_name,last_name,email,birthday";
+        String FACEBOOK_fieldsString = "id,name,first_name,last_name,email,birthday,gender";
         String FACEBOOK_clientSecret = "fc8dc02838807fafeb2eb1c561c7c055";
 
         OAuthAuthenticator authFB = new OAuthFacebookAuthenticator(FACEBOOK_clientID, FACEBOOK_redirectUri, FACEBOOK_clientSecret, FACEBOOK_fieldsString);
         authFB.startLogin(event);
+        
         
 
 

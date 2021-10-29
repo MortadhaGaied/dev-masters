@@ -22,12 +22,12 @@
          </effect>
          <children>
             <Pane layoutX="923.0" layoutY="32.0" prefHeight="28.0" prefWidth="241.0" style="-fx-background-color: #ff4757;" />
-            <JFXButton alignment="TOP_CENTER" layoutX="922.0" layoutY="31.0" prefHeight="207.0" prefWidth="241.0" text="SOLD ITEMS">
+            <JFXButton alignment="TOP_CENTER" layoutX="922.0" layoutY="31.0" prefHeight="207.0" prefWidth="241.0" text="Nombre des reclamations">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </JFXButton>
-            <Label fx:id="SoldItem" layoutX="1019.0" layoutY="178.0" prefHeight="40.0" prefWidth="131.0" text="0">
+            <Label fx:id="nbRec" layoutX="1028.0" layoutY="178.0" prefHeight="40.0" prefWidth="131.0" text="0">
                <font>
                   <Font name="Arial Black" size="27.0" />
                </font>
@@ -37,13 +37,13 @@
             </Label>
          </children></Pane>
       <Pane layoutX="643.0" layoutY="136.0" prefHeight="28.0" prefWidth="241.0" style="-fx-background-color: #00a8ff;" />
-      <JFXButton alignment="TOP_CENTER" layoutX="643.0" layoutY="136.0" prefHeight="207.0" prefWidth="241.0" text="TOTAL CUSTOMERS">
+      <JFXButton alignment="TOP_CENTER" layoutX="643.0" layoutY="136.0" prefHeight="207.0" prefWidth="241.0" text="Nombres des utilisateur">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <Pane layoutX="346.0" layoutY="136.0" prefHeight="28.0" prefWidth="241.0" style="-fx-background-color: #747d8c;" />
-      <JFXButton alignment="TOP_CENTER" layoutX="346.0" layoutY="136.0" prefHeight="207.0" prefWidth="241.0" text="TOTAL ORDERS">
+      <Pane layoutX="346.0" layoutY="136.0" prefHeight="28.0" prefWidth="274.0" style="-fx-background-color: #747d8c;" />
+      <JFXButton alignment="TOP_CENTER" layoutX="346.0" layoutY="136.0" prefHeight="207.0" prefWidth="274.0" text="Nombre des Moyens de transport">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -58,12 +58,12 @@
             <Image url="@../../../../../PiDev/Thile-Showroom-master/src/resources/sold.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="73.0" fitWidth="72.0" layoutX="429.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="73.0" fitWidth="72.0" layoutX="440.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../PiDev/Thile-Showroom-master/src/resources/visit.png" />
          </image>
       </ImageView>
-      <Label fx:id="txtTotalCustomers" layoutX="754.0" layoutY="280.0" prefHeight="40.0" prefWidth="50.0" text="0">
+      <Label fx:id="nbUser" layoutX="754.0" layoutY="280.0" prefHeight="40.0" prefWidth="50.0" text="0">
          <font>
             <Font name="Arial Black" size="27.0" />
          </font>
@@ -71,7 +71,7 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <Label fx:id="TotalOrders" layoutX="452.0" layoutY="280.0" prefHeight="40.0" prefWidth="103.0" text="0">
+      <Label fx:id="nbMDT" layoutX="465.0" layoutY="280.0" prefHeight="40.0" prefWidth="103.0" text="0">
          <font>
             <Font name="Arial Black" size="27.0" />
          </font>
@@ -103,7 +103,7 @@
          </children>
       </Pane>
       <Pane layoutX="51.0" layoutY="136.0" prefHeight="28.0" prefWidth="241.0" style="-fx-background-color: #FED501;" />
-      <JFXButton alignment="TOP_CENTER" layoutX="51.0" layoutY="136.0" prefHeight="207.0" prefWidth="241.0" text="TOTAL SALES">
+      <JFXButton alignment="TOP_CENTER" layoutX="51.0" layoutY="136.0" prefHeight="207.0" prefWidth="241.0" text="Totale du vente">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -123,7 +123,7 @@
          </image>
       </ImageView>
       <Pane layoutY="392.0" prefHeight="40.0" prefWidth="1226.0" style="-fx-background-color: #121212;" />
-      <Label fx:id="TotalSales" layoutX="121.0" layoutY="289.0" prefHeight="40.0" prefWidth="147.0" text="0">
+      <Label fx:id="totalvente" layoutX="121.0" layoutY="289.0" prefHeight="40.0" prefWidth="147.0" text="0">
          <font>
             <Font name="Arial Black" size="27.0" />
          </font>

@@ -5,6 +5,7 @@
  */
 package dev.masters.GUI;
 
+import dev.masters.services.ServiceReclamation;
 import dev.masters.services.ServiceUser;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,18 +29,12 @@ public class test implements Initializable {
 
     @FXML
     private Pane DashPane;
-    @FXML
-    private Label SoldItem;
-    @FXML
     private Label txtTotalCustomers;
-    @FXML
     private Label TotalOrders;
     @FXML
     private Pane DashPane1;
     @FXML
     private AreaChart<String, Number> areaChart;
-    @FXML
-    private Label TotalSales;
     @FXML
     private BarChart<String, Number> TransportChart;
     @FXML
@@ -51,6 +46,15 @@ public class test implements Initializable {
     @FXML
     private CategoryAxis MoyenBarchart;
     ServiceUser se = new ServiceUser();
+    ServiceReclamation sr =new ServiceReclamation();
+    @FXML
+    private Label nbRec;
+    @FXML
+    private Label nbUser;
+    @FXML
+    private Label nbMDT;
+    @FXML
+    private Label totalvente;
 
     /**
      * Initializes the controller class.
@@ -73,6 +77,8 @@ public class test implements Initializable {
     }
     public void Userinfo(){
         txtTotalCustomers.setText(String.valueOf(se.nbUser()));
+        TotalOrders.setText(String.valueOf(sr.nbReclamation()));
+        
     }
     public void loadchart(){
         XYChart.Series series =new XYChart.Series();

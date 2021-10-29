@@ -1,5 +1,8 @@
 package dev.masters.oauth;
 
+import dev.masters.entites.Roles;
+import dev.masters.entites.User;
+import dev.masters.services.ServiceUser;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
@@ -15,6 +18,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -37,6 +42,8 @@ public abstract class OAuthAuthenticator {
     private String clientID;
     private String redirectUri;
     private String clientSecret;
+    public JSONObject returnedJSON;
+    ServiceUser su=new ServiceUser();
 
     private Stage stage;
 
@@ -91,10 +98,12 @@ public abstract class OAuthAuthenticator {
                         accessToken = doGetAccessTokenRequest(accessCode);
                      
 
-                        JSONObject returnedJson = doGetAccountInfo(accessToken);
+                         returnedJSON = doGetAccountInfo(accessToken);
+                         System.out.println(returnedJSON.length());
+                         System.out.println(returnedJSON);
 
-                        accessedJsonData = new JSONObject(returnedJson);
-                        System.out.println(returnedJson.toString());
+                        accessedJsonData = new JSONObject(returnedJSON);
+                        
 
                         gotData = true;
                         notifyLoginViewCompleted(e);
@@ -146,6 +155,21 @@ public abstract class OAuthAuthenticator {
 
     private void notifyLoginViewCompleted(Event event) {
         if(gotData) {
+            if(returnedJSON.length()==7){
+                User u;
+                u = new User();
+                u.setFirst_name(returnedJSON.get("first_name").toString());
+                u.setLast_name(returnedJSON.get("last_name").toString());
+                u.setEmail(returnedJSON.get("email").toString());
+                u.setUsername(returnedJSON.get("name").toString());
+
+                String str =returnedJSON.get("birthday").toString().replace("/", "-").substring(6, 10)+"-"+returnedJSON.get("birthday").toString().replace("/", "-").substring(0, 2)+returnedJSON.get("birthday").toString().replace("/", "-").substring(2, 5)+" 00:00";
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+                u.setBirthday(dateTime);
+                u.setRole(Roles.CLIENT);
+                su.ajouter(u);
+            }
             Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
