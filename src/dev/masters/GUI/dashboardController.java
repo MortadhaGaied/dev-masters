@@ -92,7 +92,7 @@ public class dashboardController implements Initializable {
 
     @FXML
     private void gotoGestionAbonnement() {
-        setUi("DashboardForm");
+        setUi("menu");
         new FadeIn(context).play();
     }
 

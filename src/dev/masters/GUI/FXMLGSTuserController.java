@@ -88,7 +88,7 @@ public class FXMLGSTuserController implements Initializable {
     private TableColumn<User, LocalDateTime> AUD_userc;
     
     ServiceUser su =new ServiceUser();
-    long id_user_modifier;
+    long id_user_modifier=0;
     ObservableList<User> data=FXCollections.observableArrayList();
     
 

@@ -147,6 +147,19 @@ public class LoginController implements Initializable {
                 stage.setScene(new Scene(parent));
                 stage.show();
                 }
+                else if(su.SearchByUsername(username_login.getText()).getRole()==Roles.RESPONSABLE_ABONNEMENT){
+                    FXMLLoader loader = new FXMLLoader ();
+                    loader.setLocation(getClass().getResource("/dev/masters/GUI/Menu.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+                Parent parent = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(parent));
+                stage.show();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
