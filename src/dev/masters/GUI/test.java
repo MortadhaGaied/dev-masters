@@ -76,13 +76,13 @@ public class test implements Initializable {
     }
     public void loadchart(){
         XYChart.Series series =new XYChart.Series();
-        series.getData().add(new XYChart.Data("1",23));
-        series.getData().add(new XYChart.Data("2",65));
-        series.getData().add(new XYChart.Data("3",68));
-        series.getData().add(new XYChart.Data("4",32));
-        series.getData().add(new XYChart.Data("5",56));
-        series.getData().add(new XYChart.Data("6",76));
-        series.getData().add(new XYChart.Data("7",44));
+        series.getData().add(new XYChart.Data("Janvier",23));
+        series.getData().add(new XYChart.Data("Fevrier",65));
+        series.getData().add(new XYChart.Data("Mars",68));
+        series.getData().add(new XYChart.Data("Avril",32));
+        series.getData().add(new XYChart.Data("Mai",56));
+        series.getData().add(new XYChart.Data("Juin",76));
+        series.getData().add(new XYChart.Data("Juillet",44));
         areaChart.getData().add(series);
     }
     
