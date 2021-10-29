@@ -25,7 +25,7 @@ public class voyageMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try{
-        Parent root = FXMLLoader.load(getClass().getResource("GestionVoyage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("VoyageMenu.fxml"));
         
         Scene scene = new Scene(root);
 

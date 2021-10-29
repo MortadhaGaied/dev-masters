@@ -18,7 +18,7 @@ public class Voyage  {
     private Position position_depart,position_arrive;
     private LocalDateTime date_de_voyage;
     private Station station;
-    private MoyenTransport moyen_transport;
+    private MoyenDeTransport moyen_transport;
     private List<Station> stationsparVoyage = new ArrayList<Station>();
     
     
@@ -27,7 +27,7 @@ public class Voyage  {
     }
     
     //voyage sans ID
-    public Voyage(Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenTransport moyen_transport){
+    public Voyage(Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenDeTransport moyen_transport){
         
         this.position_depart=position_depart;
         this.position_arrive=position_arrive;
@@ -37,7 +37,7 @@ public class Voyage  {
     }
     
     //instantiation complete du voyage
-    public Voyage(int id,Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenTransport moyen_transport){
+    public Voyage(int id,Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenDeTransport moyen_transport){
         this.id=id;
         this.position_depart=position_depart;
         this.position_arrive=position_arrive;
@@ -119,19 +119,19 @@ public class Voyage  {
     /**
      * @return the moyen_transport
      */
-    public MoyenTransport getMoyen_transport() {
+    public MoyenDeTransport getMoyen_transport() {
         return moyen_transport;
     }
 
     /**
      * @param moyen_transport the moyen_transport to set
      */
-    public void setMoyen_transport(MoyenTransport moyen_transport) {
+    public void setMoyen_transport(MoyenDeTransport moyen_transport) {
         this.moyen_transport = moyen_transport;
     }
     
     
     public String toString(){
-        return "Voyage{ \n id = "+this.getId()+" \n position de depart = ( "+ this.getPosition_depart().getGoogleMapsPostionFormat()+" )"+"\n position d'arrive = ( "+this.getPosition_arrive().getGoogleMapsPostionFormat()+" )"+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getRefStation()+"\n Moyen de transport = "+this.getMoyen_transport().getRef_mt()+"}" ;
+        return "Voyage{ \n id = "+this.getId()+" \n position de depart = ( "+ this.getPosition_depart().getGoogleMapsPostionFormat()+" )"+"\n position d'arrive = ( "+this.getPosition_arrive().getGoogleMapsPostionFormat()+" )"+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getRefStation()+"\n Moyen de transport = "+this.getMoyen_transport().getId_MoyenTransport()+"}" ;
     }
 }

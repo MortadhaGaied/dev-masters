@@ -11,6 +11,15 @@ package dev.masters.entites;
  */
 public class Station {
     
+    private int id_station;
+
+    public int getId_station() {
+        return id_station;
+    }
+
+    public void setId_station(int id_station) {
+        this.id_station = id_station;
+    }
     private String nom_station,position,RefStation;
 
     
@@ -68,6 +77,13 @@ public class Station {
     public void setRefStation(String RefStation) {
         this.RefStation = RefStation;
     }
+
+    @Override
+    public String toString() {
+        return   RefStation ;
+    }
+
+    
     
     
 }

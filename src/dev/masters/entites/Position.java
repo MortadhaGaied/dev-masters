@@ -20,6 +20,11 @@ public class Position {
     public Position(){
         
     }
+
+    @Override
+    public String toString() {
+        return this.latitude+", "+this.longitude;
+    }
     
     
     

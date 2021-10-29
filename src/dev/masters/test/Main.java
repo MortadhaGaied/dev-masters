@@ -5,11 +5,12 @@
  */
 package dev.masters.test;
 
-import dev.masters.entites.MoyenTransport;
+import dev.masters.entites.MoyenDeTransport;
 import dev.masters.entites.Position;
 import dev.masters.entites.Station;
 import dev.masters.entites.Voyage;
 import dev.masters.services.VoyageService;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,30 +30,30 @@ public class Main {
         Position posisiton_depart=new Position("123","13154");
         Position position_arrive=new Position("123","1315");
         Station station = new Station("sousse", "123465,123465", "13b");
-        MoyenTransport mt = new MoyenTransport(1,"123abc");
         
+        MoyenDeTransport mt = new MoyenDeTransport(53,"Métro", "2","2021-10-07", "En_Marche", "Oui", "123", 0, 0, 0, "En_Marche", 0);
         Voyage voyage = new Voyage(posisiton_depart, position_arrive, LocalDateTime.now(), station, mt);
         
         
         VoyageService vs = new VoyageService();
-        //vs.ajouter(voyage);
-        System.out.println("voyage by id :  \n");
-         System.out.println(vs.GetVoyageById(17L));
-         System.out.println("recherche avancee by date");
+        vs.ajouter(voyage);
+        
+       // System.out.println("voyage by id :  \n");
+        // System.out.println(vs.GetVoyageById(17L));
+         //System.out.println("recherche avancee by date");
          //System.out.println(vs.getVoyagesByRefStation("13b"));
-         System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));
-         /*
+         //System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));
+         
         try {
-            vs.modifier(17, voyage);
-            
-            for(Voyage v:vs.afficher()){
-                System.out.println( v.toString());
-            }
+            //vs.modifier(17, voyage);
+           // vs.archiver(voyage);
+            //vs.desarchiver(voyage);
+            System.out.println(vs.afficher());
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-       */
+       
     }
     
 }
