@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dev.masters.GUI.Controles;
 
 import com.jfoenix.controls.JFXCheckBox;
@@ -45,11 +41,7 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-/**
- * FXML Controller class
- *
- * @author Mahdi
- */
+
 public class AjoutMoyenTransportController implements Initializable {
 
     @FXML
@@ -101,9 +93,6 @@ public class AjoutMoyenTransportController implements Initializable {
     private StackPane EnergieStackPanne;
 
     
-     /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
