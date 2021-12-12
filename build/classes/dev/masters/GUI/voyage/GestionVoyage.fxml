@@ -19,34 +19,39 @@
 
 <AnchorPane id="AnchorPane" prefHeight="688.0" prefWidth="1677.0" style="-fx-background-color: #ded3de;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.masters.GUI.voyage.GestionVoyageController">
    <children>
-      <ImageView fitHeight="688.0" fitWidth="1684.0" layoutX="-3.0" layoutY="-16.0" pickOnBounds="true" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-4.0">
+      <ImageView fitHeight="688.0" fitWidth="1684.0" layoutX="-3.0" pickOnBounds="true" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-4.0">
          <image>
             <Image url="@../asset/Background.jpg" />
          </image>
       </ImageView>
-      <VBox layoutX="48.0" layoutY="73.0" prefHeight="245.0" prefWidth="284.0" spacing="15.0">
+      <VBox layoutX="48.0" layoutY="73.0" prefHeight="294.0" prefWidth="284.0" spacing="15.0">
          <children>
             <Label fx:id="Type1" text="ID Voyage" textFill="#2f1b97">
                <font>
                   <Font name="Eras Bold ITC" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="Type" text="Position Depart" textFill="#2f1b97">
+            <Label fx:id="Type" text="Ref.Voyage" textFill="#2f1b97">
                <font>
                   <Font name="Eras Bold ITC" size="18.0" />
                </font>
             </Label>
-            <Label text="Position Arrivé" textFill="#2f1b97">
+            <Label fx:id="tf_date" text="Date Depart" textFill="#2f1b97">
                <font>
                   <Font name="Eras Bold ITC" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="tf_date" text="Date" textFill="#2f1b97">
+            <Label fx:id="tf_date1" text="Date Arrivé" textFill="#2f1b97">
                <font>
                   <Font name="Eras Bold ITC" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="tf_station" text="Station" textFill="#2f1b97">
+            <Label fx:id="tf_station" text="Station Depart" textFill="#2f1b97">
+               <font>
+                  <Font name="Eras Bold ITC" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="tf_station1" text="Station Arrivé" textFill="#2f1b97">
                <font>
                   <Font name="Eras Bold ITC" size="18.0" />
                </font>
@@ -58,29 +63,31 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="389.0" layoutY="70.0" prefHeight="221.0" prefWidth="215.0" spacing="12.0">
+      <VBox layoutX="389.0" layoutY="70.0" prefHeight="294.0" prefWidth="215.0" spacing="12.0">
          <children>
             <TextField fx:id="tf_idVoyage" disable="true" editable="false" opacity="0.54" />
-            <TextField fx:id="tf_pd" layoutX="10.0" layoutY="10.0" opacity="0.54" />
-            <TextField fx:id="tf_pa" opacity="0.54" />
+            <TextField fx:id="tf_ref_voy" layoutX="10.0" layoutY="10.0" opacity="0.54" />
             <DatePicker fx:id="dp_date" opacity="0.54" style="-fx-background-color: #121212;" />
+            <DatePicker fx:id="dp_date_arrive" opacity="0.54" style="-fx-background-color: #121212;" />
             <ComboBox fx:id="cb_station" opacity="0.54" prefWidth="150.0" />
+            <ComboBox fx:id="cb_station_arrive" opacity="0.54" prefWidth="150.0" />
             <ComboBox fx:id="cb_mt" opacity="0.54" prefWidth="150.0" />
          </children>
       </VBox>
       <TableView fx:id="tv_voyage" layoutX="708.0" layoutY="180.0" onMouseClicked="#Affecter" opacity="0.8" prefHeight="421.0" prefWidth="910.0" style="-fx-background-color: #121212;">
         <columns>
           <TableColumn fx:id="col_Id" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="cold_pd" prefWidth="194.0" text="Position Depart" />
-            <TableColumn fx:id="cold_pa" prefWidth="170.0" text="Position Arrivé" />
-            <TableColumn fx:id="col_date" minWidth="0.0" prefWidth="170.0" text="Date Voyage" />
-            <TableColumn fx:id="col_station" minWidth="0.0" prefWidth="138.0" text="Station" />
-            <TableColumn fx:id="col_mt" minWidth="0.0" prefWidth="162.0" text="Moyen De Transport" />
+          <TableColumn fx:id="cold_ref_voy" prefWidth="132.0" text="Ref.Voyage" />
+            <TableColumn fx:id="cold_mt" prefWidth="164.0" text="Moyen De Transport" />
+            <TableColumn fx:id="col_station_depart" minWidth="0.0" prefWidth="155.0" text="Station Depart" />
+            <TableColumn fx:id="col_stationArrivé" minWidth="0.0" prefWidth="117.0" text="Station Arrivé" />
+            <TableColumn fx:id="col_dd" minWidth="0.0" prefWidth="130.0" text="Date Depart" />
+            <TableColumn fx:id="col_DA" minWidth="0.0" prefWidth="136.0" text="Date Arrivé" />
         </columns>
       </TableView>
-      <Button fx:id="btn_ajouter" layoutX="30.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#Insert" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #b3ffb3;" text="Ajouter" textFill="#111111" />
-      <Button fx:id="btn_update" layoutX="173.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#Update" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: orange;" text="Modifier" />
-      <Button fx:id="btn_delete" layoutX="459.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="Supprimer" />
+      <Button fx:id="btn_ajouter" layoutX="19.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#Insert" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: #b3ffb3;" text="Ajouter" textFill="#111111" />
+      <Button fx:id="btn_update" layoutX="162.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#Update" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: orange;" text="Modifier" />
+      <Button fx:id="btn_delete" layoutX="456.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="Supprimer" />
       <Label fx:id="LbId" layoutX="400.0" layoutY="487.0" prefHeight="45.0" prefWidth="252.0" visible="false" />
       <TextField fx:id="tf_recherche" layoutX="982.0" layoutY="111.0" opacity="0.39" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #121212;" />
       <Label layoutX="758.0" layoutY="113.0" prefHeight="25.0" prefWidth="194.0" text="Recherche" textFill="#230afc">
@@ -88,8 +95,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <WebView layoutX="76.0" layoutY="328.0" prefHeight="221.0" prefWidth="437.0" />
-      <Button fx:id="btn_archiver" layoutX="319.0" layoutY="567.0" mnemonicParsing="false" onAction="#archiver" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="archiver" />
+      <WebView layoutX="77.0" layoutY="376.0" prefHeight="236.0" prefWidth="469.0" />
+      <Button fx:id="btn_archiver" layoutX="310.0" layoutY="620.0" mnemonicParsing="false" onAction="#archiver" onMouseClicked="#Delete" prefHeight="34.0" prefWidth="115.0" style="-fx-background-color: red;" text="archiver" />
       <Label layoutX="758.0" layoutY="62.0" text="Critere De Recherche :" />
       <JFXButton fx:id="btn_retour" layoutX="30.0" layoutY="21.0" onAction="#backToDashBoard" text="&lt;-retour" />
       <JFXRadioButton fx:id="rb_All" layoutX="905.0" layoutY="62.0" text="All">

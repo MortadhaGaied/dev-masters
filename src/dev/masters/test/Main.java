@@ -2,6 +2,10 @@
 
 package dev.masters.test;
 
+import dev.masters.entites.Voyage;
+import dev.masters.services.VoyageService;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,8 +34,37 @@ public class Main extends Application {
       @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+       // TODO code application logic here
+        
+        
+        
+       
+        
+        
+        
+        
+        VoyageService vs = new VoyageService();
+        
+        
+       // System.out.println("voyage by id :  \n");
+        // System.out.println(vs.GetVoyageById(17L));
+         //System.out.println("recherche avancee by date");
+         //System.out.println(vs.getVoyagesByRefStation("13b"));
+         //System.out.println(vs.getVoyagesByDate(LocalDateTime.now()));
+         
+        try {
+            //vs.modifier(17, voyage);
+           // vs.archiver(voyage);
+            //vs.desarchiver(voyage);
+            System.out.println(vs.afficher());
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+       
     }
+
+    
 
 }
   

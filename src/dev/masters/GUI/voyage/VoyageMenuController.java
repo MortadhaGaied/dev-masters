@@ -61,15 +61,10 @@ public class VoyageMenuController implements Initializable {
     private TableView<Voyage> tv_voyages;
     @FXML
     private TableColumn<Voyage, Long> col_id;
-    @FXML
     private TableColumn<Voyage, String> col_p_d;
-    @FXML
     private TableColumn<Voyage, String> col_p_a;
-    @FXML
     private TableColumn<Voyage, java.sql.Date> col_date;
-    @FXML
     private TableColumn<Voyage, String> col_station;
-    @FXML
     private TableColumn<Voyage, String> col_mt;
     VoyageService sv ;
     @FXML
@@ -84,6 +79,18 @@ public class VoyageMenuController implements Initializable {
     private JFXButton btn_stat;
     @FXML
     private JFXButton btn_q;
+    @FXML
+    private TableColumn<Voyage, String> col_ref_Voy;
+    @FXML
+    private TableColumn<Voyage, Integer> col_Mt;
+    @FXML
+    private TableColumn<Voyage, Integer> col_sd;
+    @FXML
+    private TableColumn<Voyage, Integer> col_station_arrive;
+    @FXML
+    private TableColumn<Voyage, LocalDateTime> col_date_depart;
+    @FXML
+    private TableColumn<Voyage, LocalDateTime> col_date_arrive;
 
     /**
      * Initializes the controller class.
@@ -125,11 +132,12 @@ public class VoyageMenuController implements Initializable {
          }
         
         col_id.setCellValueFactory(new PropertyValueFactory<Voyage, Long>("id"));
-        col_p_d.setCellValueFactory(new PropertyValueFactory<Voyage, String>("position_depart"));
-        col_p_a.setCellValueFactory(new PropertyValueFactory<Voyage, String>("position_arrive"));
-        col_date.setCellValueFactory(new PropertyValueFactory<Voyage, Date>("date_de_voyage"));
-        col_station.setCellValueFactory(new PropertyValueFactory<Voyage, String>("station"));
-        col_mt.setCellValueFactory(new PropertyValueFactory<Voyage, String>("moyen_transport"));
+        col_ref_Voy.setCellValueFactory(new PropertyValueFactory<Voyage, String>("ref_voyage"));
+        col_Mt.setCellValueFactory(new PropertyValueFactory<Voyage, Integer>("moyen_de_transport"));
+        col_sd.setCellValueFactory(new PropertyValueFactory<Voyage, Integer>("station_depart"));
+        col_station_arrive.setCellValueFactory(new PropertyValueFactory<Voyage, Integer>("station_arrive"));
+        col_date_depart.setCellValueFactory(new PropertyValueFactory<Voyage, LocalDateTime>("date_depart"));
+        col_date_arrive.setCellValueFactory(new PropertyValueFactory<Voyage, LocalDateTime>("date_arrive"));
         
         tv_voyages.setItems(data);
             System.out.println(data);

@@ -47,9 +47,9 @@ public class StationService implements IService{
          ResultSet rs= st.executeQuery(query);
         while (rs.next()){
             Station station = new Station();
-            station.setId_station(rs.getInt("id_station"));
-            station.setRefStation(rs.getString("ref_station"));
-            station.setPosition(rs.getString("position_station"));
+            station.setId(rs.getInt("id"));
+            station.setRef_station(rs.getString("ref_station"));
+            station.setPosition_station(new Position(rs.getString("position_station").split(",")[0],rs.getString("position_station").split(",")[1]));
             station.setNom_station(rs.getString("nom_station"));
             
             

@@ -172,11 +172,12 @@
                   <TableView fx:id="tv_voyages" opacity="0.78" prefHeight="517.0" prefWidth="742.0" style="-fx-background-color: #121212;" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="col_id" prefWidth="55.0" text="id" />
-                      <TableColumn fx:id="col_p_d" prefWidth="123.0" text="Position depart" />
-                        <TableColumn fx:id="col_p_a" prefWidth="135.0" text="position arrive" />
-                        <TableColumn fx:id="col_date" prefWidth="187.0" text="Date Voyage" />
-                        <TableColumn fx:id="col_station" prefWidth="127.0" text="Station" />
-                        <TableColumn fx:id="col_mt" prefWidth="172.0" text="Moyen De Transport" />
+                      <TableColumn fx:id="col_ref_Voy" prefWidth="103.0" text="Ref.Voyage" />
+                        <TableColumn fx:id="col_Mt" prefWidth="155.0" text="Moyen De Transport" />
+                        <TableColumn fx:id="col_sd" prefWidth="115.0" text="Station Depart" />
+                        <TableColumn fx:id="col_station_arrive" prefWidth="110.0" text="Station Arrivé" />
+                        <TableColumn fx:id="col_date_depart" prefWidth="116.0" text="Date Depart" />
+                        <TableColumn fx:id="col_date_arrive" prefWidth="142.0" text="Date Arrivé" />
                     </columns>
                   </TableView>
                </center>

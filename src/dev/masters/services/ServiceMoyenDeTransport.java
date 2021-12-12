@@ -53,22 +53,22 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
         try {
             Statement stm = cnx.createStatement();
 
-            String query = "SELECT * FROM Moyentransport";
+            String query = "SELECT * FROM moyen_de_transport";
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 MoyenDeTransport moyenTransport = new MoyenDeTransport();
-                moyenTransport.setId_MoyenTransport(rs.getInt("id_MoyenTransport"));
-                moyenTransport.setType(rs.getString("Type"));
-                moyenTransport.setNum_ligne(rs.getString("Num_ligne"));
-                moyenTransport.setDate_de_mise_en_circulations(rs.getString("Date_de_mise_en_circulations"));
-                moyenTransport.setEtat(rs.getString("Etat"));
-                moyenTransport.setAccessible_au_handicape(rs.getString("Accessible_au_handicape"));
-                moyenTransport.setPrix_achat(rs.getString("Prix_achat"));
-                moyenTransport.setPoids(rs.getInt("Poids"));
-                moyenTransport.setLongueur(rs.getInt("Longueur"));
-                moyenTransport.setLargeur(rs.getInt("Largeur"));
-                moyenTransport.setEnergie(rs.getString("Energie"));
-                moyenTransport.setNombre_de_place(rs.getInt("Nombre_de_place"));
+                moyenTransport.setId_MoyenTransport(rs.getInt("id"));
+                moyenTransport.setType(rs.getString("type"));
+                moyenTransport.setNum_ligne(rs.getString("num_ligne"));
+                moyenTransport.setDate_de_mise_en_circulations(rs.getString("date_de_mise_en_circulation"));
+                moyenTransport.setEtat(rs.getString("etat"));
+                moyenTransport.setAccessible_au_handicape(rs.getString("accessible_au_handicape"));
+                moyenTransport.setPrix_achat(rs.getString("prix_achat"));
+                moyenTransport.setPoids(rs.getInt("poids"));
+                moyenTransport.setLongueur(rs.getInt("longueur"));
+                moyenTransport.setLargeur(rs.getInt("largeur"));
+                moyenTransport.setEnergie(rs.getString("energie"));
+                moyenTransport.setNombre_de_place(rs.getInt("nombre_de_place"));
 
                 MT.add(moyenTransport);
             }
@@ -139,7 +139,7 @@ public class ServiceMoyenDeTransport implements IService<MoyenDeTransport> {
         List<MoyenDeTransport> MT = new ArrayList<>();
         try {
             Statement stm = cnx.createStatement();
-            String query = "select * from MoyenTransport where Type like '%" + req + "%' or num_ligne like '%" + req + "%' or Date_de_mise_en_circulations like '%" + req + "%' or Etat like '%" + req + "%' or Etat like Etat like '%" + req + "%' ";
+            String query = "select * from moyen_de_transport where Type like '%" + req + "%' or num_ligne like '%" + req + "%' or Date_de_mise_en_circulations like '%" + req + "%' or Etat like '%" + req + "%' or Etat like Etat like '%" + req + "%' ";
             System.out.println(query);
             ResultSet rs = stm.executeQuery(query);
 

@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -68,25 +69,12 @@ public class GestionVoyageController implements Initializable {
 
     @FXML
     private Label LbId;
-    @FXML
-    private TableColumn<Voyage, Long> col_Id;
-    @FXML
-    private TableColumn<Voyage, String> cold_pd;
-    @FXML
-    private TableColumn<Voyage, String> cold_pa;
-    @FXML
-    private TableColumn<Voyage, Date> col_date;
-    @FXML
-    private TableColumn<Voyage, String> col_station;
-    @FXML
-    private TableColumn<Voyage, String> col_mt;
-    @FXML
+    
     private TextField tf_pa;
     @FXML
     private Label tf_date;
     @FXML
     private Label tf_station;
-    @FXML
     private TextField tf_pd;
     @FXML
     private TableView<Voyage> tv_voyage;
@@ -131,6 +119,30 @@ public class GestionVoyageController implements Initializable {
     private JFXRadioButton rb_All;
     ServiceMoyenDeTransport smt;
     ObservableList<Voyage> data = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Voyage, String> cold_ref_voy;
+    @FXML
+    private TableColumn<Voyage, Integer> cold_mt;
+    @FXML
+    private TableColumn<Voyage, Integer> col_station_depart;
+    @FXML
+    private TableColumn<Voyage, Integer> col_stationArrivé;
+    @FXML
+    private TableColumn<Voyage, LocalDateTime> col_dd;
+    @FXML
+    private TableColumn<Voyage, LocalDateTime> col_DA;
+    @FXML
+    private TableColumn<Voyage, Long> col_Id;
+    @FXML
+    private Label tf_date1;
+    @FXML
+    private Label tf_station1;
+    @FXML
+    private TextField tf_ref_voy;
+    @FXML
+    private DatePicker dp_date_arrive;
+    @FXML
+    private ComboBox<Station> cb_station_arrive;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -148,7 +160,7 @@ public class GestionVoyageController implements Initializable {
     @FXML
     private void Insert(MouseEvent event) {
          try {
-            Voyage voyage = new Voyage(new Position(tf_pd.getText().split(",")[0].trim(), tf_pd.getText().split(",")[1].trim()),new Position(tf_pa.getText().split(",")[0].trim(), tf_pa.getText().split(",")[1].trim()),dp_date.getValue().atStartOfDay(),cb_station.getValue(),cb_mt.getValue());
+            Voyage voyage = new Voyage(tf_ref_voy.getText(), cb_station.getValue(), cb_station_arrive.getValue(), cb_mt.getValue(), dp_date.getValue().atStartOfDay(), dp_date_arrive.getValue().atStartOfDay());
         vs.ajouter(voyage);
         String title = "Congratulations sir";
         String message = "Voyage Ajouté avec Succes";
@@ -156,8 +168,8 @@ public class GestionVoyageController implements Initializable {
         notification.showNotif(title, message, Notifications.SUCCESS);
              MailApi mailApi = new MailApi();
              mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage Ajouter Avec Succes", "Ajout Voyage");
-             SmsApi sms = new SmsApi();
-             sms.sendSMS("Ajout Voyage", "voyage a ete ajouté avec succes");
+            /* SmsApi sms = new SmsApi();
+             sms.sendSMS("Ajout Voyage", "voyage a ete ajouté avec succes");*/
         refreshlist();
         } catch (Exception e) {
             Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -186,11 +198,12 @@ public class GestionVoyageController implements Initializable {
             }
 
             col_Id.setCellValueFactory(new PropertyValueFactory<>("id"));
-            cold_pd.setCellValueFactory(new PropertyValueFactory<>("position_depart"));
-            cold_pa.setCellValueFactory(new PropertyValueFactory<>("position_arrive"));
-            col_date.setCellValueFactory(new PropertyValueFactory<>("date_de_voyage"));
-            col_station.setCellValueFactory(new PropertyValueFactory<>("station"));
-            col_mt.setCellValueFactory(new PropertyValueFactory<>("moyen_transport"));
+            cold_ref_voy.setCellValueFactory(new PropertyValueFactory<>("ref_voyage"));
+            cold_mt.setCellValueFactory(new PropertyValueFactory<>("moyen_de_transport"));
+            col_station_depart.setCellValueFactory(new PropertyValueFactory<>("station_depart"));
+            col_stationArrivé.setCellValueFactory(new PropertyValueFactory<>("station_arrive"));
+            col_dd.setCellValueFactory(new PropertyValueFactory<>("date_depart"));
+            col_DA.setCellValueFactory(new PropertyValueFactory<>("date_arrive"));
 
             tv_voyage.setItems(data);
             //Initial filtered list
@@ -221,6 +234,7 @@ public class GestionVoyageController implements Initializable {
             }
 
             cb_station.setItems(data);
+            cb_station_arrive.setItems(data);
 
         } catch (Exception e) {
              Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -258,7 +272,7 @@ public class GestionVoyageController implements Initializable {
     @FXML
     private void Update(MouseEvent event) {
         try {
-            Voyage voyage = new Voyage(new Position(tf_pd.getText().split(",")[0].trim(), tf_pd.getText().split(",")[1].trim()),new Position(tf_pa.getText().split(",")[0].trim(), tf_pa.getText().split(",")[1].trim()),dp_date.getValue().atStartOfDay(),cb_station.getValue(),cb_mt.getValue());
+            Voyage voyage = new Voyage(tf_ref_voy.getText(), cb_station.getValue(), cb_station_arrive.getValue(), cb_mt.getValue(), dp_date.getValue().atStartOfDay(), dp_date_arrive.getValue().atStartOfDay());
         vs.modifier(Integer.parseInt(tf_idVoyage.getText()), voyage);
         String title = "Congratulations sir";
         String message = "Voyage Modifier avec Succes";
@@ -266,8 +280,8 @@ public class GestionVoyageController implements Initializable {
         notification.showNotif(title, message, Notifications.SUCCESS);
         MailApi mailApi = new MailApi();
              mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage A été modifier Avec Succes \n"+voyage, "Ajout Voyage");
-             SmsApi sms = new SmsApi();
-             sms.sendSMS("Modification Voyage", "voyage a ete modifier avec succes");
+             /*SmsApi sms = new SmsApi();
+             sms.sendSMS("Modification Voyage", "voyage a ete modifier avec succes");*/
          refreshlist();    
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -289,23 +303,24 @@ public class GestionVoyageController implements Initializable {
             MailApi mailApi = new MailApi();
              mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage Ajouter Avec Succes id_voyage : "+tf_idVoyage.getText(), "suppression Voyage");
             tf_idVoyage.setText(null);
-            tf_pd.setText(null);
-            tf_pa.setText(null);
+            tf_ref_voy.setText(null);
+            dp_date_arrive.setValue(null);
             dp_date.setValue(null);
             cb_mt.setValue(null);
             cb_station.setValue(null);
+            cb_station_arrive.setValue(null);
             String title = "Congratulations sir";
         String message = "Voyage supprimé avec succes";
         NotificationApi notification=new NotificationApi();
         notification.showNotif(title, message, Notifications.SUCCESS);
-        SmsApi sms = new SmsApi();
+        /*SmsApi sms = new SmsApi();
              sms.sendSMS("Suprimer Voyage", "voyage a ete Supprime avec succes");
-        
+        */
             refreshlist();
         } catch (Exception e) {
            Alert alert=new Alert(Alert.AlertType.ERROR);
                  alert.setTitle("Erreur");
-                 alert.setContentText("une erreur est surveny veuillez ressayer de nouveau");
+                 alert.setContentText(e.getMessage());
                  alert.showAndWait();
         }
         
@@ -320,11 +335,14 @@ public class GestionVoyageController implements Initializable {
             return;
         }
         tf_idVoyage.setText(String.valueOf(voyage.getId()));
-        tf_pd.setText(voyage.getPosition_depart().getGoogleMapsPostionFormat());
-        tf_pa.setText(voyage.getPosition_arrive().getGoogleMapsPostionFormat());
-        dp_date.setValue(voyage.getDate_de_voyage().toLocalDate());
-        cb_station.setValue(voyage.getStation());
-        cb_mt.setValue(voyage.getMoyen_transport());
+        tf_ref_voy.setText(voyage.getRef_voyage());
+        
+        dp_date.setValue(voyage.getDate_depart().toLocalDate());
+        dp_date_arrive.setValue(voyage.getDate_arrive().toLocalDate());
+        
+        cb_station.setValue(voyage.getStation_depart());
+        cb_station_arrive.setValue(voyage.getStation_arrive());
+        cb_mt.setValue(voyage.getMoyen_de_transport());
 
     }
     private void recherche_avance() {
@@ -336,14 +354,14 @@ public class GestionVoyageController implements Initializable {
 			return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
-                    if (voyage.getDate_de_voyage().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    if (voyage.getDate_depart().toString().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
 			return true; // Filter matches first name.
-                    } else if (String.valueOf(voyage.getMoyen_transport()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    } else if (String.valueOf(voyage.getMoyen_de_transport()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                         return true; // Filter matches last name.
                     }else if (String.valueOf(voyage.getId()).indexOf(lowerCaseFilter) != -1) {
 			return true;
                     } 
-                    else if (String.valueOf(voyage.getStation()).indexOf(lowerCaseFilter) != -1) {
+                    else if (String.valueOf(voyage.getStation_depart()).indexOf(lowerCaseFilter) != -1) {
 			return true;
                     }
                     else

@@ -28,84 +28,81 @@ import java.util.List;
  * @author mouha
  */
 public class VoyageService implements IService<Voyage> {
+
     Connection cnx;
     Statement st;
-    
-    public VoyageService(){
-        
-        
-        
-            cnx = Myconnexion.getInstance().getCnx();
-        
-        
-        
-        
+
+    public VoyageService() {
+
+        cnx = Myconnexion.getInstance().getCnx();
+
     }
-    /******************************** Add Voyage *********************************/
+
+    /**
+     * ****************************** Add Voyage ********************************
+     */
     @Override
     public void ajouter(Voyage voyage) {
-       
+
         //check for existance of the station and the MDP first 
-        
-         try {
-           
-            String query ="INSERT INTO `voyage`(`position_depart`, `position_arrive`, `date_voyage`,`station`, `moyen_transport`) VALUES ('"+voyage.getPosition_depart().getGoogleMapsPostionFormat()+"','"+voyage.getPosition_arrive().getGoogleMapsPostionFormat()+"','"+voyage.getDate_de_voyage()+"','"+voyage.getStation().getRefStation()+"','"+voyage.getMoyen_transport().getId_MoyenTransport()+"')";
-             
+        try {
+
+            String query = "INSERT INTO `voyage`(`station_depart_id`, `station_arrive_id`, `moyen_de_transport_id`,`ref_voyage`, `date_depart`,`date_arrive`) VALUES ('" + voyage.getStation_depart().getId() + "','" + voyage.getStation_arrive().getId()+ "','" + voyage.getMoyen_de_transport().getId_MoyenTransport()+ "','" + voyage.getRef_voyage() + "','" + voyage.getDate_depart() +"','"+voyage.getDate_arrive()+ "')";
+
             st = cnx.createStatement();
-       
-        st.executeUpdate(query);
-             System.out.println("voyage ajouté avec succes");
-        
-        
+
+            st.executeUpdate(query);
+            System.out.println("voyage ajouté avec succes");
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
-/*****************************getAll Voyages***************************/
+
+    /**
+     * ***************************getAll Voyages**************************
+     */
     @Override
     public List<Voyage> afficher() throws SQLException {
         List<Voyage> voyages = new ArrayList<Voyage>();
-        
+
         st = cnx.createStatement();
-        
+
         String query = "SELECT * FROM voyage";
-         ResultSet rs= st.executeQuery(query);
-        while (rs.next()){
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
             Voyage voyage = new Voyage();
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
             
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
             voyages.add(voyage);
         }
         return voyages;
     }
+
     public List<Voyage> afficherArchive() throws SQLException {
         List<Voyage> voyages = new ArrayList<Voyage>();
-        
+
         st = cnx.createStatement();
-        
-        String query = "SELECT * FROM archive_voyage";
-         ResultSet rs= st.executeQuery(query);
-        while (rs.next()){
+
+        String query = "SELECT * FROM voyage_archive";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
             Voyage voyage = new Voyage();
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
             
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
             voyages.add(voyage);
         }
         return voyages;
@@ -113,232 +110,196 @@ public class VoyageService implements IService<Voyage> {
 
     @Override
     public void supprimer(long id) throws SQLException {
-        
-        String query = "delete from voyage where id_voyage="+id;
+
+        String query = "delete from voyage where id=" + id;
         st.executeUpdate(query);
     }
-    
-    public void archiver(Voyage voyage)throws SQLException{
-        
-        String query ="INSERT INTO `archive_voyage`(`id_voyage`,`position_depart`, `position_arrive`, `date_voyage`,`station`, `moyen_transport`) VALUES ('"+voyage.getId()+"','"+voyage.getPosition_depart().getGoogleMapsPostionFormat()+"','"+voyage.getPosition_arrive().getGoogleMapsPostionFormat()+"','"+voyage.getDate_de_voyage()+"','"+voyage.getStation().getRefStation()+"','"+voyage.getMoyen_transport().getId_MoyenTransport()+"')";
+
+    public void archiver(Voyage voyage) throws SQLException {
+
+        String query = "INSERT INTO `voyage_archive`(`id`,`ref_voyage`, `station_depart`, `moyen_de_transport`,`date_depart`, `date_arrive`, `station_arrive`) VALUES ('" + voyage.getId() + "','" + voyage.getRef_voyage() + "','" + voyage.getStation_depart().getId() + "','" + voyage.getMoyen_de_transport().getId_MoyenTransport()+ "','" + voyage.getDate_depart() + "','" + voyage.getDate_arrive() +"','"+voyage.getStation_arrive().getId()+ "')";
         System.out.println(query);
         st.executeUpdate(query);
-        
-        String query2 = "delete from voyage where id_voyage="+voyage.getId();
+
+        String query2 = "delete from voyage where id=" + voyage.getId();
         st.executeUpdate(query2);
-        
+
     }
-    
-    public void desarchiver(Voyage voyage)throws SQLException{
-        
-        String query ="INSERT INTO `voyage`(`id_voyage`,`position_depart`, `position_arrive`, `date_voyage`,`station`, `moyen_transport`) VALUES ('"+voyage.getId()+"','"+voyage.getPosition_depart().getGoogleMapsPostionFormat()+"','"+voyage.getPosition_arrive().getGoogleMapsPostionFormat()+"','"+voyage.getDate_de_voyage()+"','"+voyage.getStation().getRefStation()+"','"+voyage.getMoyen_transport().getId_MoyenTransport()+"')";
-        
+
+    public void desarchiver(Voyage voyage) throws SQLException {
+
+        String query = "INSERT INTO `voyage`(`station_depart_id`, `station_arrive_id`, `moyen_de_transport_id`,`ref_voyage`, `date_depart`,`date_arrive`) VALUES ('" + voyage.getStation_depart().getId() + "','" + voyage.getStation_arrive().getId()+ "','" + voyage.getMoyen_de_transport().getId_MoyenTransport()+ "','" + voyage.getRef_voyage() + "','" + voyage.getDate_depart() +"','"+voyage.getDate_arrive()+ "')";
         st.executeUpdate(query);
-        
-        String query2 = "delete from archive_voyage where id_voyage="+voyage.getId();
+
+        String query2 = "delete from voyage_archive where id_voyage=" + voyage.getId();
         st.executeUpdate(query2);
-        
+
     }
-    
-    
-    /********************** Voyage Search By ID********************/
-    public Voyage GetVoyageById(long id_voyage){
-        
+
+    /**
+     * ******************** Voyage Search By ID*******************
+     */
+    public Voyage GetVoyageById(long id_voyage) {
+
         Voyage voyage = new Voyage();
-        String query= "select * from voyage where id_voyage= ?";
-        
-         try{
-             
-             PreparedStatement ps
-            = cnx.prepareStatement(query);
-  
-        ps.setLong(1,id_voyage);
-        
-        ResultSet rs = ps.executeQuery();
-        
-  
-        while (rs.next()) {
-            
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
-            
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
+        String query = "select * from voyage where id= ?";
+
+        try {
+
+            PreparedStatement ps
+                    = cnx.prepareStatement(query);
+
+            ps.setLong(1, id_voyage);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                 
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-  
-        
-         }
-         catch(SQLException e){
-             System.out.println(e.getMessage());
-         }
-        
+
         return voyage;
-    
+
     }
-    
-    /*****************************update Voyage****************************/
+
+    /**
+     * ***************************update Voyage***************************
+     */
     @Override
     public void modifier(long id, Voyage updatedVoyage) throws SQLException {
-        
-         //check the avalability of the stations and the MDT(moyen de transport) if they exist 
-         
-        
-           String query = "update voyage set `position_depart`= '"+updatedVoyage.getPosition_depart().getGoogleMapsPostionFormat()+"', `position_arrive`= '"+updatedVoyage.getPosition_arrive().getGoogleMapsPostionFormat()+"', `date_voyage`= '"+java.sql.Date.valueOf(updatedVoyage.getDate_de_voyage().toLocalDate())+"', `station`= '"+updatedVoyage.getStation().getRefStation()+"', `moyen_transport`= '"+updatedVoyage.getMoyen_transport().getId_MoyenTransport()+"'where `id_voyage` = '"+id+"'";
-              
-      
-        
+
+        //check the avalability of the stations and the MDT(moyen de transport) if they exist 
+        String query = "update voyage set `station_depart_id`= '" + updatedVoyage.getStation_depart().getId()+ "', `station_arrive_id`= '" + updatedVoyage.getStation_arrive().getId()+ "', `moyen_de_transport_id`= '" + updatedVoyage.getMoyen_de_transport().getId_MoyenTransport() + "', `ref_voyage`= '" + updatedVoyage.getRef_voyage() + "', `date_depart`= '" + updatedVoyage.getDate_depart() +"', `date_arrive`= '"+updatedVoyage.getDate_arrive()+ "'where `id` = '" + id + "'";
+
         st.executeUpdate(query);
-        
-        
-        
-       
-        
-            
-    
-        
+
     }
-    
-    
-    public List<Voyage> getVoyagesByRefStation(String refStation){
-        
-        
+
+    public List<Voyage> getVoyagesByRefStation(int idStation) {
+
         List<Voyage> voyages = new ArrayList<Voyage>();
-        String query= "select * from voyage where station= ?";
-        
-         try{
-             
-             PreparedStatement ps
-            = cnx.prepareStatement(query);
-  
-        ps.setString(1,refStation);
-        
-        ResultSet rs = ps.executeQuery();
-        
-  
-        while (rs.next()) {
-            Voyage voyage = new Voyage();
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
+        String query = "select * from voyage where station_depart_id= ?";
+
+        try {
+
+            PreparedStatement ps
+                    = cnx.prepareStatement(query);
+
+            ps.setInt(1, idStation);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Voyage voyage = new Voyage();
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
             
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
             voyages.add(voyage);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-  
-        
-         }
-         catch(SQLException e){
-             System.out.println(e.getMessage());
-         }
-        
+
         return voyages;
-    
+
     }
-    
-    public List<Voyage> getVoyagesByDate(LocalDateTime date){
-        
-        
+
+    public List<Voyage> getVoyagesByDate(LocalDateTime date) {
+
         List<Voyage> voyages = new ArrayList<Voyage>();
-        String query= "select * from voyage where date_voyage= ?";
-        
-         try{
-             
-             PreparedStatement ps
-            = cnx.prepareStatement(query);
-  
-        ps.setDate(1,java.sql.Date.valueOf(date.toLocalDate()));
-        
-        ResultSet rs = ps.executeQuery();
-        
-  
-        while (rs.next()) {
-            Voyage voyage = new Voyage();
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
+        String query = "select * from voyage where date_depart= ?";
+
+        try {
+
+            PreparedStatement ps
+                    = cnx.prepareStatement(query);
+
+            ps.setDate(1, java.sql.Date.valueOf(date.toLocalDate()));
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+               Voyage voyage = new Voyage();
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
             
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
             voyages.add(voyage);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-  
-        
-         }
-         catch(SQLException e){
-             System.out.println(e.getMessage());
-         }
-        
+
         return voyages;
-    
+
     }
-    
-    public List<Voyage> getVoyagesByMt(long refMt){
-        
-        
+
+    public List<Voyage> getVoyagesByMt(long refMt) {
+
         List<Voyage> voyages = new ArrayList<Voyage>();
-        String query= "select * from voyage where moyen_transport= ?";
-        
-         try{
-             
-             PreparedStatement ps
-            = cnx.prepareStatement(query);
-  
-        ps.setLong(1, refMt);
-        
-        ResultSet rs = ps.executeQuery();
-        
-  
-        while (rs.next()) {
-            Voyage voyage = new Voyage();
-            voyage.setId(rs.getLong("id_voyage"));
-            voyage.setPosition_depart(new Position(rs.getString("position_depart").split(",")[0],rs.getString("position_depart").split(",")[1].trim()));
-            voyage.setPosition_arrive(new Position(rs.getString("position_arrive").split(",")[0],rs.getString("position_arrive").split(",")[1].trim()));
-            voyage.setDate_de_voyage(rs.getTimestamp(4).toLocalDateTime());
+        String query = "select * from voyage where moyen_transport_id= ?";
+
+        try {
+
+            PreparedStatement ps
+                    = cnx.prepareStatement(query);
+
+            ps.setLong(1, refMt);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Voyage voyage = new Voyage();
+            voyage.setId(rs.getLong("id"));
+            voyage.setStation_depart(new Station(rs.getInt("station_depart_id")));
+            voyage.setStation_arrive(new Station(rs.getInt("station_arrive_id")));
+            voyage.setMoyen_de_transport(new MoyenDeTransport(rs.getInt("moyen_de_transport_id")));
+            voyage.setRef_voyage(rs.getString("ref_voyage"));
+            voyage.setDate_depart(rs.getTimestamp("date_depart").toLocalDateTime());
+            voyage.setDate_arrive(rs.getTimestamp("date_arrive").toLocalDateTime());
             
-            //get the station that contains the specific id 
-            voyage.setStation(new Station());
-            voyage.getStation().setRefStation(rs.getString("station"));
-            voyage.setMoyen_transport(new MoyenDeTransport());
-            voyage.getMoyen_transport().setId_MoyenTransport(rs.getInt("moyen_transport"));
             voyages.add(voyage);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-  
-        
-         }
-         catch(SQLException e){
-             System.out.println(e.getMessage());
-         }
-        
+
         return voyages;
-    
+
     }
-    
-    
-    
-    
+
     public HashMap<String, Double> StatistiquesParStation() {
         HashMap<String, Double> data = new HashMap<>();
         try {
             Statement stm = cnx.createStatement();
-            String query = "SELECT station, COUNT(*) as nb FROM voyage GROUP BY station;";
+            String query = "SELECT station_depart_id, COUNT(*) as nb FROM voyage GROUP BY station_depart_id;";
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 int nb = rs.getInt("nb");
-                String key = nb + " " + rs.getString("station");
+                String key = nb + " " + rs.getString("station_depart_id");
                 data.put(key, new Double(nb));
             }
             System.out.println(data.toString());
@@ -347,6 +308,5 @@ public class VoyageService implements IService<Voyage> {
         }
         return data;
     }
-       
-    
+
 }

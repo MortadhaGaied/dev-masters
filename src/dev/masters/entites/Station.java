@@ -11,77 +11,79 @@ package dev.masters.entites;
  */
 public class Station {
     
-    private int id_station;
-
-    public int getId_station() {
-        return id_station;
-    }
-
-    public void setId_station(int id_station) {
-        this.id_station = id_station;
-    }
-    private String nom_station,position,RefStation;
-
+    private int id;
     
-    public Station(){
-        
-    }
-    public Station(String nom_station){
-        this.nom_station=nom_station;
+    private String ref_station;
+    private String nom_station;
+    private Position position_station;
+
+    public Station() {
     }
     
-    public Station(String nom_station,String position,String RefStation){
-        this.setNom_station(nom_station);
-        this.setPosition(position);
-        this.RefStation=RefStation;
-    }
     
-    /**
-     * @return the nom_station
-     */
+    
+
+    public Station(int id, String ref_station, String nom_station, Position position_station) {
+        this.id = id;
+        this.ref_station = ref_station;
+        this.nom_station = nom_station;
+        this.position_station = position_station;
+    }
+
+    public Station(String ref_station, String nom_station, Position position_station) {
+        this.ref_station = ref_station;
+        this.nom_station = nom_station;
+        this.position_station = position_station;
+    }
+
+    public Station(String nom_station) {
+        this.nom_station = nom_station;
+    }
+
+    public Station(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRef_station() {
+        return ref_station;
+    }
+
+    public void setRef_station(String ref_station) {
+        this.ref_station = ref_station;
+    }
+
     public String getNom_station() {
         return nom_station;
     }
 
-    /**
-     * @param nom_station the nom_station to set
-     */
     public void setNom_station(String nom_station) {
         this.nom_station = nom_station;
     }
 
-    /**
-     * @return the position
-     */
-    public String getPosition() {
-        return position;
+    public Position getPosition_station() {
+        return position_station;
     }
 
-    /**
-     * @param position the position to set
-     */
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    /**
-     * @return the RefStation
-     */
-    public String getRefStation() {
-        return RefStation;
-    }
-
-    /**
-     * @param RefStation the RefStation to set
-     */
-    public void setRefStation(String RefStation) {
-        this.RefStation = RefStation;
+    public void setPosition_station(Position position_station) {
+        this.position_station = position_station;
     }
 
     @Override
     public String toString() {
-        return   RefStation ;
+        return "Station{" + "id=" + id + '}';
     }
+
+    
+
+   
 
     
     

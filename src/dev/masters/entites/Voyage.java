@@ -5,6 +5,7 @@
  */
 package dev.masters.entites;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,123 +16,107 @@ import java.util.List;
  */
 public class Voyage  {
     private long id;
-    private Position position_depart,position_arrive;
-    private LocalDateTime date_de_voyage;
-    private Station station;
-    private MoyenDeTransport moyen_transport;
+    private String ref_voyage;
+    private Station station_depart;
+    private Station station_arrive;
+    private MoyenDeTransport moyen_de_transport;
+    private LocalDateTime date_depart;
+    private LocalDateTime date_arrive;
     private List<Station> stationsparVoyage = new ArrayList<Station>();
     
     
     public Voyage(){
         
     }
-    
-    //voyage sans ID
-    public Voyage(Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenDeTransport moyen_transport){
-        
-        this.position_depart=position_depart;
-        this.position_arrive=position_arrive;
-        this.date_de_voyage = date_de_voyage;
-        this.station = station;
-        this.moyen_transport=moyen_transport;
-    }
-    
-    //instantiation complete du voyage
-    public Voyage(int id,Position position_depart,Position position_arrive,LocalDateTime date_de_voyage,Station station,MoyenDeTransport moyen_transport){
-        this.id=id;
-        this.position_depart=position_depart;
-        this.position_arrive=position_arrive;
-        this.date_de_voyage = date_de_voyage;
-        this.station = station;
-        this.moyen_transport=moyen_transport;
+
+    public Voyage(long id, String ref_voyage, Station station_depart, Station station_arrive, MoyenDeTransport moyen_de_transport, LocalDateTime date_depart, LocalDateTime date_arrive) {
+        this.id = id;
+        this.ref_voyage = ref_voyage;
+        this.station_depart = station_depart;
+        this.station_arrive = station_arrive;
+        this.moyen_de_transport = moyen_de_transport;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
     }
 
-    /**
-     * @return the id
-     */
+    public Voyage(String ref_voyage, Station station_depart, Station station_arrive, MoyenDeTransport moyen_de_transport, LocalDateTime date_depart, LocalDateTime date_arrive) {
+        this.ref_voyage = ref_voyage;
+        this.station_depart = station_depart;
+        this.station_arrive = station_arrive;
+        this.moyen_de_transport = moyen_de_transport;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+    }
+
     public long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * @return the position_depart
-     */
-    public Position getPosition_depart() {
-        return position_depart;
+    public String getRef_voyage() {
+        return ref_voyage;
     }
 
-    /**
-     * @param position_depart the position_depart to set
-     */
-    public void setPosition_depart(Position position_depart) {
-        this.position_depart = position_depart;
+    public void setRef_voyage(String ref_voyage) {
+        this.ref_voyage = ref_voyage;
     }
 
-    /**
-     * @return the position_arrive
-     */
-    public Position getPosition_arrive() {
-        return position_arrive;
+    public Station getStation_depart() {
+        return station_depart;
     }
 
-    /**
-     * @param position_arrive the position_arrive to set
-     */
-    public void setPosition_arrive(Position position_arrive) {
-        this.position_arrive = position_arrive;
+    public void setStation_depart(Station station_depart) {
+        this.station_depart = station_depart;
     }
 
-    /**
-     * @return the date_de_voyage
-     */
-    public LocalDateTime getDate_de_voyage() {
-        return date_de_voyage;
+    public Station getStation_arrive() {
+        return station_arrive;
     }
 
-    /**
-     * @param date_de_voyage the date_de_voyage to set
-     */
-    public void setDate_de_voyage(LocalDateTime date_de_voyage) {
-        this.date_de_voyage = date_de_voyage;
+    public void setStation_arrive(Station station_arrive) {
+        this.station_arrive = station_arrive;
     }
 
-    /**
-     * @return the station
-     */
-    public Station getStation() {
-        return station;
+    public MoyenDeTransport getMoyen_de_transport() {
+        return moyen_de_transport;
     }
 
-    /**
-     * @param station the station to set
-     */
-    public void setStation(Station station) {
-        this.station = station;
+    public void setMoyen_de_transport(MoyenDeTransport moyen_de_transport) {
+        this.moyen_de_transport = moyen_de_transport;
     }
 
-    /**
-     * @return the moyen_transport
-     */
-    public MoyenDeTransport getMoyen_transport() {
-        return moyen_transport;
+    public LocalDateTime getDate_depart() {
+        return date_depart;
     }
 
-    /**
-     * @param moyen_transport the moyen_transport to set
-     */
-    public void setMoyen_transport(MoyenDeTransport moyen_transport) {
-        this.moyen_transport = moyen_transport;
+    public void setDate_depart(LocalDateTime date_depart) {
+        this.date_depart = date_depart;
+    }
+
+    public LocalDateTime getDate_arrive() {
+        return date_arrive;
+    }
+
+    public void setDate_arrive(LocalDateTime date_arrive) {
+        this.date_arrive = date_arrive;
+    }
+
+    public List<Station> getStationsparVoyage() {
+        return stationsparVoyage;
+    }
+
+    public void setStationsparVoyage(List<Station> stationsparVoyage) {
+        this.stationsparVoyage = stationsparVoyage;
+    }
+
+    @Override
+    public String toString() {
+        return "Voyage{" + "id=" + id + ", ref_voyage=" + ref_voyage + ", station_depart=" + station_depart + ", station_arrive=" + station_arrive + ", moyen_de_transport=" + moyen_de_transport + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", stationsparVoyage=" + stationsparVoyage + '}';
     }
     
     
-    public String toString(){
-        return "Voyage{ \n id = "+this.getId()+" \n position de depart = ( "+ this.getPosition_depart().getGoogleMapsPostionFormat()+" )"+"\n position d'arrive = ( "+this.getPosition_arrive().getGoogleMapsPostionFormat()+" )"+"\n Date = "+this.getDate_de_voyage()+"\n station = "+this.getStation().getRefStation()+"\n Moyen de transport = "+this.getMoyen_transport().getId_MoyenTransport()+"}" ;
-    }
+    
 }
