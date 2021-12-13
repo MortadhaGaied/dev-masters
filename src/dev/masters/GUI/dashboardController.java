@@ -80,7 +80,7 @@ public class dashboardController implements Initializable {
 
     @FXML
     private void gotoGestionMoyenTransport() {
-        setUi("DashboardForm");
+        setUi("/MoyenTransport/InterfaceMenuMoyenTransport");
         new FadeIn(context).play();
     }
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.GUI.Controles;
+package dev.masters.GUI.MoyenTransport.Controles;
 
 import com.jfoenix.controls.JFXButton;
 import dev.masters.services.ServiceMoyenDeTransport;
@@ -118,7 +118,7 @@ public class InterfaceMenuMoyenTransportController implements Initializable {
             Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/AjoutMoyenTransport.fxml"));
+            loader.setLocation(getClass().getResource("/dev/masters/GUI/MoyenTransport/AjoutMoyenTransport.fxml"));
             try {
                 loader.load();
             } catch (IOException ex) {
@@ -136,7 +136,7 @@ public class InterfaceMenuMoyenTransportController implements Initializable {
             Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/AfficherMoyenTransport.fxml"));
+            loader.setLocation(getClass().getResource("/dev/masters/GUI/MoyenTransport/AfficherMoyenTransport.fxml"));
             try {
                 loader.load();
             } catch (IOException ex) {
@@ -154,7 +154,7 @@ public class InterfaceMenuMoyenTransportController implements Initializable {
                     Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/ModifierMoyenTransport.fxml"));
+            loader.setLocation(getClass().getResource("/dev/masters/GUI/MoyenTransport/ModifierMoyenTransport.fxml"));
             try {
                 loader.load();
             } catch (IOException ex) {

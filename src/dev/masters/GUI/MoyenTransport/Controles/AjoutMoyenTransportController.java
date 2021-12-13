@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package dev.masters.GUI.Controles;
+
+package dev.masters.GUI.MoyenTransport.Controles;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -45,11 +41,7 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
-/**
- * FXML Controller class
- *
- * @author Mahdi
- */
+
 public class AjoutMoyenTransportController implements Initializable {
 
     @FXML
@@ -101,9 +93,6 @@ public class AjoutMoyenTransportController implements Initializable {
     private StackPane EnergieStackPanne;
 
     
-     /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -154,7 +143,7 @@ public class AjoutMoyenTransportController implements Initializable {
             Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/MInterfaceMenuMoyenTransport.fxml"));
+            loader.setLocation(getClass().getResource("/dev/masters/GUI/MoyenTransport/InterfaceMenuMoyenTransport.fxml"));
             try {
                 loader.load();
             } catch (IOException ex) {

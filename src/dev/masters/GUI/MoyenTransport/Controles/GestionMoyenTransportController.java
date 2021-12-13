@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.GUI.Controles;
+package dev.masters.GUI.MoyenTransport.Controles;
 
 import dev.masters.entites.MoyenDeTransport;
 import dev.masters.services.ServiceMoyenDeTransport;

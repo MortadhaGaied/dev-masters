@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+      <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet'/>
+      <script>
+          alert("hello");
+      </script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+    
+
+
+    <title>Simple Polylines</title>
+    
+  </head>
+  <body>
+    
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiYXVja2ZtaW5lIiwiYSI6ImNrd21wcjBwMjIyYWEyb21sYnRzOG81emUifQ.AUqQnm1j1yMFlFpLcniCtA';
+const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    center: [-74.5, 40], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+
+
+</script>
+  </body>
+</html>

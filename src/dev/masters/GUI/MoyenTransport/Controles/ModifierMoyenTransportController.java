@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev.masters.GUI.Controles;
+package dev.masters.GUI.MoyenTransport.Controles;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -262,7 +262,7 @@ public class ModifierMoyenTransportController implements Initializable {
             Stage stageclose = (Stage)((Node) event.getSource()).getScene().getWindow();
             stageclose.close();
             FXMLLoader loader = new FXMLLoader ();
-            loader.setLocation(getClass().getResource("/dev/masters/MoyenTransport/Gui/MInterfaceMenuMoyenTransport.fxml"));
+            loader.setLocation(getClass().getResource("/dev/masters/GUI/MoyenTransport/InterfaceMenuMoyenTransport.fxml"));
             try {
                 loader.load();
             } catch (IOException ex) {

@@ -58,6 +58,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 /**
@@ -143,6 +145,8 @@ public class GestionVoyageController implements Initializable {
     private DatePicker dp_date_arrive;
     @FXML
     private ComboBox<Station> cb_station_arrive;
+    @FXML
+    private WebView wv_maps;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -153,6 +157,10 @@ public class GestionVoyageController implements Initializable {
         recherche_avance();
         populateComboBoxStation();
         populateComboBoxMt();
+        
+         WebEngine we = wv_maps.getEngine();
+             URL url2 = this.getClass().getResource("/dev/masters/api/Maps.html");
+              we.load(url2.toString());
         
 
     }
@@ -171,6 +179,9 @@ public class GestionVoyageController implements Initializable {
             /* SmsApi sms = new SmsApi();
              sms.sendSMS("Ajout Voyage", "voyage a ete ajouté avec succes");*/
         refreshlist();
+             WebEngine we = wv_maps.getEngine();
+             URL url = this.getClass().getResource("/dev/masters/api/Maps.html");
+              we.load(url.toString());
         } catch (Exception e) {
             Alert alert=new Alert(Alert.AlertType.ERROR);
                  alert.setTitle("Erreur");
@@ -279,7 +290,7 @@ public class GestionVoyageController implements Initializable {
         NotificationApi notification=new NotificationApi();
         notification.showNotif(title, message, Notifications.SUCCESS);
         MailApi mailApi = new MailApi();
-             mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage A été modifier Avec Succes \n"+voyage, "Ajout Voyage");
+             mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage A été modifier Avec Succes \n"+voyage, "Modification Voyage");
              /*SmsApi sms = new SmsApi();
              sms.sendSMS("Modification Voyage", "voyage a ete modifier avec succes");*/
          refreshlist();    
@@ -301,7 +312,7 @@ public class GestionVoyageController implements Initializable {
         try {
             vs.supprimer(Long.parseLong(tf_idVoyage.getText()));
             MailApi mailApi = new MailApi();
-             mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage Ajouter Avec Succes id_voyage : "+tf_idVoyage.getText(), "suppression Voyage");
+             mailApi.SendMail("mouhamedaminerouatbi@gmail.com", "Voyage Supprimé Avec Succes id_voyage : "+tf_idVoyage.getText(), "suppression Voyage");
             tf_idVoyage.setText(null);
             tf_ref_voy.setText(null);
             dp_date_arrive.setValue(null);
