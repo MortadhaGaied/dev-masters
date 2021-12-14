@@ -10,14 +10,18 @@
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/services/StationService.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/JfreeChartApi.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/Myconnexion.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/InterfaceBienvenueMoyenTransport.fxml</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/voyage/GestionVoyageController.java</file>
-            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/Controles/AjoutMoyenTransportController.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/AfficherMoyenTransport.fxml</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/Controles/AfficherMoyenTransportController.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/services/ServiceUser.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/SMSApi.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/MailerApi.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/Mailer_Abonnement.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/ModifierMoyenTransport.fxml</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/entites/User.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/services/VoyageService.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/Controles/GestionMoyenTransportController.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/api/MailApi.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/SMS.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/dashboardController.java</file>
@@ -28,13 +32,18 @@
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/oauth/OAuthAuthenticator.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/entites/MoyenDeTransport.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/services/ServiceMoyenDeTransport.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/gestionMoyenTransport.fxml</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/entites/Position.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/AjoutMoyenTransport.fxml</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/Controles/InterfaceMenuMoyenTransportController.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/utils/JavaMail.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/services/IService.java</file>
-            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/Controles/ModifierMoyenTransportController.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/InterfaceMenuMoyenTransport.fxml</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/Controles/ModifierMoyenTransportController.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/entites/Station.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/api/SmsApi.java</file>
             <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/api/JfreeChartApi.java</file>
+            <file>file:/C:/Users/mouha/Desktop/piDev/DesktopApp/dev-masters/src/dev/masters/GUI/MoyenTransport/Controles/AjoutMoyenTransportController.java</file>
         </group>
     </open-files>
 </project-private>

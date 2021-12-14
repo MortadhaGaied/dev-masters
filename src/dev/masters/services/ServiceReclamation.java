@@ -36,14 +36,16 @@ public PreparedStatement ste;
     
     public void ajouter(Reclamation r){
     try {
-        String sql = "insert into reclamation(username_reclamation , object_reclamation , description_reclamation)"+"values(?,?,?)";
-
+        String sql = "insert into reclamation(category_id , username , object , description)"+"values(?,?,?,?)";
+            
         ste=cnx.prepareStatement(sql);
-        ste.setString(1, r.getUsername_reclamation());
-        ste.setString(2, r.getObject_reclamation());
-        ste.setString(3, r.getDescription_reclamation());
+        ste.setInt(1, r.getCategory());
+        ste.setString(2, r.getUsername_reclamation());
+        ste.setString(3, r.getObject_reclamation());
+        ste.setString(4, r.getDescription_reclamation());
+        System.out.println(sql);
         ste.executeUpdate();
-
+            
         mail.send("benromdhane.ahmed@esprit.tn", "sheldoncooper", "hypnose207@gmail.com", "", "vous avez reçu une reclamation ");
 
 
@@ -62,17 +64,18 @@ public PreparedStatement ste;
         
         while(rs.next()){
             Reclamation r = new Reclamation();
-            r.setId_reclamation(rs.getLong("id_reclamation"));
-            r.setUsername_reclamation(rs.getString("username_reclamation"));
-            r.setObject_reclamation(rs.getString("object_reclamation"));
-            r.setDescription_reclamation(rs.getString("description_reclamation"));
+            r.setId_reclamation(rs.getLong("id"));
+            r.setCategory(rs.getInt("category_id"));
+            r.setUsername_reclamation(rs.getString("username"));
+            r.setObject_reclamation(rs.getString("object"));
+            r.setDescription_reclamation(rs.getString("description"));
             reclamation.add(r);
         } 
        return reclamation;
     }
     public void supprimer (long id ) throws SQLException{
         
-            String sql = "DELETE FROM reclamation WHERE id_reclamation=? ;";
+            String sql = "DELETE FROM reclamation WHERE id=? ;";
             ste=cnx.prepareStatement(sql);
             ste.setLong(1, id);
             ste.executeUpdate();
@@ -80,14 +83,16 @@ public PreparedStatement ste;
        
         
     }
+@Override
     public void modifier(long id_reclamation,Reclamation r) throws SQLException{
      
-            String sql = "UPDATE reclamation SET  object_reclamation=?, description_reclamation=? WHERE id_reclamation=?";
+            String sql = "UPDATE reclamation SET category_id=?, object_reclamation=?, description_reclamation=? WHERE id=?";
 
             ste=cnx.prepareStatement(sql);
-            ste.setLong(3, id_reclamation);
-            ste.setString(1, r.getObject_reclamation());
-            ste.setString(2, r.getDescription_reclamation());
+            ste.setInt(1, r.getCategory());
+            ste.setLong(4, id_reclamation);
+            ste.setString(2, r.getObject_reclamation());
+            ste.setString(3, r.getDescription_reclamation());
 
             ste.executeUpdate();
             System.out.println("reclamation updeted");
@@ -97,7 +102,7 @@ public PreparedStatement ste;
         int nbreclamation = 0;
         try {
             ResultSet set = Myconnexion.getInstance().
-                    getCnx().prepareStatement("SELECT COUNT(id_reclamation) FROM reclamation")
+                    getCnx().prepareStatement("SELECT COUNT(id) FROM reclamation")
                     .executeQuery();
             if (set.next()) {
                 nbreclamation = set.getInt(1);

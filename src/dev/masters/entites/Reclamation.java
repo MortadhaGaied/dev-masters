@@ -11,6 +11,7 @@ public class Reclamation {
     private String username_reclamation;
     private String object_reclamation;
     private String description_reclamation;
+    private int category;
 
     public Reclamation() {
     }
@@ -28,6 +29,15 @@ public class Reclamation {
         this.description_reclamation = description_reclamation;
     }
 
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    
     public long getId_reclamation() {
         return id_reclamation;
     }

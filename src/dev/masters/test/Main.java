@@ -3,6 +3,7 @@
 package dev.masters.test;
 
 import dev.masters.entites.Voyage;
+import dev.masters.services.ServiceUser;
 import dev.masters.services.VoyageService;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -44,6 +45,7 @@ public class Main extends Application {
         
         
         VoyageService vs = new VoyageService();
+        ServiceUser su = new ServiceUser();
         
         
        // System.out.println("voyage by id :  \n");
@@ -57,6 +59,7 @@ public class Main extends Application {
            // vs.archiver(voyage);
             //vs.desarchiver(voyage);
             System.out.println(vs.afficher());
+            System.out.println(su.afficher());
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -36,7 +36,7 @@ public class ServiceUser implements IService<User>{
         Statement st;
         try {
             st = cnx.createStatement();
-            String query ="INSERT INTO `user`(`first_name`, `last_name`, `email`, `number`,`username`, `password`, `role`,`birthday`, `date_created_user`, `last_updated_user`) VALUES ('"+user.getFirst_name()+"','"+user.getLast_name()+"','"+user.getEmail()+"','"+user.getNumber()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getRole()+"','"+user.getBirthday()+"','"+LocalDateTime.now()+"','"+LocalDateTime.now()+"')";
+            String query ="INSERT INTO `user`(`first_name`, `last_name`, `email`, `number`,`username`, `password`, `role`,`birthday`, `created_date_user`, `last_updated_user`) VALUES ('"+user.getFirst_name()+"','"+user.getLast_name()+"','"+user.getEmail()+"','"+user.getNumber()+"','"+user.getUsername()+"','"+user.getPassword()+"','"+user.getRole()+"','"+user.getBirthday()+"','"+LocalDateTime.now()+"','"+LocalDateTime.now()+"')";
             st.executeUpdate(query);
             
         } catch (SQLException ex) {
@@ -59,7 +59,7 @@ public class ServiceUser implements IService<User>{
         ResultSet rs= stm.executeQuery(query);
         while (rs.next()){
             User user = new User();
-            user.setId_user(rs.getLong("id_user"));
+            user.setId_user(rs.getLong("id"));
             user.setFirst_name(rs.getString("first_name"));
             user.setLast_name(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
@@ -79,7 +79,7 @@ public class ServiceUser implements IService<User>{
     @Override
     public void supprimer(long id_user) throws SQLException {
         Statement stm = cnx.createStatement();
-        String query = "delete from user where id_user="+id_user;
+        String query = "delete from user where id="+id_user;
         stm.executeUpdate(query);
         
     }
@@ -87,7 +87,7 @@ public class ServiceUser implements IService<User>{
         int nbuser = 0;
         try {
             ResultSet set = Myconnexion.getInstance().
-                    getCnx().prepareStatement("SELECT COUNT(id_user) FROM user")
+                    getCnx().prepareStatement("SELECT COUNT(id) FROM user")
                     .executeQuery();
             if (set.next()) {
                 nbuser = set.getInt(1);
@@ -100,10 +100,10 @@ public class ServiceUser implements IService<User>{
     public User SearchById(long id_user) throws SQLException{
         Statement stm = cnx.createStatement();
         User user =new User();
-        String query = "select * from user where id_user="+id_user;
+        String query = "select * from user where id="+id_user;
         ResultSet rs= stm.executeQuery(query);
         while (rs.next()){
-            user.setId_user(rs.getLong("id_user"));
+            user.setId_user(rs.getLong("id"));
             user.setFirst_name(rs.getString("first_name"));
             user.setLast_name(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
@@ -123,7 +123,7 @@ public class ServiceUser implements IService<User>{
         String query ="SELECT * FROM user where username='"+username+"'";
         ResultSet rs= stm.executeQuery(query);
         while (rs.next()){
-            user.setId_user(rs.getLong("id_user"));
+            user.setId_user(rs.getLong("id"));
             user.setFirst_name(rs.getString("first_name"));
             user.setLast_name(rs.getString("last_name"));
             user.setEmail(rs.getString("email"));
@@ -141,7 +141,7 @@ public class ServiceUser implements IService<User>{
     public void modifier(long id_user_a_modifier,User user_modifier) throws SQLException {
         Statement stm = cnx.createStatement();
         User user=SearchById(id_user_a_modifier);
-        String query = "UPDATE `user` SET `first_name`='"+user_modifier.getFirst_name()+"',`last_name`='"+user_modifier.getLast_name()+"',`email`='"+user_modifier.getEmail()+"',`number`='"+user_modifier.getNumber()+"',`username`='"+user_modifier.getUsername()+"',`password`='"+user_modifier.getPassword()+"',`role`='"+user_modifier.getRole()+"',`birthday`='"+user_modifier.getBirthday()+"',`date_created_user`='"+user.getDate_created_user()+"',`last_updated_user`='"+LocalDateTime.now()+"' where id_user="+user.getId_user();
+        String query = "UPDATE `user` SET `first_name`='"+user_modifier.getFirst_name()+"',`last_name`='"+user_modifier.getLast_name()+"',`email`='"+user_modifier.getEmail()+"',`number`='"+user_modifier.getNumber()+"',`username`='"+user_modifier.getUsername()+"',`password`='"+user_modifier.getPassword()+"',`role`='"+user_modifier.getRole()+"',`birthday`='"+user_modifier.getBirthday()+"',`created_date_user`='"+user.getDate_created_user()+"',`last_updated_user`='"+LocalDateTime.now()+"' where id="+user.getId_user();
         stm.executeUpdate(query);
     }
     public boolean checkLogin(String email_username, String password) throws SQLException{

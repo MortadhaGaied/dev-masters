@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class ServiceReservation implements IService<Reservation>{
         try {
             st = cnx.createStatement();
 
-            String query ="INSERT INTO `reservation`(`id_reservation`, `date_reservation`, `etat_reservation`) VALUES ('"+reservation.getId_reservation()+"','"+reservation.getDate()+"','"+reservation.getEtat()+"')";
+            String query ="INSERT INTO `reservation`(`id`, `iduser`, `date`, `ref`, `etat` ,`price`, `name`) VALUES ('"+reservation.getId_reservation()+"','"+reservation.getId_user()+"','"+reservation.getDate()+"','"+reservation.getRef()+"', '"+reservation.getEtat()+"', '"+reservation.getPrice()+"', '"+reservation.getName()+"')";
 
         st.executeUpdate(query);
         
@@ -51,10 +52,15 @@ public class ServiceReservation implements IService<Reservation>{
         ResultSet rs= stm.executeQuery(query);
         while (rs.next()){
             Reservation reservation = new Reservation();
-            reservation.setId_reservation(rs.getLong("id_reservation"));
-
-            reservation.setDate(rs.getTimestamp(2).toLocalDateTime());
-            reservation.setEtat(rs.getString("etat_reservation"));
+            reservation.setId_reservation(rs.getLong("id"));
+            reservation.setId_user(rs.getInt("iduser"));
+            
+            reservation.setDate(rs.getTimestamp(3).toLocalDateTime());
+            reservation.setRef(rs.getString("ref"));
+            
+            reservation.setEtat(rs.getString("etat"));
+            reservation.setPrice(rs.getLong("price"));
+            reservation.setName(rs.getString("name"));
 
             lr.add(reservation);
         }
@@ -64,7 +70,7 @@ public class ServiceReservation implements IService<Reservation>{
     @Override
     public void supprimer(long id_reservation) throws SQLException {
         Statement stm = cnx.createStatement();
-        String query = "delete from reservation where id_reservation="+id_reservation;
+        String query = "delete from reservation where id="+id_reservation;
         stm.executeUpdate(query);
         
     } 
@@ -72,7 +78,7 @@ public class ServiceReservation implements IService<Reservation>{
     public void modifier(long id_reservation,Reservation reservation) throws SQLException {
         Statement stm = cnx.createStatement();
 
-        String query = "UPDATE `reservation` SET `date_reservation`='"+reservation.getDate()+"',`etat_reservation`='"+reservation.getEtat()+"' WHERE id_reservation="+id_reservation;
+        String query = "UPDATE `reservation` SET `iduser`='"+reservation.getId_user()+"',`date`='"+reservation.getDate()+"',`ref`='"+reservation.getRef()+"',`etat`='"+reservation.getEtat()+"',`price`='"+reservation.getPrice()+"',`name`='"+reservation.getName()+"' WHERE id="+id_reservation;
 
         stm.executeUpdate(query);
     }

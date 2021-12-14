@@ -18,6 +18,8 @@ public class Abonnement {
     private long id_abonn_dispo_abonnement;
     private Date date_debut_abonnement;
     private Date date_fin_abonnement;
+    private long tel;
+    private double prix;
 
     public Abonnement(long id_user, long id_abonn_dispo, Date date_debut, Date date_fin) {
         this.id_user_abonnement = id_user;
@@ -35,6 +37,22 @@ public class Abonnement {
     }
 
     public Abonnement() {
+    }
+
+    public long getTel() {
+        return tel;
+    }
+
+    public void setTel(long tel) {
+        this.tel = tel;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 
     public long getId_abonnement() {

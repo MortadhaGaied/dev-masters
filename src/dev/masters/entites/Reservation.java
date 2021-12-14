@@ -13,6 +13,10 @@ import java.time.LocalDateTime;
  */
 public class Reservation {
     private long id_reservation ;
+    private int id_user;
+    private String ref;
+    private long price;
+    private String name ;
 
     private LocalDateTime date ;
     private String etat ;
@@ -33,6 +37,39 @@ public class Reservation {
         this.etat = etat;
 
     }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
+    }
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 
     public long getId_reservation() {
         return id_reservation;

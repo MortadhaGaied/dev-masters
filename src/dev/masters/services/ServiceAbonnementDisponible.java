@@ -31,7 +31,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         Statement st;
         try {
             st = cnx.createStatement();
-            String query = "INSERT INTO abonnements_disponibe( descr, type, prix_mois,prix_semestre,prix_annuel ) VALUES ('" + nouv_abonnement.getDesc_abonnement() + "','" + nouv_abonnement.getType_abonnement() + "'," + nouv_abonnement.getPrix_moins_abonnement() + "," + nouv_abonnement.getPrix_semestre_abonnement() + "," + nouv_abonnement.getPrix_annuel_abonnement() + ")";
+            String query = "INSERT INTO abonnement_disponible( descr, type, prix_mois,prix_semestre,prix_annuel ) VALUES ('" + nouv_abonnement.getDesc_abonnement() + "','" + nouv_abonnement.getType_abonnement() + "'," + nouv_abonnement.getPrix_moins_abonnement() + "," + nouv_abonnement.getPrix_semestre_abonnement() + "," + nouv_abonnement.getPrix_annuel_abonnement() + ")";
             System.out.println(query);
             st.executeUpdate(query);
 
@@ -47,7 +47,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         try {
             Statement stm = cnx.createStatement();
 
-            String query = "SELECT * FROM abonnements_disponibe";
+            String query = "SELECT * FROM abonnement_disponible";
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 AbonnementDisponible abonnement = new AbonnementDisponible();
@@ -71,7 +71,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         Statement stm;
         try {
             stm = cnx.createStatement();
-            String query = "delete from abonnements_disponibe where id=" + id;
+            String query = "delete from abonnement_disponible where id=" + id;
             stm.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -82,7 +82,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
 
         Statement stm = cnx.createStatement();
         AbonnementDisponible abonnement = new AbonnementDisponible();
-        String query = "select * from abonnements_disponibe where id=" + id;
+        String query = "select * from abonnement_disponible where id=" + id;
         ResultSet rs = stm.executeQuery(query);
 
         while (rs.next()) {
@@ -101,7 +101,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         try {
             Statement stm = cnx.createStatement();
             AbonnementDisponible abonnementDisponible = SearchById(id);
-            String query = "UPDATE abonnements_disponibe SET descr='" + abonnement_modifier.getDesc_abonnement() + "',type='" + abonnement_modifier.getType_abonnement() + "',prix_mois='" + abonnement_modifier.getPrix_moins_abonnement() + "',prix_semestre='" + abonnement_modifier.getPrix_semestre_abonnement() + "',prix_annuel=" + abonnement_modifier.getPrix_annuel_abonnement() + "where id = " + id;
+            String query = "UPDATE abonnement_disponible SET descr='" + abonnement_modifier.getDesc_abonnement() + "',type='" + abonnement_modifier.getType_abonnement() + "',prix_mois='" + abonnement_modifier.getPrix_moins_abonnement() + "',prix_semestre='" + abonnement_modifier.getPrix_semestre_abonnement() + "',prix_annuel=" + abonnement_modifier.getPrix_annuel_abonnement() + "where id = " + id;
             stm.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -115,7 +115,7 @@ public class ServiceAbonnementDisponible implements IService<AbonnementDisponibl
         try {
             Statement stm = cnx.createStatement();
 
-            String query = "select * from abonnements_disponibe where descr like '%" + req + "%' or type like '%" + req + "%' or id = '" + req + "'";
+            String query = "select * from abonnement_disponible where descr like '%" + req + "%' or type like '%" + req + "%' or id = '" + req + "'";
             System.out.println(query);
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {

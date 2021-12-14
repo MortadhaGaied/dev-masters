@@ -34,7 +34,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
         try {
             Statement st = cnx.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            String query = "INSERT INTO abonnemnt(id_user_abonnement, id_abonn_dispo_abonnement, date_debut_abonnement, date_fin_abonnement) VALUES (" + nouv_abonnee.getId_user_abonnement() + "," + nouv_abonnee.getId_abonn_dispo() + ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) + "')";
+            String query = "INSERT INTO abonnemnt(abonnement_disponible_id,user_id , date_debut, date_fin, tel, prix) VALUES (" + nouv_abonnee.getId_abonn_dispo()+ "," + nouv_abonnee.getId_user_abonnement()+ ",'" + sdf.format(nouv_abonnee.getDate_debut_abonnement()) + "','" + sdf.format(nouv_abonnee.getDate_fin_abonnement()) +"','"+nouv_abonnee.getTel()+"','"+nouv_abonnee.getPrix()+ "')";
             System.out.println(query);
             st.executeUpdate(query);
 
@@ -52,11 +52,13 @@ public class ServiceAbonnement implements IService<Abonnement> {
         ResultSet rs = stm.executeQuery(query);
         while (rs.next()) {
             Abonnement abonnement = new Abonnement();
-            abonnement.setId_abonnement(rs.getLong("id_abonnement"));
-            abonnement.setId_user_abonnement(rs.getLong("id_user_abonnement"));
-            abonnement.setId_abonn_dispo_abonnement(rs.getLong("id_abonn_dispo_abonnement"));
-            abonnement.setDate_debut_abonnement(rs.getDate("date_debut_abonnement"));
-            abonnement.setDate_fin_abonnement(rs.getDate("date_fin_abonnement"));
+            abonnement.setId_abonnement(rs.getLong("id"));
+            abonnement.setId_user_abonnement(rs.getLong("user_id"));
+            abonnement.setId_abonn_dispo_abonnement(rs.getLong("abonnement_disponible_id"));
+            abonnement.setDate_debut_abonnement(rs.getDate("date_debut"));
+            abonnement.setDate_fin_abonnement(rs.getDate("date_fin"));
+            abonnement.setTel(rs.getInt("tel"));
+            abonnement.setPrix(rs.getDouble("prix"));
             lp.add(abonnement);
         }
         return lp;
@@ -67,7 +69,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
         try {
             Statement stm = cnx.createStatement();
             SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
-            String query = "UPDATE abonnemnt SET id_abonn_dispo=" + abonnee_modifier.getId_abonn_dispo() + ",date_debut_abonnement='" + sdf.format(abonnee_modifier.getDate_debut_abonnement()) + "',date_fin_abonnement='" + sdf.format(abonnee_modifier.getDate_fin_abonnement()) + "' where id_abonnement = " + id_abonnement;
+            String query = "UPDATE abonnemnt SET abonnement_disponible_id=" + abonnee_modifier.getId_abonn_dispo() + ",date_debut='" + sdf.format(abonnee_modifier.getDate_debut_abonnement()) + "',date_fin='" + sdf.format(abonnee_modifier.getDate_fin_abonnement()) + "' where id_abonnement = " + id_abonnement;
             System.out.println(query);
             stm.executeUpdate(query);
         } catch (SQLException ex) {
@@ -81,7 +83,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
         Statement stm;
         try {
             stm = cnx.createStatement();
-            String query = "delete from abonnemnt where id_abonnement=" + id_abonnement;
+            String query = "delete from abonnemnt where id=" + id_abonnement;
             stm.executeUpdate(query);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -99,7 +101,7 @@ public class ServiceAbonnement implements IService<Abonnement> {
             try {
             Statement stm = cnx.createStatement();
             
-            String query = "SELECT * FROM abonnemnt WHERE MONTH(date_debut_abonnement)="+mois;
+            String query = "SELECT * FROM abonnemnt WHERE MONTH(date_debut)="+mois;
             ResultSet rs = stm.executeQuery(query);
             while (rs.next()) {
                 Abonnement abonnement = new Abonnement();
